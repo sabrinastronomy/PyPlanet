@@ -2,9 +2,6 @@ from burnman import *
 from numpy import *
 from scipy import interpolate
 
-default_location_core = "/Users/sabrinaberger/RockyPlanets/Code/EoS/core_constant_"
-default_location_mantle = "/Users/sabrinaberger/RockyPlanets/Code/EoS/mantle_constant_"
-default_location = "/Users/sabrinaberger/RockyPlanets/Code/EoS/"
 
 
 def create_function(pressures, density):  # TODO incorporate into object

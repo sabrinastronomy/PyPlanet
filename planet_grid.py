@@ -1,10 +1,7 @@
 import time
 from planet import Planet
 from eos import *
-
-default_central_pressures = [9, 12]
-default_grid_size = [10, 10]
-
+import subprocess
 
 # Grid of planets
 
@@ -24,6 +21,7 @@ class PlanetGrid:
         self.grid_size = grid_size  # grid_size[0] = number of central pressures, grid_size[1] = number of ratios of CMB pressure/central pressure
         self.want_full_profile = want_full_profile
         self.relative_tolerance = relative_tolerance
+        self.save_folder = location + "/" + str(anchor_temp) + temp_profile + "data/"
 
         # p_cmb = core mantle boundary pressure
         # p_c = central pressure
@@ -59,7 +57,6 @@ class PlanetGrid:
 
         # Aliases
         location = self.location
-        label = self.location
         radius_grid = self.radius_grid
         mass_grid = self.mass_grid
         press_grid = self.press_grid
@@ -71,6 +68,8 @@ class PlanetGrid:
         want_full_profile = self.want_full_profile
         xx = self.xx
         yy = self.yy
+        save_folder = self.save_folder
+        temp_profile = self.temp_profile
 
         print("Type of EoS used in this grid: " + self.temp_profile)
 
@@ -108,29 +107,30 @@ class PlanetGrid:
 
                 planet_number += 1
 
-        save(location + "DataFiles/" + "p_c" + label + str(anchor_temp) + ".pyc", xx)
-        save(location + "DataFiles/" + "p_cmb_percentage" + label + str(anchor_temp) + ".pyc", yy)
-        save(location + "DataFiles/" + "radius_grid" + label + str(anchor_temp) + ".pyc", radius_grid)
-        save(location + "DataFiles/" + "mass_grid" + label + str(anchor_temp) + ".pyc", mass_grid)
-        save(location + "DataFiles/" + "press_grid" + label + str(anchor_temp) + ".pyc", press_grid)
-        save(location + "DataFiles/" + "core_mass_grid" + label + str(anchor_temp) + ".pyc", core_mass_grid)
-        save(location + "DataFiles/" + "core_rad_grid" + label + str(anchor_temp) + ".pyc", core_rad_grid)
-        save(location + "DataFiles/" + "p_cmb_simulated" + label + str(anchor_temp) + ".pyc", p_cmb_simulated)
-        save(location + "DataFiles/" + "p_cmb_grid" + label + str(anchor_temp) + ".pyc", p_cmb_grid)
+        subprocess.call(["mkdir", save_folder])
+        save(save_folder + "p_c" + temp_profile + str(anchor_temp) + ".pyc", xx)
+        save(save_folder + "p_cmb_percentage" + temp_profile + str(anchor_temp) + ".pyc", yy)
+        save(save_folder + "radius_grid" + temp_profile + str(anchor_temp) + ".pyc", radius_grid)
+        save(save_folder + "mass_grid" + temp_profile + str(anchor_temp) + ".pyc", mass_grid)
+        save(save_folder + "press_grid" + temp_profile + str(anchor_temp) + ".pyc", press_grid)
+        save(save_folder + "core_mass_grid" + temp_profile + str(anchor_temp) + ".pyc", core_mass_grid)
+        save(save_folder + "core_rad_grid" + temp_profile + str(anchor_temp) + ".pyc", core_rad_grid)
+        save(save_folder + "p_cmb_simulated" + temp_profile + str(anchor_temp) + ".pyc", p_cmb_simulated)
+        save(save_folder + "p_cmb_grid" + temp_profile + str(anchor_temp) + ".pyc", p_cmb_grid)
 
         print("The following data files have been created: ")
-        print(location + "DataFiles/" + "p_c" + label + str(anchor_temp) + ".pyc")
-        print(location + "DataFiles/" + "p_cmb_percentage" + label + str(anchor_temp) + ".pyc")
-        print(location + "DataFiles/" + "radius_grid" + label + str(anchor_temp) + ".pyc")
-        print(location + "DataFiles/" + "mass_grid" + label + str(anchor_temp) + ".pyc")
-        print(location + "DataFiles/" + "press_grid" + label + str(anchor_temp) + ".pyc")
-        print(location + "DataFiles/" + "core_mass_grid" + label + str(anchor_temp) + ".pyc")
-        print(location + "DataFiles/" + "core_rad_grid" + label + str(anchor_temp) + ".pyc")
-        print(location + "DataFiles/" + "p_cmb_simulated" + label + str(anchor_temp) + ".pyc")
-        print(location + "DataFiles/" + "p_cmb_grid" + label + str(anchor_temp) + ".pyc")
+        print(save_folder + "p_c" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "p_cmb_percentage" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "radius_grid" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "mass_grid" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "press_grid" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "core_mass_grid" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "core_rad_grid" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "p_cmb_simulated" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "p_cmb_grid" + temp_profile + str(anchor_temp) + ".pyc")
 
         if want_full_profile:
             return xx, yy, radius_grid, mass_grid, press_grid, core_mass_grid, core_rad_grid
 
-        print("Done. Integrated " + repr(planet_number) + " " + label[1:-2] + " planets successfully!" + " This took " +
+        print("Done. Integrated " + repr(planet_number) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
               repr((time.clock() - initial_time) / 60) + " minutes" + ".")

@@ -1,29 +1,38 @@
 from planet_grid import PlanetGrid
 from eos import *
 import numpy as np
+import subprocess
 
-location = "Users/sabrinaberger/" #TODO Change
+location = "/Users/sabrinaberger/Desktop/without_phases" #Leslie's Directory
 default_central_pressures = [9, 12]
-default_grid_size = [20, 20]
+default_grid_size = [5, 5]
 
+all_data_location = location + "/PyPlanetData"
+grid_planets_location = all_data_location + "/gridPlanets"
+
+subprocess.call(["mkdir", all_data_location])
+subprocess.call(["mkdir", grid_planets_location])
 
 def varying_temp(type_eos, temperatures, central_pressures, grid_size):
     planetary_grids = []
+
     for temp in temperatures:
-        temp_plan_grid = PlanetGrid(temp, central_pressures, grid_size, str(type_eos), location)
+        temp_plan_grid = PlanetGrid(temp, central_pressures, grid_size, str(type_eos), all_data_location)
         temp_plan_grid.integrateGrid()
         planetary_grids.append(temp_plan_grid)
-        np.save(location + "gridPlanets_" + type_eos + str(temp) + "_.pyc", planetary_grids)
 
-    return planetary_grids
+
+    # TODO currently unable to save all grids in pickle file
+        #  np.save(grid_planets_location + "/" + type_eos + str(temp) + "_.pyc", planetary_grids)
+
 
 if __name__ == "__main__":
-    temp_range = [300, 1000, 3000]
+    temp_range = [300, 3000]
 
     # adiabatic
     varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size)
     # constant temperature
-    varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size)
+    # varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size)
 
     # planet_interp(pre_interpolation_data_location + "DataFiles/", "_adiabatic_", temp_range)
 
