@@ -28,7 +28,7 @@ class PlanetGrid:
 
         self.p_c_list = np.array(
             [10 ** x for x in linspace(self.central_pressures[0], self.central_pressures[1], self.grid_size[0])])
-        self.p_cmb_p_c = linspace(0.1, 0.9, self.grid_size[1])  # transition pressure when multiplied by p_c
+        self.p_cmb_p_c = linspace(0, 1, self.grid_size[1])  # transition pressure when multiplied by p_c
 
         self.xx, self.yy = meshgrid(self.p_c_list, self.p_cmb_p_c)
 
@@ -77,22 +77,22 @@ class PlanetGrid:
         for i in range(self.num_rows):
             for j in range(self.num_cols):
                 print(
-                    "Location in mesh grid: %d %d \n P_c = %g \n P_cmb/P_c =% g" % (i, j, self.xx[i][j], self.yy[i][j]))
+                    "Location in mesh grid: %d %d \n P_c = %e \n P_cmb/P_c =% g" % (i, j, self.xx[i][j], self.yy[i][j]))
                 print("Planet: " + str(planet_number) + " out of " + str(self.num_rows * self.num_cols))
 
                 p_c = self.xx[i][j]
                 transition_pressure = self.yy[i][j] * p_c
-                needed_pressures = [p_c, transition_pressure, 0.]  # TODO extend to arbitrary number of layers
 
+                needed_pressures = [p_c, transition_pressure, 0.]  # TODO extend to arbitrary number of layers
+                print(needed_pressures)
+                print("here")
                 mantle = Layer("mantle", self.mantle_material, [0.1, 0.1, 0.8], self.temp_profile)
                 core = Layer("core", self.core_material, [1], self.temp_profile)
 
                 planet_eos = EoS(p_c, transition_pressure, self.temp_profile, core, mantle,
                                  self.anchor_temp)  # TODO MAKE FOR ARBITRARY NUMBER OF LAYERS
-
-                planet = Planet(planet_eos.core_eos, planet_eos.mantle_eos, self.t0, self.dt, self.relative_tolerance,
+                planet = Planet([planet_eos.core_eos, planet_eos.mantle_eos], self.t0, self.dt, self.relative_tolerance,
                                 needed_pressures)
-
                 planet.integratePlanet()
 
                 radius_grid[i][j] = planet.rad[-1]
@@ -132,5 +132,5 @@ class PlanetGrid:
         if want_full_profile:
             return xx, yy, radius_grid, mass_grid, press_grid, core_mass_grid, core_rad_grid
 
-        print("Done. Integrated " + repr(planet_number) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
+        print("Done. Integrated " + repr(planet_number - 1) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
               repr((time.clock() - initial_time) / 60) + " minutes" + ".")

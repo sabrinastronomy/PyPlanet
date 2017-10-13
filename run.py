@@ -1,11 +1,10 @@
 from planet_grid import PlanetGrid
 from eos import *
-import numpy as np
 import subprocess
 
-location = "/Users/sabrinaberger/Desktop/without_phases" #Leslie's Directory
+location = "/Users/sabrinaberger/without_phases" #Leslie's Directory
 default_central_pressures = [9, 12]
-default_grid_size = [5, 5]
+default_grid_size = [2, 2]
 
 all_data_location = location + "/PyPlanetData"
 grid_planets_location = all_data_location + "/gridPlanets"

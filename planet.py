@@ -11,11 +11,10 @@ G = float("6.67e-11")  # G = [N *(m/kg)^2]
 
 
 class Planet:
-    def __init__(self, core_eos, mantle_eos, t0, dt, relative_tolerance, transpress, save_all=False):
+    def __init__(self, eoss, t0, dt, relative_tolerance, transpress, save_all=False):
 
         # Initial parameters
-        self.core_eos = core_eos
-        self.mantle_eos = mantle_eos
+        self.eoss = eoss
         self.t0 = t0
         self.dt = dt
         self.relative_tolerance = relative_tolerance
@@ -39,13 +38,12 @@ class Planet:
         self.transition_mass_list = np.zeros(shape=(len(transpress),))
 
 
-    def all_rho(self, pressure, n):
-        core = self.core_eos(pressure)
-        mantle = self.mantle_eos(pressure)
+    def all_rho(self, pressure, n): #TODO Check this
+        eoss = self.eoss
         if n == 1 or n == 0:
-            return core
-        elif n == 2:
-            return mantle
+            return eoss[0](pressure)
+        else:
+            return eoss[1](pressure)
 
     def integratePlanet(self):
         print("Planet initialized.")
