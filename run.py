@@ -1,8 +1,9 @@
 from planet_grid import PlanetGrid
 from eos import *
 import subprocess
+from mass_radius_relations_in_progress import *
 
-location = "/Users/sabrinaberger/without_phases" #Leslie's Directory
+location = "/Users/sabrinaberger/Desktop/without_phases" #Leslie's Directory
 default_central_pressures = [9, 12]
 default_grid_size = [2, 2]
 
@@ -29,11 +30,11 @@ if __name__ == "__main__":
     temp_range = [300, 3000]
 
     # adiabatic
-    varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size)
+    # varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size)
     # constant temperature
     # varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size)
 
-    # planet_interp(pre_interpolation_data_location + "DataFiles/", "_adiabatic_", temp_range)
+    planet_interp(location + "/DataFiles/", "_adiabatic_", temp_range)
 
 
 # Testing MT EoS - in progress
