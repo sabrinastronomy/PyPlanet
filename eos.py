@@ -2,8 +2,6 @@ from burnman import *
 from numpy import *
 from scipy import interpolate
 
-
-
 def create_function(pressures, density):  # TODO incorporate into object
     # Interpolates from data sets with density in the first column and pressure in the second column
     # Extrapolates data outside of range of data

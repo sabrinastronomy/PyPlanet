@@ -2,40 +2,60 @@ from planet_grid import PlanetGrid
 from eos import *
 import subprocess
 from mass_radius_relations_in_progress import *
+from plotting import *
 
-location = "/Users/sabrinaberger/Desktop/without_phases" #Leslie's Directory
+testing = True
+
+location = "/Users/sabrinaberger/All Research/RockyPlanets/without_phases/"
 default_central_pressures = [9, 12]
 default_grid_size = [2, 2]
 
 all_data_location = location + "/PyPlanetData"
 grid_planets_location = all_data_location + "/gridPlanets"
 
-subprocess.call(["mkdir", all_data_location])
-subprocess.call(["mkdir", grid_planets_location])
+if not testing:
+    subprocess.call(["mkdir", all_data_location])
+    subprocess.call(["mkdir", grid_planets_location])
 
-def varying_temp(type_eos, temperatures, central_pressures, grid_size):
-    planetary_grids = []
+    def varying_temp(type_eos, temperatures, central_pressures, grid_size):
+        planetary_grids = []
 
-    for temp in temperatures:
-        temp_plan_grid = PlanetGrid(temp, central_pressures, grid_size, str(type_eos), all_data_location)
-        temp_plan_grid.integrateGrid()
-        planetary_grids.append(temp_plan_grid)
-
-
-    # TODO currently unable to save all grids in pickle file
-        #  np.save(grid_planets_location + "/" + type_eos + str(temp) + "_.pyc", planetary_grids)
+        for temp in temperatures:
+            temp_plan_grid = PlanetGrid(temp, central_pressures, grid_size, str(type_eos), all_data_location)
+            temp_plan_grid.integrateGrid()
+            planetary_grids.append(temp_plan_grid)
 
 
-if __name__ == "__main__":
-    temp_range = [300, 3000]
+        # TODO currently unable to save all grids in pickle file
+            #  np.save(grid_planets_location + "/" + type_eos + str(temp) + "_.pyc", planetary_grids)
 
-    # adiabatic
-    # varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size)
-    # constant temperature
-    # varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size)
 
-    planet_interp(location + "/DataFiles/", "_adiabatic_", temp_range)
+    if __name__ == "__main__":
+        temp_range = [300, 3000]
 
+        # adiabatic
+        # varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size)
+        # constant temperature
+        # varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size)
+
+        planet_interp(location + "/DataFiles/", "_adiabatic_", temp_range)
+
+
+location = location + "/DataFiles/"
+
+for temp in [300]:
+    for type in ['Constant']:
+        p_c = location + "p_c_" + type + '_' + str(temp) +".pyc.npy"
+        p_cmb_percentage = location + "p_cmb_percentage_" + type + '_' + str(temp) +".pyc.npy"
+        radius = location + "radius_grid_" + type + '_' + str(temp) +".pyc.npy"
+        mass = location + "mass_grid_" + type + '_' + str(temp) +".pyc.npy"
+        surf_press = location + "press_grid_" + type + '_' + str(temp) +".pyc.npy"
+        core_mass = location + "core_mass_grid_" + type + '_' + str(temp) +".pyc.npy"
+        core_rad = location + "core_rad_grid_" + type + '_' + str(temp) +".pyc.npy"
+        p_cmb_simulated = location + "p_cmb_simulated_" + type + '_' + str(temp) +".pyc.npy"
+
+        radius_higher = location + "radius_grid_" + type + '_' + str(3000) +".pyc.npy"
+        PlotBasic(temp, type, p_c, p_cmb_percentage, radius, mass, surf_press, core_mass, core_rad, p_cmb_simulated, radius_higher)
 
 # Testing MT EoS - in progress
 

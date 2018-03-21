@@ -1,0 +1,533 @@
+
+Perple_X version 6.7.8, source updated June 7, 2017.
+
+Enter the project name (the name assigned in BUILD) [default = my_project]:
+test
+
+Reading problem definition from file: test.dat                                                                                            
+Reading thermodynamic data from file: /Users/sabrinaberger/PerPlex/stx11ver.dat                                                           
+Reading solution models from file: /Users/sabrinaberger/PerPlex/stx11_solution_model.dat                                               
+Writing print output to file: none requested                                                                                      
+Writing plot output to file: test.plt                                                                                            
+Writing bulk composition plot output to file: test.blk                                                                                            
+
+Reading Perple_X options from: /Users/sabrinaberger/PerPlex/perplex_option.dat                                                     
+Writing auto refine summary to file: not requested                                                                                       
+Writing pseudocompound glossary to file: not requested                                                                                       
+Writing Perple_X option summary to file: test_VERTEX_options.txt                                                                             
+
+Perple_X version 6.7.8, source updated June 7, 2017.
+
+Perple_X computational option settings for VERTEX:
+
+    Keyword:               Value:     Permitted values [default]:
+
+  Auto-refine options:
+
+    auto_refine            aut        off manual [auto]
+    auto_refine_factor_I    2.0       >=1 [3]
+
+  Free energy minimization options:
+
+    final_resolution:      
+      exploratory stage    0.25E-03   [1e-2], target value, see actual values below
+      auto-refine stage    0.25E-03   [2.5e-4], target value, see actual values below
+    resolution factor       3         >1 [3]; iteration keyword value 1
+    refinement points       4         1->12 [4]; iteration keyword value 2
+    refinement_points_II    5         1->12 [5]
+    refinement_threshold   0.10E+05   >0, [1e4] J
+    solvus_tolerance_II    0.20       0->1 [0.2]
+    global_reach_increment  0         >= 0 [0]
+    reach_increment_switch on         [on] off all
+    zero_mode              0.1E-05    0->1 [1e-6]; < 0 => off
+    zero_bulk              0.1E-05    0->1 [1e-6]; < 0 => off
+
+  2D grid options:
+
+    x_nodes                40 / 60    [20/40], >0, <2048; effective x-resolution   40 / 473 nodes
+    y_nodes                40 / 60    [20/40], >0, <2048; effective y-resolution   40 / 473 nodes
+    grid_levels             1 / 4     [1/4], >0, <10
+    linear_model             on       off [on]
+
+  Solution subdivision options:
+
+    initial_resolution     0.067      0->1 [1/15], 0 => off
+    stretch_factor         0.016      >0 [0.0164]
+    subdivision_override   off        [off] lin str
+    hard_limits            off        [off] on
+
+  Thermodynamic options:
+
+    solvus_tolerance       aut        [aut] or 0->1; aut = automatic, 0 => p=c pseudocompounds, 1 => homogenize
+    T_stop (K)                0.0     [0]
+    T_melt (K)              873.0     [873]
+    order_check            on         off [on]
+    approx_alpha           T          [T] F
+    Anderson-Gruneisen     F          [F] T
+    speciation_factor        100.     >10 [100] speciation precision = final resolution/speciation_factor
+    speciation_max_it       100       [100]
+    hybrid_EoS_H2O            4       [4] 0-2, 4-5
+    hybrid_EoS_CO2            4       [4] 0-4
+    hybrid_EoS_CH4            1       [1] 0-1
+
+  Input/Output options:
+
+    dependent_potentials   on         off [on]
+    pause_on_error         T          [T] F
+    logarithmic_p          F          [F] T
+    bad_number              NaN       [0.0]
+
+  Information file output options:
+
+    option_list_files      T          [F] T; echo computational options
+    pseudocompound_file    F          [F] T; echo static pseudocompound compositions
+    auto_refine_file       F          [F] T; echo auto-refine compositions
+
+  Worst case (Cartesian) compositional resolution (mol): 
+
+    Exploratory stage:    0.137E-03
+    Auto-refine stage:    0.206E-03
+
+  Adapative minimization will be done with: 
+
+    6 iterations in the exploratory stage
+    5 iterations in the auto-refine stage
+
+To change these options see: www.perplex.ethz.ch/perplex_options.html
+
+Context specific options are echoed in: test_VERTEX_options.txt                                                                             
+
+
+Writing data for auto-refinement to file: test.arf                                                                                            
+
+      16 pseudocompounds generated for: C2/c      
+      16 pseudocompounds generated for: Wus       
+     136 pseudocompounds generated for: Pv        
+      16 pseudocompounds generated for: Pl        
+      16 pseudocompounds generated for: Sp        
+      16 pseudocompounds generated for: O         
+      16 pseudocompounds generated for: Wad       
+      16 pseudocompounds generated for: Ring      
+     816 pseudocompounds generated for: Opx       
+    3876 pseudocompounds generated for: Cpx       
+     136 pseudocompounds generated for: Aki       
+   24986 pseudocompounds generated for: Gt_maj    
+     136 pseudocompounds generated for: Ppv       
+     136 pseudocompounds generated for: CF        
+
+Total number of pseudocompounds:   30334
+
+**warning ver099**  no data for aqueous species, aqueous_output set = F (AQIDST)
+
+
+** Starting exploratory computational stage **
+
+
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 576128.2 bar
+Using Sixtrude GI EoS. Phase ab       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 611948.7 bar
+Using Sixtrude GI EoS. Phase ab       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 647769.2 bar
+Using Sixtrude GI EoS. Phase ab       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 683589.7 bar
+Using Sixtrude GI EoS. Phase ab       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 719410.3 bar
+Using Sixtrude GI EoS. Phase ab       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 755230.8 bar
+Using Sixtrude GI EoS. Phase ab       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 755230.8 bar
+Using Sixtrude GI EoS. Phase an       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 791051.3 bar
+Using Sixtrude GI EoS. Phase ab       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 791051.3 bar
+Using Sixtrude GI EoS. Phase an       will be destabilized.
+
+
+**warning ver369** failed to converge at T=  1400.00 K P= 791051.3 bar
+Using Sixtrude GI EoS. Phase neph     will be destabilized.
+
+
+**warning ver049** warning 369 will not be repeated for future instances of this problem.
+currently in routine: GSTX
+
+
+  2.5% done with low level grid.
+  5.0% done with low level grid.
+  7.5% done with low level grid.
+ 10.0% done with low level grid.
+ 12.5% done with low level grid.
+ 15.0% done with low level grid.
+ 17.5% done with low level grid.
+ 20.0% done with low level grid.
+ 22.5% done with low level grid.
+ 25.0% done with low level grid.
+ 27.5% done with low level grid.
+ 30.0% done with low level grid.
+ 32.5% done with low level grid.
+ 35.0% done with low level grid.
+ 37.5% done with low level grid.
+ 40.0% done with low level grid.
+ 42.5% done with low level grid.
+ 45.0% done with low level grid.
+ 47.5% done with low level grid.
+ 50.0% done with low level grid.
+ 52.5% done with low level grid.
+ 55.0% done with low level grid.
+ 57.5% done with low level grid.
+ 60.0% done with low level grid.
+ 62.5% done with low level grid.
+ 65.0% done with low level grid.
+ 67.5% done with low level grid.
+ 70.0% done with low level grid.
+ 72.5% done with low level grid.
+ 75.0% done with low level grid.
+ 77.5% done with low level grid.
+ 80.0% done with low level grid.
+ 82.5% done with low level grid.
+ 85.0% done with low level grid.
+ 87.5% done with low level grid.
+ 90.0% done with low level grid.
+ 92.5% done with low level grid.
+ 95.0% done with low level grid.
+ 97.5% done with low level grid.
+100.0% done with low level grid.
+
+Endmember compositional ranges for model: C2/c      
+
+     Endmember     Minimum       Maximum
+     c2/c          1.0000         1.0000    
+
+Endmember compositional ranges for model: Wus       
+
+     Endmember     Minimum       Maximum
+     per           1.0000         1.0000    
+
+Endmember compositional ranges for model: Pv        
+
+     Endmember     Minimum       Maximum
+     aperov       0.99451E-02    0.57613E-01
+     perov        0.94239        0.99005    
+
+Endmember compositional ranges for model: Pl        
+
+     Endmember     Minimum       Maximum
+     ab            0.0000         0.0000    
+
+Endmember compositional ranges for model: Sp        
+
+     Endmember     Minimum       Maximum
+     sp            1.0000         1.0000    
+
+Endmember compositional ranges for model: O         
+
+     Endmember     Minimum       Maximum
+     fo            1.0000         1.0000    
+
+Endmember compositional ranges for model: Wad       
+
+     Endmember     Minimum       Maximum
+     wad           1.0000         1.0000    
+
+Endmember compositional ranges for model: Ring      
+
+     Endmember     Minimum       Maximum
+     ring          1.0000         1.0000    
+
+Endmember compositional ranges for model: Opx       
+
+     Endmember     Minimum       Maximum
+     odi          0.18793E-01    0.21564    
+     en           0.76604        0.97805    
+     fs            0.0000         0.0000    
+
+Endmember compositional ranges for model: Cpx       
+
+     Endmember     Minimum       Maximum
+     jd            0.0000         0.0000    
+     di           0.42886E-01    0.95144    
+     hed           0.0000         0.0000    
+     cen           0.0000        0.86158    
+
+Endmember compositional ranges for model: Aki       
+
+     Endmember     Minimum       Maximum
+     cor          0.54870E-02    0.95638    
+     aki          0.43621E-01    0.99451    
+
+Endmember compositional ranges for model: Gt_maj    
+
+     Endmember     Minimum       Maximum
+        1      0.00000   0.00000
+        2      0.00000   0.00000
+        3      0.04746   0.71632
+        4      0.00000   0.00000
+        5      0.00617   0.82936
+        6      0.07586   0.87428
+
+Endmember compositional ranges for model: Ppv       
+
+     Endmember     Minimum       Maximum
+     appv          0.0000        0.79835E-01
+     ppv          0.92016         1.0000    
+
+Endmember compositional ranges for model: CF        
+
+     Endmember     Minimum       Maximum
+     mfer          1.0000         1.0000    
+     ffer          0.0000         0.0000    
+
+Metastability filtering is off.
+
+
+Reading data for auto-refinement from file: test.arf                                                                                            
+
+
+
+       2 pseudocompounds generated for: C2/c      
+       2 pseudocompounds generated for: Wus       
+       6 pseudocompounds generated for: Pv        
+       2 pseudocompounds generated for: Pl        
+       2 pseudocompounds generated for: Sp        
+       2 pseudocompounds generated for: O         
+       2 pseudocompounds generated for: Wad       
+       2 pseudocompounds generated for: Ring      
+      64 pseudocompounds generated for: Opx       
+    1836 pseudocompounds generated for: Cpx       
+     465 pseudocompounds generated for: Aki       
+    7996 pseudocompounds generated for: Gt_maj    
+      10 pseudocompounds generated for: Ppv       
+       3 pseudocompounds generated for: CF        
+
+Total number of pseudocompounds:   10394
+
+** Starting auto_refine computational stage **
+
+
+
+  0.2% done with low level grid.
+  1.9% done with low level grid.
+  3.6% done with low level grid.
+  5.3% done with low level grid.
+  7.0% done with low level grid.
+  8.7% done with low level grid.
+ 10.4% done with low level grid.
+ 12.1% done with low level grid.
+ 13.7% done with low level grid.
+ 15.4% done with low level grid.
+ 17.1% done with low level grid.
+ 18.8% done with low level grid.
+ 20.5% done with low level grid.
+ 22.2% done with low level grid.
+ 23.9% done with low level grid.
+ 25.6% done with low level grid.
+ 27.3% done with low level grid.
+ 29.0% done with low level grid.
+ 30.7% done with low level grid.
+ 32.3% done with low level grid.
+ 34.0% done with low level grid.
+ 35.7% done with low level grid.
+ 37.4% done with low level grid.
+ 39.1% done with low level grid.
+ 40.8% done with low level grid.
+ 42.5% done with low level grid.
+ 44.2% done with low level grid.
+ 45.9% done with low level grid.
+ 47.6% done with low level grid.
+ 49.3% done with low level grid.
+ 51.0% done with low level grid.
+ 52.6% done with low level grid.
+ 54.3% done with low level grid.
+ 56.0% done with low level grid.
+ 57.7% done with low level grid.
+ 59.4% done with low level grid.
+ 61.1% done with low level grid.
+ 62.8% done with low level grid.
+ 64.5% done with low level grid.
+
+**warning ver090** optimization failed. Most probably, the possible phases do not span
+the systems composition.In this case, add phases or modify the bulk composition.
+Less probably, increasing parameter L6 in perplex_parameters.h may permit convergence.
+
+ 66.2% done with low level grid.
+ 67.9% done with low level grid.
+ 69.6% done with low level grid.
+ 71.2% done with low level grid.
+ 72.9% done with low level grid.
+ 74.6% done with low level grid.
+ 76.3% done with low level grid.
+ 78.0% done with low level grid.
+ 79.7% done with low level grid.
+ 81.4% done with low level grid.
+ 83.1% done with low level grid.
+ 84.8% done with low level grid.
+ 86.5% done with low level grid.
+ 88.2% done with low level grid.
+ 89.9% done with low level grid.
+ 91.5% done with low level grid.
+ 93.2% done with low level grid.
+ 94.9% done with low level grid.
+ 96.6% done with low level grid.
+ 98.3% done with low level grid.
+100.0% done with low level grid.
+
+Beginning grid refinement stage.
+
+   581 grid cells to be refined at grid level 2
+       ...working (   501 minimizations done)
+
+**warning ver042** an optimization failed due to numerical instability
+or because the phases of the system do not span its bulk composition.
+
+    In the 1st case:
+        increase final_resolution and/or
+        increase refinement_threshold and/or
+        increase value 2 of iteration and/or
+        increase refine_points_II and/or
+        increase speciation_factor and/or
+        increase speciation_max_it and/or
+    see: www.perplex.ch/perplex_options.html for explanation.
+
+    In the 2nd case: change the bulk composition or add phases.
+
+       ...working (  1002 minimizations done)
+       refinement at level 2 involved   1331 minimizations
+  4931 minimizations required of the theoretical limit of  14161
+  1295 grid cells to be refined at grid level 3
+       ...working (   172 minimizations done)
+       ...working (   674 minimizations done)
+       ...working (  1176 minimizations done)
+       ...working (  1677 minimizations done)
+       ...working (  2179 minimizations done)
+       ...working (  2681 minimizations done)
+       refinement at level 3 involved   2807 minimizations
+  7738 minimizations required of the theoretical limit of  56169
+  2851 grid cells to be refined at grid level 4
+       ...working (   375 minimizations done)
+       ...working (   876 minimizations done)
+       ...working (  1377 minimizations done)
+       ...working (  1878 minimizations done)
+       ...working (  2379 minimizations done)
+       ...working (  2880 minimizations done)
+       ...working (  3381 minimizations done)
+       ...working (  3882 minimizations done)
+       ...working (  4384 minimizations done)
+       ...working (  4886 minimizations done)
+       ...working (  5387 minimizations done)
+       ...working (  5888 minimizations done)
+       refinement at level 4 involved   6035 minimizations
+ 13773 minimizations required of the theoretical limit of 224676
+
+WARNING: The compositions of the following solutions reached internal limits
+that were automatically relaxed.
+
+     Pv        
+     Opx       
+     Cpx       
+     Aki       
+     Gt_maj    
+     Ppv       
+
+Endmember compositional ranges for model: C2/c      
+
+     Endmember     Minimum       Maximum
+     c2/c          1.0000         1.0000    
+
+Endmember compositional ranges for model: Wus       
+
+     Endmember     Minimum       Maximum
+     per           1.0000         1.0000    
+
+Endmember compositional ranges for model: Pv        
+
+     Endmember     Minimum       Maximum
+     aperov       0.21605E-02    0.57030E-01
+     perov        0.94297        0.99784    
+
+Endmember compositional ranges for model: Pl        
+
+     Endmember     Minimum       Maximum
+     ab            0.0000         0.0000    
+
+Endmember compositional ranges for model: Sp        
+
+     Endmember     Minimum       Maximum
+     sp            1.0000         1.0000    
+
+Endmember compositional ranges for model: O         
+
+     Endmember     Minimum       Maximum
+     fo            1.0000         1.0000    
+
+Endmember compositional ranges for model: Wad       
+
+     Endmember     Minimum       Maximum
+     wad           1.0000         1.0000    
+
+Endmember compositional ranges for model: Ring      
+
+     Endmember     Minimum       Maximum
+     ring          1.0000         1.0000    
+
+Endmember compositional ranges for model: Opx       
+
+     Endmember     Minimum       Maximum
+     odi          0.16872E-01    0.21032    
+     en           0.76604        0.98107    
+     fs            0.0000         0.0000    
+
+Endmember compositional ranges for model: Cpx       
+
+     Endmember     Minimum       Maximum
+     jd            0.0000         0.0000    
+     di           0.42886E-01    0.97390    
+     hed           0.0000        0.32692E-09
+     cen           0.0000        0.86158    
+
+Endmember compositional ranges for model: Aki       
+
+     Endmember     Minimum       Maximum
+     cor          0.31893E-02    0.96115    
+     aki          0.38855E-01    0.99681    
+
+Endmember compositional ranges for model: Gt_maj    
+
+     Endmember     Minimum       Maximum
+        1      0.00000   0.00000
+        2      0.00000   0.00000
+        3      0.04660   0.72171
+        4      0.00000   0.00000
+        5      0.00319   0.82936
+        6      0.06907   0.88940
+
+Endmember compositional ranges for model: Ppv       
+
+     Endmember     Minimum       Maximum
+     appv          0.0000        0.81310E-01
+     ppv          0.91869         1.0000    
+
+Endmember compositional ranges for model: CF        
+
+     Endmember     Minimum       Maximum
+     mfer          1.0000         1.0000    
+     ffer          0.0000         0.0000    
+
+Metastability filtering is off.
+

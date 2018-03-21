@@ -1,7 +1,10 @@
-import time
-from planet import Planet
-from eos import *
 import subprocess
+import time
+
+from PerPlex.planet import Planet
+
+from eos import *
+
 
 # Grid of planets
 
@@ -108,22 +111,22 @@ class PlanetGrid:
                 planet_number += 1
 
         subprocess.call(["mkdir", save_folder])
-        save(save_folder + "p_c" + temp_profile + str(anchor_temp) + ".pyc", xx)
-        save(save_folder + "p_cmb_percentage" + temp_profile + str(anchor_temp) + ".pyc", yy)
+        save(save_folder + "p_c_grid" + temp_profile + str(anchor_temp) + ".pyc", xx)
+        save(save_folder + "p_cmb_percentage_grid" + temp_profile + str(anchor_temp) + ".pyc", yy)
         save(save_folder + "radius_grid" + temp_profile + str(anchor_temp) + ".pyc", radius_grid)
         save(save_folder + "mass_grid" + temp_profile + str(anchor_temp) + ".pyc", mass_grid)
-        save(save_folder + "press_grid" + temp_profile + str(anchor_temp) + ".pyc", press_grid)
+        save(save_folder + "surf_press_grid" + temp_profile + str(anchor_temp) + ".pyc", press_grid)
         save(save_folder + "core_mass_grid" + temp_profile + str(anchor_temp) + ".pyc", core_mass_grid)
         save(save_folder + "core_rad_grid" + temp_profile + str(anchor_temp) + ".pyc", core_rad_grid)
         save(save_folder + "p_cmb_simulated" + temp_profile + str(anchor_temp) + ".pyc", p_cmb_simulated)
         save(save_folder + "p_cmb_grid" + temp_profile + str(anchor_temp) + ".pyc", p_cmb_grid)
 
         print("The following data files have been created: ")
-        print(save_folder + "p_c" + temp_profile + str(anchor_temp) + ".pyc")
-        print(save_folder + "p_cmb_percentage" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "p_c_grid" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "p_cmb_percentage_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "radius_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "mass_grid" + temp_profile + str(anchor_temp) + ".pyc")
-        print(save_folder + "press_grid" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "surf_press_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "core_mass_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "core_rad_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "p_cmb_simulated" + temp_profile + str(anchor_temp) + ".pyc")
