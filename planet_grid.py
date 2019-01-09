@@ -1,7 +1,7 @@
 import subprocess
 import time
 
-from PerPlex.planet import Planet
+from planet import Planet
 
 from eos import *
 
@@ -26,6 +26,7 @@ class PlanetGrid:
         self.relative_tolerance = relative_tolerance
         self.save_folder = location + "/" + str(anchor_temp) + temp_profile + "data/"
 
+
         # p_cmb = core mantle boundary pressure
         # p_c = central pressure
 
@@ -40,7 +41,7 @@ class PlanetGrid:
         self.t0 = float(1.0)
         self.dt = 200
 
-        # aliases
+        # Aliases
         num_rows = self.num_rows
         num_cols = self.num_cols
 
@@ -52,6 +53,9 @@ class PlanetGrid:
         self.core_rad_grid = ndarray(shape=(num_rows, num_cols))  # radii at CMB
         self.p_cmb_simulated = ndarray(shape=(num_rows, num_cols))  # transition pressures computed during integration
         self.p_cmb_grid = ndarray(shape=(num_rows, num_cols))  # transition pressures inputted
+
+        # Thermal evolution
+        self.u = ndarray(shape=(num_rows, num_cols))   # relative total thermal energy
 
     def integrateGrid(self):
         # Time and Count Parameters
@@ -73,6 +77,7 @@ class PlanetGrid:
         yy = self.yy
         save_folder = self.save_folder
         temp_profile = self.temp_profile
+        u = self.u
 
         print("Type of EoS used in this grid: " + self.temp_profile)
 
@@ -88,13 +93,13 @@ class PlanetGrid:
 
                 needed_pressures = [p_c, transition_pressure, 0.]  # TODO extend to arbitrary number of layers
                 print(needed_pressures)
-                print("here")
+
                 mantle = Layer("mantle", self.mantle_material, [0.1, 0.1, 0.8], self.temp_profile)
                 core = Layer("core", self.core_material, [1], self.temp_profile)
 
                 planet_eos = EoS(p_c, transition_pressure, self.temp_profile, core, mantle,
                                  self.anchor_temp)  # TODO MAKE FOR ARBITRARY NUMBER OF LAYERS
-                planet = Planet([planet_eos.core_eos, planet_eos.mantle_eos], self.t0, self.dt, self.relative_tolerance,
+                planet = Planet(planet_eos, self.t0, self.dt, self.relative_tolerance,
                                 needed_pressures)
                 planet.integratePlanet()
 
@@ -107,6 +112,9 @@ class PlanetGrid:
 
                 p_cmb_simulated[i][j] = planet.transition_press_list[1]
                 p_cmb_grid[i][j] = transition_pressure
+
+                # Thermal evolution
+                u[i][j] = np.sum(planet.u)
 
                 planet_number += 1
 

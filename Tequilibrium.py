@@ -1,10 +1,8 @@
 import matplotlib.pyplot as plt
-import csv
 import numpy as np
 
 # I pull this csv file from the NASA Exoplanet Archive
-with open('/Users/sabrinaberger/All Research/RockyPlanets/cumulative-2.csv') as file:
-    # readCSV = csv.reader(file, delimiter=',')
+with open('/Users/sabrinaberger/All Research/RockyPlanets/Planets < 2 Re/cumulative-2.csv') as file:
 
     planet_id = []
 
@@ -29,7 +27,7 @@ with open('/Users/sabrinaberger/All Research/RockyPlanets/cumulative-2.csv') as 
 
     i = 0
     for line in file:
-        if i >= 23 and i <= 100:
+        if i >= 24:
             line = line.strip()
             linesplit = line.split(',')
 
@@ -80,46 +78,6 @@ with open('/Users/sabrinaberger/All Research/RockyPlanets/cumulative-2.csv') as 
 
         i += 1
 
-    # for row in readCSV:
-    #     #
-    #     if row[54] is not "" and row[64] is not "" and row[22] is not "" and row[21] is not "" and row[26] is not "" and row[27] is not "" and row[9] is not ""  and float(row[22]) / float(row[21]) < 0.4 and float(row[27]) / float(row[26]) < 0.4:
-    #         mass_planets.append(float(row[21])*317)
-    #         mass_upper.append(float(row[22])*317)
-    #         mass_lower.append(abs(float(row[23])*317))
-    #
-    #         radius_planets.append(float(row[26])*11.2)
-    #         radius_upper.append(float(row[27])*11.2)
-    #         radius_lower.append(abs(float(row[28]) * 11.2))
-    #         planet_names.append(row[1])
-    #
-    #         star_temp.append(float(row[54]))
-    #         if row[55] is "":
-    #             star_temp_upper_lower.append(0)
-    #         else:
-    #             star_temp_upper_lower.append(abs(float(row[55])))
-    #
-    #         star_rad.append(float(row[64]))
-    #         if row[65] is "":
-    #             star_rad_upper.append(0)
-    #         else:
-    #             star_rad_upper.append(abs(float(row[65])))
-    #
-    #         if row[66] is "":
-    #             star_rad_lower.append(0)
-    #         else:
-    #             star_rad_lower.append(abs(float(row[66])))
-    #
-    #         a.append(float(row[9]))
-    #         if row[10] is "":
-    #             a_upper.append(0)
-    #         else:
-    #             a_upper.append(abs(float(row[10])))
-    #
-    #         if row[11] is "":
-    #             a_lower.append(0)
-    #         else:
-    #             a_lower.append(abs(float(row[11])))
-
     radius_planets = np.array(radius_planets)
     radius_upper = np.array(radius_upper)
     radius_lower = -np.array(radius_lower)
@@ -148,24 +106,30 @@ T_eq = star_temp * (star_rad/(2*a_m))**(0.5)
 T_eq_error_upper = np.sqrt(((star_rad/(2*a_m))*np.power(star_temp_upper, 2)) + (((star_temp**2)/(8*a_m*star_rad))*np.power(star_rad_upper, 2)) + (a_upper**2 * ((star_temp**2 * star_rad)/(8 * a_m**3))))
 T_eq_error_lower = np.sqrt(((star_rad/(2*a_m))*np.power(star_temp_lower, 2)) + (((star_temp**2)/(8*a_m*star_rad))*np.power(star_rad_lower, 2)) + (a_lower**2 * (star_temp**2 * star_rad)/(8 * a_m**3)))
 
+my_cmap = 'Greys'
+my_cmap_r = 'Greys_r'
 
-my_cmap_r = 'viridis_r'
 a = np.log10(a)
 
 fig = plt.figure()
 ax = fig.add_subplot(111)
 
-# im = ax.scatter(radius_planets, T_eq, c = a, cmap = my_cmap_r, zorder=100)
-# fig.colorbar(im)
-ax.errorbar(radius_planets, T_eq, xerr = [radius_lower, radius_upper], yerr = [T_eq_error_lower, T_eq_error_upper], ecolor = "b", zorder = 0, linestyle = "None", lw=0.5, fmt='o', capsize = 10)
+quad = np.ndarray(shape = len(radius_lower))
+
+for i in range(len(radius_lower)):
+    quad[i] = np.sqrt(max(radius_lower[i], radius_upper[i])**2 + max(T_eq_error_lower[i], T_eq_error_upper[i]))
+    i+=1
 
 
-ax.set_label('log(Semi-Major Axis) [AU]')
+im = ax.scatter(radius_planets, T_eq, c = quad, cmap = my_cmap_r, zorder=100)
+# cbar = fig.colorbar(im)
+# ax.errorbar(radius_planets, T_eq, xerr = [radius_lower, radius_upper], yerr = [T_eq_error_lower, T_eq_error_upper], ecolor = "k", zorder = 0, linestyle = "None", lw=0.5, fmt='o')
+# cbar.ax.set_ylabel('$\sqrt{\delta a ^2 + \delta T_{eq}^2}$')
+
 ax.set_xlabel("Radius [$R_{\oplus}$]", fontsize = 'large')
 ax.set_ylabel("$T_{equilibrium}$ [K]", fontsize = 'large')
-ax.set_title("Distribution of Equilibrium Temperatures")
 
 
+plt.show()
 fig.savefig("/Users/sabrinaberger/Desktop/teq.pdf", dpi=1200)
-fig.show()
 #####
