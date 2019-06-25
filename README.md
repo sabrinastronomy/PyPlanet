@@ -1,4 +1,4 @@
-# PyPlanet - A rocky exoplanet model with realistic temperature profiles and thermal evolution
+# PyPlanet - A rocky exoplanet modeling software with realistic temperature profiles and numerical thermal evolution
 ## Installation
 
 ## Quickstart
