@@ -94,7 +94,7 @@ class EoS:  # TODO generalize so you can specify temp profile for each layer
 
             else:
                 self.temperatures_mantle = geotherm.adiabatic(self.pressures_mantle, anchor_temperature,
-                                                         self.mantle.composite)  # first pressure is 0
+                                                         self.mantle.composite)  # first pressure is 0, anchor_temperature is surface temperature
 
                 mantle_rho_data = self.mantle.composite.evaluate(['density'], self.pressures_mantle, self.temperatures_mantle)
 

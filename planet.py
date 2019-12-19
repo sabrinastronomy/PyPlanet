@@ -187,7 +187,7 @@ class Planet:
 
             else:  # need to integrate layer
                 # set ICs for integration
-                if first_layer:  #TODO Test if this is the first layer being integrated
+                if first_layer:
                     # Need to carefully set ICs in first layer
                     # print("first layer %d" % (i))
                     mass_0 = (4 / 3) * pi * pow(t0, 3) * self.all_rho_C_p_T(p_c, i, 0)

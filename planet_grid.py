@@ -55,7 +55,7 @@ class PlanetGrid:
         self.p_cmb_grid = ndarray(shape=(num_rows, num_cols))  # transition pressures inputted
 
         # Thermal evolution
-        self.u = ndarray(shape=(num_rows, num_cols))   # relative total thermal energy
+        self.u_grid = ndarray(shape=(num_rows, num_cols))   # relative total thermal energy
 
     def integrateGrid(self):
         # Time and Count Parameters
@@ -77,7 +77,7 @@ class PlanetGrid:
         yy = self.yy
         save_folder = self.save_folder
         temp_profile = self.temp_profile
-        u = self.u
+        u_grid = self.u_grid
 
         print("Type of EoS used in this grid: " + self.temp_profile)
 
@@ -114,7 +114,7 @@ class PlanetGrid:
                 p_cmb_grid[i][j] = transition_pressure
 
                 # Thermal evolution
-                u[i][j] = np.sum(planet.u)
+                u_grid[i][j] = planet.u[-1]
 
                 planet_number += 1
 
@@ -128,6 +128,8 @@ class PlanetGrid:
         save(save_folder + "core_rad_grid" + temp_profile + str(anchor_temp) + ".pyc", core_rad_grid)
         save(save_folder + "p_cmb_simulated" + temp_profile + str(anchor_temp) + ".pyc", p_cmb_simulated)
         save(save_folder + "p_cmb_grid" + temp_profile + str(anchor_temp) + ".pyc", p_cmb_grid)
+        save(save_folder + "u_grid" + temp_profile + str(anchor_temp) + ".pyc", u_grid)
+
 
         print("The following data files have been created: ")
         print(save_folder + "p_c_grid" + temp_profile + str(anchor_temp) + ".pyc")
@@ -139,9 +141,11 @@ class PlanetGrid:
         print(save_folder + "core_rad_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "p_cmb_simulated" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "p_cmb_grid" + temp_profile + str(anchor_temp) + ".pyc")
+        print(save_folder + "u_grid" + temp_profile + str(anchor_temp) + ".pyc")
+
 
         if want_full_profile:
-            return xx, yy, radius_grid, mass_grid, press_grid, core_mass_grid, core_rad_grid
+            return xx, yy, radius_grid, mass_grid, press_grid, core_mass_grid, core_rad_grid, u_grid
 
         print("Done. Integrated " + repr(planet_number - 1) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
               repr((time.clock() - initial_time) / 60) + " minutes" + ".")

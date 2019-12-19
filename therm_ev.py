@@ -1,33 +1,75 @@
-from burnman import *
-import numpy as np
 from eos import *
-from scipy import interpolate
+import scipy.constants as sp
+import astropy.constants as ap
+from interpCMF import planet_interp
+import matplotlib.pyplot as plt
 
-data = "/Users/sabrinaberger/All Research/RockyPlanets/DataFiles"
+def ttt(u_arr, temps_arr, r_arr, T_star, R_star, a):
+    t_arr = [0]
+    for i in range(len(temps_arr)-1):
+        j = i + 1
 
-temps = [1000, 300, 3000]
+        U_2 = u_arr[i]
+        R_2 = r_arr[i]
 
-# TO DO make part of eos class instead
+        U_1 = u_arr[j]
+        R_1 = r_arr[j]
 
-    pcmb = np.load(data + 'p_cmb_grid_adiabatic_{}.pyc.npy'.format(temp))
-    mass = np.load(data + 'core_mass_grid_adiabatic_{}.pyc.npy'.format(temp))
-    pc = np.load(data + 'p_c_adiabatic_{}.pyc.npy'.format(temp))
+        T_2 = temps_arr[i]
+        T_1 = temps_arr[j]
 
-    pressures_mantle = np.linspace(0, p_cmb, 20).tolist()
-    pressures_core = np.linspace(p_c, p_cmb, 20).tolist()
-    pressures_core.reverse()
+        delt = T_s_t(R_2, R_1, U_2, U_1, T_2, T_1, T_star, R_star, a)/22896000
+        t_1 = t_arr[i] + delt
 
-    mantle_material = minerals.SLB_2011.mg_fe_silicate_perovskite()
-    mantle_material.set_composition([0.1, 0.1, 0.8])
-    mantle_composite = composite([mantle_material], [1])
-
-    temperatures_mantle = geotherm.adiabatic(pressures_mantle, 3000, mantle_composite)
-    mantle_heats = mantle_composite.evaluate(['C_v'], pressures_mantle, temperatures_mantle)
-
-    core_material = minerals.Murakami_2013.fe_perovskite()
+        t_arr.append(t_1)
+    return np.array(t_arr)
 
 
-    temperatures_core = geotherm.adiabatic(pressures_core, temperatures_mantle[-1],
-                                       self.core.composite)  # first pressure is p_cmb
+def T_s_t(R_p_2, R_p_1, U_2, U_1, T_s_2, T_s_1, T_star, R_star, a):
+    R_p_avg = np.mean([R_p_2, R_p_1])
+    T_s_avg = np.mean([T_s_2, T_s_1])
+    delU = U_2-U_1
+    beta = (-sp.sigma * 4 * sp.pi * R_p_avg**2)
+    alpha = (T_s_avg**4) - ((T_star**4) * (R_star/(2*a))**2)
 
-    core_heats = core_composite.evaluate(['C_v'], pressures_core, temperatures_core)
+    delt = delU/(beta * alpha)
+    return abs(delt)
+
+def T_s_t_plotter(masses_of_interest, names_of_interest, lss=['dotted', '-'], a_colors=['k', 'm', 'g'], afrac_values=[1, 5, 0.1], host_temp=6000, host_rs=ap.R_sun.value, num_planets=100):
+    # Get u and r from mass_radius_relations interpolated values for one CMF
+    ts = []
+    for mass, name, ls in zip(masses_of_interest, names_of_interest, lss):
+        u_arr, r_arr, p_c_arr = planet_interp(data, temp_range, mass)
+        for afrac, a_color in zip(afrac_values, a_colors):
+            t_arr = ttt(u_arr, temp_range, r_arr, host_temp, host_rs, afrac*ap.au.value)
+            print(t_arr[-1]-t_arr[0])
+            t_arr = t_arr - t_arr[0]
+            plt.semilogx(t_arr, temp_range, label = name + " $a = {} AU$".format(afrac), ls=ls, c=a_color)
+
+
+    # plt.semilogx(ts[1], temp_range, label="$M_{Mars}$", ls='dotted', c ='k')
+    # plt.plot(0, 0, label="$a = 1 AU$",  c ='k')
+
+    plt.legend(loc=3)
+    plt.title("Interpolation of {} planets to determine cooling rate".format(num_planets))
+    plt.xlabel("time []")
+    plt.ylabel("$T_s$ [K]")
+    plt.savefig("num_TE.pdf")
+
+
+if __name__ == "__main__":
+    location = "/Users/sabrinaberger/RockyPlanets"
+    data = location + "/thermalData/"
+    temp_range = np.linspace(300, 3000, 100)[::-1]
+    mars_cmf = 0.26
+    earth_cmf = 0.33
+    cmfs_of_interest = [earth_cmf, mars_cmf]
+
+    earth_mass = ap.M_earth.value
+    mars_mass = 0.64171e24
+
+    masses_of_interest = [earth_mass, mars_mass]
+
+    T_s_t_plotter(masses_of_interest, ["$M_{Earth}$", "$M_{Mars}$"] )
+
+
