@@ -2,14 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a855957-18ad-44bb-82a1-73adfc3175a1" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/OOP.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/OOP.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Phases/ExoPlex" beforeDir="false" afterPath="$PROJECT_DIR$/Phases/ExoPlex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tequilibrium.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tequilibrium.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eos.py" beforeDir="false" afterPath="$PROJECT_DIR$/eos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mass_radius_relations.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpCMF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interpCMF.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpCMF.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/num_TE.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/planet.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/planet_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet_grid.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
@@ -26,12 +27,12 @@
     <SUITE FILE_PATH="coverage/PyPlanet$planet.coverage" NAME="planet Coverage Results" MODIFIED="1533174333059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$eos.coverage" NAME="eos Coverage Results" MODIFIED="1509117033415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$perple.coverage" NAME="perple Coverage Results" MODIFIED="1515586394064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$therm_ev.coverage" NAME="therm_ev Coverage Results" MODIFIED="1562582837761" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyPlanet$therm_ev.coverage" NAME="therm_ev Coverage Results" MODIFIED="1584036228945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$run_perplex__2_.coverage" NAME="run_perplex (2) Coverage Results" MODIFIED="1516653538982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Phases" />
     <SUITE FILE_PATH="coverage/PyPlanet$run_perplex.coverage" NAME="run_perplex Coverage Results" MODIFIED="1514017130727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ExoPlex/ExoPlex" />
     <SUITE FILE_PATH="coverage/PyPlanet$mass_radius_plotting.coverage" NAME="mass_radius_plotting Coverage Results" MODIFIED="1508334448868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../All Research/RockyPlanets/Code" />
     <SUITE FILE_PATH="coverage/PyPlanet$Tequilibrium.coverage" NAME="Tequilibrium Coverage Results" MODIFIED="1529333337686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$run.coverage" NAME="run Coverage Results" MODIFIED="1561046147488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyPlanet$run.coverage" NAME="run Coverage Results" MODIFIED="1586424277680" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/OOP$run.coverage" NAME="run Coverage Results" MODIFIED="1501002759953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$run_perplex__1_.coverage" NAME="run_perplex (1) Coverage Results" MODIFIED="1515001102424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$t_eq.coverage" NAME="t_eq Coverage Results" MODIFIED="1512727227773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -56,37 +57,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Desktop/gen_pulse_corpus.py">
+        <entry file="file://$PROJECT_DIR$/setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/therm_ev.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/interpCMF.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2160">
-              <caret line="148" selection-start-line="148" selection-end-line="148" />
-              <folding>
-                <element signature="e#0#29#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="28" selection-start-column="28" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -94,8 +68,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+            <state relative-caret-position="218">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -104,22 +78,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/planet_grid.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-              <folding>
-                <element signature="e#0#17#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/planet.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2415">
-              <caret line="163" selection-start-line="87" selection-end-line="163" />
+            <state relative-caret-position="218">
+              <caret line="239" column="28" selection-start-line="239" selection-start-column="28" selection-end-line="239" selection-end-column="28" />
               <folding>
                 <element signature="e#58#76#0" expanded="true" />
               </folding>
@@ -128,10 +90,67 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plotting.py">
+        <entry file="file://$PROJECT_DIR$/planet_grid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="31" selection-start-column="31" selection-end-column="31" />
+            <state relative-caret-position="361">
+              <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-end-line="27" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/eos.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="29" column="37" selection-start-line="29" selection-end-line="30" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/firstphases.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/in progress - __init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/interpCMF.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tequilibrium.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1185">
+              <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,41 +161,42 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Setup Script" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>plxMan</find>
-      <find>solutionFilenameMan</find>
-      <find>make</find>
-      <find>core</find>
-      <find>core_materia</find>
-      <find>more</find>
-      <find>rad</find>
-      <find>self.all</find>
-      <find>create</find>
-      <find>creat</find>
-      <find>aliases</find>
-      <find>test</find>
-      <find>pri</find>
-      <find>planet</find>
-      <find>eos</find>
-      <find>Cp</find>
-      <find>u</find>
-      <find>derivat</find>
+      <find>linspace</find>
       <find>RK4</find>
-      <find>f</find>
+      <find>transition_pressure</find>
+      <find>all_rho</find>
+      <find>interme</find>
+      <find>intermed</find>
+      <find>func</find>
+      <find>enumerate</find>
+      <find>eos</find>
       <find>layer</find>
-      <find>num_</find>
-      <find>temps</find>
-      <find>cons</find>
-      <find>sort</find>
-      <find>cmf_of_interest</find>
-      <find>mkdir</find>
-      <find>label</find>
-      <find>semilogx</find>
-      <find>print</find>
+      <find>molar</find>
+      <find>self.layer</find>
+      <find>self.get_temp</find>
+      <find>next</find>
+      <find>self.mm</find>
+      <find>EoS</find>
+      <find>self.transpress</find>
+      <find>transition_press</find>
+      <find>first_</find>
+      <find>first loop</find>
+      <find>which_loop</find>
+      <find>transpress</find>
+      <find>z</find>
+      <find>grid_size</find>
+      <find>radius_grid</find>
+      <find>eos_</find>
+      <find>n</find>
+      <find>p_cmb</find>
+      <find>rk4</find>
+      <find>layers</find>
     </findStrings>
     <replaceStrings>
       <replace>p_cmb_percentage</replace>
@@ -213,22 +233,24 @@
         <option value="$PROJECT_DIR$/mass_radius_plotting.py" />
         <option value="$PROJECT_DIR$/Phases/ExoPlex/ExoPlex/__init__.py" />
         <option value="$PROJECT_DIR$/in progress - __init__.py" />
-        <option value="$PROJECT_DIR$/Tequilibrium.py" />
-        <option value="$PROJECT_DIR$/planet_grid.py" />
-        <option value="$PROJECT_DIR$/eos.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
-        <option value="$PROJECT_DIR$/planet.py" />
         <option value="$PROJECT_DIR$/mass_radius_relations.py" />
+        <option value="$PROJECT_DIR$/Tequilibrium.py" />
         <option value="$PROJECT_DIR$/run.py" />
-        <option value="$PROJECT_DIR$/interpCMF.py" />
         <option value="$PROJECT_DIR$/therm_ev.py" />
+        <option value="$PROJECT_DIR$/../CosmicDawn/GANning/gan_train.py" />
+        <option value="$PROJECT_DIR$/interpCMF.py" />
+        <option value="$PROJECT_DIR$/eos.py" />
+        <option value="$PROJECT_DIR$/planet.py" />
+        <option value="$PROJECT_DIR$/planet_grid.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="8" />
+    <option name="y" value="137" />
     <option name="width" value="1680" />
-    <option name="height" value="1027" />
+    <option name="height" value="914" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -282,7 +304,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.therm_ev">
+  <component name="RunManager" selected="Python.run">
+    <configuration name="Tequilibrium" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="OOP" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tequilibrium.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="OOP" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -341,28 +385,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interpCMF.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="planet" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="OOP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/planet.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -443,17 +465,17 @@
     <list>
       <item itemvalue="Python.gen_pulse_corpus" />
       <item itemvalue="Python.mass_radius_relations" />
-      <item itemvalue="Python.planet" />
       <item itemvalue="Python.run" />
       <item itemvalue="Python.therm_ev" />
+      <item itemvalue="Python.Tequilibrium" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.therm_ev" />
-        <item itemvalue="Python.gen_pulse_corpus" />
         <item itemvalue="Python.run" />
+        <item itemvalue="Python.therm_ev" />
         <item itemvalue="Python.mass_radius_relations" />
-        <item itemvalue="Python.planet" />
+        <item itemvalue="Python.Tequilibrium" />
+        <item itemvalue="Python.gen_pulse_corpus" />
       </list>
     </recent_temporary>
   </component>
@@ -487,11 +509,39 @@
       <workItem from="1569005201654" duration="1000" />
       <workItem from="1570508038495" duration="7000" />
       <workItem from="1570675185176" duration="24000" />
+      <workItem from="1576774765017" duration="960000" />
+      <workItem from="1578427132076" duration="1000" />
+      <workItem from="1578973460945" duration="13000" />
+      <workItem from="1579062343716" duration="17066000" />
+      <workItem from="1579577080741" duration="400000" />
+      <workItem from="1579847512131" duration="7068000" />
+      <workItem from="1580109366118" duration="7000" />
+      <workItem from="1580358291935" duration="7526000" />
+      <workItem from="1580925365792" duration="470000" />
+      <workItem from="1580944086950" duration="2461000" />
+      <workItem from="1580946934883" duration="228000" />
+      <workItem from="1580947202257" duration="7362000" />
+      <workItem from="1580968189383" duration="4230000" />
+      <workItem from="1581015672736" duration="2166000" />
+      <workItem from="1582225836984" duration="744000" />
+      <workItem from="1582298324299" duration="222000" />
+      <workItem from="1583428962630" duration="1652000" />
+      <workItem from="1583983040052" duration="5472000" />
+      <workItem from="1584229552173" duration="1688000" />
+      <workItem from="1584677306089" duration="351000" />
+      <workItem from="1585183799432" duration="13340000" />
+      <workItem from="1585208492386" duration="2860000" />
+      <workItem from="1585246024687" duration="1521000" />
+      <workItem from="1585267717733" duration="15000" />
+      <workItem from="1585719877927" duration="1105000" />
+      <workItem from="1585805758723" duration="2816000" />
+      <workItem from="1585889421751" duration="301000" />
+      <workItem from="1586408127021" duration="16112000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="54322000" />
+    <option name="totallyTimeSpent" value="152479000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -503,22 +553,48 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49924812" visible="true" weight="0.12820514" />
-      <window_info id="Structure" order="1" sideWeight="0.50075185" side_tool="true" weight="0.23137973" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48770052" visible="true" weight="0.21672772" />
+      <window_info id="Structure" order="1" sideWeight="0.5122995" side_tool="true" weight="0.19975565" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32979476" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.4459893" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.28265306" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.030612245" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" weight="0.25816327" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5007153" side_tool="true" weight="0.3060241" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.327551" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3197026" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" weight="0.18742369" />
+      <window_info anchor="right" id="SciView" order="4" sideWeight="0.48877007" visible="true" weight="0.14468865" />
+      <window_info anchor="right" id="Data View" order="5" />
+      <window_info anchor="right" x="0" y="0" width="370" height="828" id="Documentation" order="6" sideWeight="0.51122993" side_tool="true" visible="true" weight="0.17460318" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4954955" visible="true" weight="0.2875458" />
+      <window_info id="Structure" order="1" sideWeight="0.5045045" side_tool="true" visible="true" weight="0.2875458" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32979476" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.23061225" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.30053475" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.030612245" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" weight="0.24693878" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" weight="0.25882354" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5007153" side_tool="true" weight="0.3060241" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.327551" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32085562" />
+      <window_info anchor="bottom" id="Python Console" order="10" visible="true" weight="0.32040817" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -526,31 +602,6 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.18742369" />
       <window_info anchor="right" id="SciView" order="4" sideWeight="0.49315068" weight="0.1965812" />
-      <window_info anchor="right" id="Data View" order="5" />
-      <window_info anchor="right" x="0" y="0" width="370" height="828" id="Documentation" order="6" sideWeight="0.5068493" side_tool="true" visible="true" weight="0.32539684" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23137973" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.16544567" />
-      <window_info id="Favorites" order="2" side_tool="true" weight="0.32979476" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.37346938" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.5593583" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.030612245" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.4993895" weight="0.24693878" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5007153" side_tool="true" weight="0.3060241" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.327551" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32142857" />
-      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" weight="0.18742369" />
-      <window_info anchor="right" id="SciView" order="4" sideWeight="0.49315068" weight="0.34004885" />
       <window_info anchor="right" id="Data View" order="5" />
       <window_info anchor="right" x="0" y="0" width="370" height="828" id="Documentation" order="6" sideWeight="0.5068493" side_tool="true" visible="true" weight="0.32539684" />
     </layout-to-restore>
@@ -565,13 +616,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/therm_ev.py</url>
-          <line>45</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -582,12 +626,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ERROR_test_build.log" />
-    <entry file="file://$PROJECT_DIR$/ERROR_test_werami.log" />
-    <entry file="file://$PROJECT_DIR$/minphys.py" />
-    <entry file="file://$PROJECT_DIR$/functions.py" />
-    <entry file="file://$PROJECT_DIR$/perple.py" />
-    <entry file="file://$PROJECT_DIR$/test.tof" />
     <entry file="file://$PROJECT_DIR$/test.plt" />
     <entry file="file://$PROJECT_DIR$/test.blk" />
     <entry file="file://$PROJECT_DIR$/test_2.tab" />
@@ -633,13 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/firstphases.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../anaconda3/lib/python3.5/codecs.py" />
     <entry file="file://$PROJECT_DIR$/Phases/ExoPlex/ExoPlex/planet.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -650,20 +681,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../anaconda3/lib/python3.5/site-packages/scipy/integrate/_ode.py" />
     <entry file="file://$PROJECT_DIR$/../realfast/repeater.py" />
-    <entry file="file://$PROJECT_DIR$/in progress - __init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../anaconda3/lib/python3.7/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="501" selection-start-line="501" selection-end-line="501" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../anaconda3/lib/python3.7/site-packages/numpy/lib/npyio.py" />
     <entry file="file://$PROJECT_DIR$/mass_radius_relations_in_progress.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -678,38 +696,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/realfast/lib/python3.6/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="383" selection-start-line="383" selection-end-line="383" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Tequilibrium.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1635">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/realfast/lib/python3.6/site-packages/numpy/lib/npyio.py" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
     <entry file="file://$PROJECT_DIR$/../Desktop/make_timedata.py" />
     <entry file="file://$PROJECT_DIR$/../Desktop/test.py" />
-    <entry file="file://$PROJECT_DIR$/eos.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="46" column="27" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mass_radius_plotting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -722,34 +712,10 @@
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/tess/lib/python3.6/codecs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/tess/lib/python3.6/site-packages/scipy/interpolate/interpolate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7035">
-          <caret line="469" selection-start-line="469" selection-end-line="469" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/tess/lib/python3.6/site-packages/scipy/interpolate/polyint.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/tess/lib/python3.6/site-packages/astropy/units/quantity.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="700" selection-start-line="700" selection-end-line="700" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/tess/lib/python3.6/codecs.py" />
+    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/tess/lib/python3.6/site-packages/scipy/interpolate/interpolate.py" />
+    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/tess/lib/python3.6/site-packages/scipy/interpolate/polyint.py" />
+    <entry file="file://$PROJECT_DIR$/../anaconda3/envs/tess/lib/python3.6/site-packages/astropy/units/quantity.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
@@ -764,69 +730,127 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../Desktop/gen_pulse_corpus.py">
+    <entry file="file://$PROJECT_DIR$/../Desktop/gen_pulse_corpus.py" />
+    <entry file="file://$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/birch_murnaghan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        <state relative-caret-position="318">
+          <caret line="120" column="8" selection-start-line="120" selection-start-column="8" selection-end-line="120" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/therm_contour.png" />
+    <entry file="file://$PROJECT_DIR$/../CosmicDawn/GANning/gan_train.py" />
+    <entry file="file:///opt/anaconda3/envs/GAN/lib/python3.7/site-packages/keras/layers/convolutional.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25350">
+          <caret line="1714" column="75" selection-start-line="1714" selection-start-column="75" selection-end-line="1714" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plotting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1572">
+          <caret line="43" column="17" lean-forward="true" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/therm_ev.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="100" selection-start-line="100" selection-end-line="101" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="28" selection-start-column="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/in progress - __init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/interpCMF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2160">
-          <caret line="148" selection-start-line="148" selection-end-line="148" />
+        <state relative-caret-position="165">
+          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
+    <entry file="file://$PROJECT_DIR$/Tequilibrium.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="49" column="29" selection-start-line="49" selection-start-column="29" selection-end-line="49" selection-end-column="29" />
+        <state relative-caret-position="1185">
+          <caret line="80" column="45" selection-start-line="80" selection-start-column="45" selection-end-line="80" selection-end-column="45" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/planet_grid.py">
+    <entry file="file://$PROJECT_DIR$/firstphases.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///opt/anaconda3/envs/GAN/lib/python3.7/site-packages/burnman/solidsolution.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="118" selection-start-line="118" selection-end-line="118" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/planet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2415">
-          <caret line="163" selection-start-line="87" selection-end-line="163" />
+        <state relative-caret-position="218">
+          <caret line="239" column="28" selection-start-line="239" selection-start-column="28" selection-end-line="239" selection-end-column="28" />
           <folding>
             <element signature="e#58#76#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plotting.py">
+    <entry file="file://$PROJECT_DIR$/planet_grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="31" selection-start-column="31" selection-end-column="31" />
+        <state relative-caret-position="361">
+          <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-end-line="27" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/therm_ev.py">
+    <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="218">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
           <folding>
-            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/eos.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="29" column="37" selection-start-line="29" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>

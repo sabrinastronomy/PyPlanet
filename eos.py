@@ -1,5 +1,5 @@
 from burnman import *
-from numpy import *
+import numpy as np
 from scipy import interpolate
 
 def create_function(pressures, dependent_var):  # TODO incorporate into object
@@ -15,43 +15,45 @@ def create_function(pressures, dependent_var):  # TODO incorporate into object
     return interpolate.interp1d(pressures, dependent_var, bounds_error=False, fill_value="extrapolate")
 
 
-
-# Two layer
+# n-layers
 
 class Layer:
     def __init__(self, name, material, composition, temp_profile):
         self.name = name
         self.material = material
         self.composition = composition
+        print(material)
+        print(name)
         self.temp_profile = temp_profile
-        if name == "mantle":
+        if name == "layer1" or name == "layer2": # TO DO FIX THIS: saving for bug?
+            print("material " + str(material))
             material.set_composition(composition)
         self.composite = Composite([self.material], [1])
+        self.molar_mass = self.composite.molar_mass
 
 
-class EoS:  # TODO generalize so you can specify temp profile for each layer
-    def __init__(self, p_c, p_cmb, temp_profile, layer1, layer2,
-                 anchor_temperature=0):  # TODO MAKE FOR ARBITRARY NUMBER OF LAYERS
+class EoS:
+    def __init__(self, p_c, p_cmb, temp_profile, layers,
+                 anchor_temperature=0):
+
+        # anchor temperature ???
         self.p_c = p_c
         self.p_cmb = p_cmb
 
-        self.pressures_mantle = []
-        self.pressures_core = []
-
-        self.temperatures_mantle = []
-        self.temperatures_core = []
+        self.pressures = []
+        self.temperatures = []
 
         self.anchor_temperature = anchor_temperature
         self.temp_profile = temp_profile
-        self.core = layer1
-        self.mantle = layer2
-        self.core_eos = ""
-        self.mantle_eos = ""
-        self.get_temp = ""
 
-        self.core_mm = self.core.composite.molar_mass
-        self.mantle_mm = self.mantle.composite.molar_mass
+        self.layers = layers
+        self.layer_eos = [] # each element contains the density, heat capacity and temperature as a function of pressure for each corresponding layer
+        self.layer_rho_data = []
+        self.layer_cp_data = []
 
+        self.get_temp = []
+        print(self.layers[1].molar_mass)
+        self.layer_mm = [layer.molar_mass for layer in self.layers]
 
         self.eos_function_generate()
 
@@ -61,70 +63,85 @@ class EoS:  # TODO generalize so you can specify temp profile for each layer
         p_c = self.p_c
         anchor_temperature = self.anchor_temperature
 
+
+
         if self.temp_profile == "constant":
-            self.pressures_mantle = self.pressures_core = linspace(0, self.p_c, 1e4)
-            pressures = self.pressures_mantle
+            pressures = self.pressures = np.linspace(0, self.p_c, 1e4)
 
-            self.temperatures_core = empty(len(pressures))
-            self.temperatures_core.fill(self.anchor_temperature)
+            for i in enumerate(self.layers):
+                if i == 0:
+                    self.temperatures.append(np.empty(len(pressures)))
+                else:
+                    self.temperatures.append(np.fill(self.anchor_temperature))
 
-            self.temperatures_mantle = self.temperatures_core
+            temperatures = self.temperatures
+            # lower mantel pressure
+            for mm, layer in zip(self.layer_mm, self.layers):
+                layer_rho_data = layer.composite.evaluate(['density'], pressures, temperatures)
+                layer_cp_data = layer.composite.evaluate(['heat_capacity_p'], pressures, temperatures)
+                self.layer_eos.append([create_function(pressures, layer_rho_data), create_function(pressures, layer_cp_data/mm)])
 
-            temperatures = self.temperatures_mantle
-
-            mantle_rho_data = self.mantle.composite.evaluate(['density'], pressures, temperatures)
-            core_rho_data = self.core.composite.evaluate(['density'], pressures, temperatures)
-
-            mantle_cp_data = self.mantle.composite.evaluate(['heat_capacity_p'], pressures, temperatures)
-            core_cp_data = self.core.composite.evaluate(['heat_capacity_p'], pressures, temperatures)
-
-            self.mantle_eos = [create_function(pressures, mantle_rho_data), create_function(pressures, self.mantle_mm*mantle_cp_data)]
-            self.core_eos = [create_function(pressures, core_rho_data), create_function(pressures, self.core_mm*core_cp_data)]
-
-
-        else:  # TODO make more generic - currently adiabatic
-            self.pressures_mantle = np.linspace(0, p_cmb, 20).tolist()
-            self.pressures_core = np.linspace(p_c, p_cmb, 20).tolist()
+        else:  # adiabatic temperature profile assumed
+            self.pressures_other = np.linspace(0, p_cmb, 20).tolist() # pressures in other layers
+            self.pressures_core = np.linspace(p_c, p_cmb, 20).tolist() # pressures in core
             self.pressures_core.reverse()
+            pressures = self.pressures_other
 
-
+            # CREATING ALL LAYER EOSs
             if p_cmb == 0:
-                self.temperatures_mantle = [anchor_temperature]
-                self.get_temp = lambda x: self.temperatures_mantle
+                # NO MANTLE
+                # CHECK THIS
+                print("self.temperatures " + str(self.temperatures))
 
+                self.temperatures.append([anchor_temperature])
+                self.get_temp.append(lambda x: anchor_temperature) # returns anchor temperature for every input pressure
+                self.layer_eos.append(["", ""])
             else:
-                self.temperatures_mantle = geotherm.adiabatic(self.pressures_mantle, anchor_temperature,
-                                                         self.mantle.composite)  # first pressure is 0, anchor_temperature is surface temperature
+                for mm, layer in zip(self.layer_mm, self.layers):
+                    temperatures = geotherm.adiabatic(pressures, anchor_temperature,
+                                                                  layer.composite)
+                    self.temperatures.append(temperatures)  # first pressure is 0, anchor_temperature is surface temperature
+                    layer_rho_data = layer.composite.evaluate(['density'], pressures, temperatures)
+                    layer_cp_data = layer.composite.evaluate(['heat_capacity_p'], pressures, temperatures)
+                    self.layer_eos.append([create_function(pressures, layer_rho_data),
+                                           create_function(pressures, layer_cp_data / mm)])
+                    self.get_temp.append(create_function(self.pressures_other, self.temperatures))
 
-                mantle_rho_data = self.mantle.composite.evaluate(['density'], self.pressures_mantle, self.temperatures_mantle)
-
-                mantle_cp_data = self.mantle.composite.evaluate(['heat_capacity_p'], self.pressures_mantle, self.temperatures_mantle)
-
-                self.mantle_eos = [create_function(self.pressures_mantle, mantle_rho_data), create_function(self.pressures_mantle, self.mantle_mm*mantle_cp_data)]
-                self.get_temp = create_function(self.pressures_mantle, self.temperatures_mantle)
-
+                # mantle_rho_data = self.mantle.composite.evaluate(['density'], self.pressures_mantle, self.temperatures_mantle)
+                #
+                # mantle_cp_data = self.mantle.composite.evaluate(['heat_capacity_p'], self.pressures_mantle, self.temperatures_mantle)
+                #
+                # self.mantle_eos = [create_function(self.pressures_mantle, mantle_rho_data), create_function(self.pressures_mantle, mantle_cp_data/self.mantle_mm)]
+            print(self.temperatures)
+            # CREATING CORE EOSs
             if p_c == p_cmb:
-                self.temperatures_core = [self.temperatures_mantle[-1]]
-                self.get_temp = lambda x: self.temperatures_core
+                # NO CORE
+                print("self.temperatures " + str(self.temperatures))
+                # self.temperatures.insert(0, ([self.temperatures[-1]]))
+                self.get_temp.insert(0, self.get_temp[-1])
 
             else:
-                self.temperatures_core = geotherm.adiabatic(self.pressures_core, self.temperatures_mantle[-1],
-                                                           self.core.composite)  # first pressure is p_cmb
-                core_rho_data = self.core.composite.evaluate(['density'], self.pressures_core, self.temperatures_core)
-                core_cp_data = self.core.composite.evaluate(['heat_capacity_p'], self.pressures_core, self.temperatures_core)
+                first_layer_temps = self.temperatures[0][-1] # lower mantle top temperature which is anchor temperature
+                core = self.layers[0]
+                core_mm = self.layer_mm[0]
+                self.temperatures.insert(0, geotherm.adiabatic(self.pressures_core, first_layer_temps,
+                                                           core.composite))  # first pressure is p_cmb
+                core_temperatures = self.temperatures[0]
+
+                core_rho_data = core.composite.evaluate(['density'], self.pressures_core, core_temperatures)
+                core_cp_data = core.composite.evaluate(['heat_capacity_p'], self.pressures_core, core_temperatures)
 
 
-                self.core_eos = [create_function(self.pressures_core, core_rho_data), create_function(self.pressures_core, self.core_mm*core_cp_data)]
+                self.layer_eos.insert(0, [create_function(self.pressures_core, core_rho_data), create_function(self.pressures_core, core_cp_data/core_mm)])
+                self.get_temp.insert(0, create_function(self.pressures_core, core_temperatures))
 
-                self.get_temp = create_function(self.pressures_core, self.temperatures_core)
+            # if self.core_eos is not "":
+            for i, layer in enumerate(self.layer_eos):     # adding the temperature function as third element in each element in EoS
 
-            if self.core_eos is not "":
-                self.core_eos.append(self.get_temp)
-
-            if self.mantle_eos is not "":
-                self.mantle_eos.append(self.get_temp)
-
-
+                self.layer_eos[i].append(self.get_temp[i])
+            print("layers" + str(self.layers))
+            print("temp" + str(self.get_temp))
+            print("eos" + str(self.layer_eos))
 
 # TODO: implement iron class, wasn't working in adiabat eos so try later
 

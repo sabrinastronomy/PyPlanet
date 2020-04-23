@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # I pull this csv file from the NASA Exoplanet Archive
-with open('/Users/sabrinaberger/All Research/RockyPlanets/Planets < 2 Re/cumulative-2.csv') as file:
+with open('/Users/sabrinaberger/RockyPlanets/PAPER/Planets < 2 Re/cumulative-1.csv') as file:
 
     planet_id = []
 

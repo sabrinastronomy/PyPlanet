@@ -14,8 +14,9 @@ class Planet:
     def __init__(self, planet_eos, t0, dt, relative_tolerance, transpress, save_all=False):
 
         # Initial parameters
-        self.eoss = [planet_eos.core_eos, planet_eos.mantle_eos]
-        self.mm = [planet_eos.core_mm, planet_eos.mantle_mm]
+        self.eoss = planet_eos.layer_eos
+        # self.mm = [planet_eos.core_mm, planet_eos.mantle_mm]
+        # print("molar masses are {} {} for core and mantle, respectively".format(self.mm[0], self.mm[1]))
         self.t0 = t0
         self.dt = dt
         self.relative_tolerance = relative_tolerance
@@ -33,6 +34,7 @@ class Planet:
         self.press = []
         self.mass = []
         self.u = []
+        self.current_temp = 0
 
         # initializing arrays to hold total radius, pressure and mass at the end of each layer of the planet
         self.transition_rad_list = np.zeros(shape=(len(transpress),))
@@ -40,18 +42,118 @@ class Planet:
         self.transition_mass_list = np.zeros(shape=(len(transpress),))
         self.transition_u_list = np.zeros(shape=(len(transpress),))
 
+    def upper_lower_mantle(self, P0=25.0, T0=800.0, a=-0.0017): # perovskite phase transition P->GPa
+        # Credit: Jisheng Zhang
+        # The function defines the linear boundary between perovskite and olivine.
+        # Temperature input is in K. If the actual temperature is above the temperature
+        # calculated using this function, then the material is in perovskite phase, otherwise olivine.
+        # Pressure output in Pa
+        return (a*(self.current_temp-T0) + P0) * 10**9
 
+    def func_transition(self, n):
+        if self.transpress[n] == "lower mantle transpress": # == checks VALUE, is checks pointer
+            transition_pressure = self.upper_lower_mantle()
+            return transition_pressure
+        else:
+            return self.transpress[n]
 
-    def all_rho_C_p_T(self, pressure, n, i): #TODO Check this
+    def all_rho_C_p_T(self, pressure, n, i): # TODO Check this
+        # n is layer number
         # first element of EoS is density(pressure) i = 0
         # second element of EoS is C_p(pressure) i = 1
         # third element of EoS is T pressure) i = 2
         eoss = self.eoss
-        if n == 1 or n == 0:
-            return eoss[0][i](pressure)
-        else:
-            return eoss[1][i](pressure)
+        # if n == 1 or n == 0:
+        #     return eoss[0][i](pressure)
+        # else:
+        #     print("n {}".format(n))
+        #     print("i {}".format(i))
+        return eoss[n][i](pressure)
 
+    ############################
+
+    def RK4(self, derivatives, y0, t0, dt, transition_pressure, n):
+        self.z = ode(derivatives).set_integrator('dopri5').set_initial_value(y0, t0).set_f_params(self.all_rho_C_p_T, n)
+        t0 = self.t0
+        dt = self.dt
+        relative_tolerance = self.relative_tolerance
+        transition_pressure = self.transpress
+        save_all = self.save_all
+        rad = self.rad
+        press = self.press
+        mass = self.mass
+        z = self.z
+        u = self.u
+
+        # mass - y[0]
+        # press - y[1]
+        # u - y[2]
+        # radius - t
+        which_loop = 'first loop'
+        while z.successful() and which_loop == 'first loop' and (z.y[1] - self.func_transition(n) > 0):
+            t_next = z.t + dt
+            z.integrate(t_next)
+            rad.append(np.array(z.t).tolist())
+            mass.append(np.array(z.y[0]).tolist())
+            press.append(np.array(z.y[1]).tolist())
+
+            # Heat capacity
+            if u[-1] > z.y[2].tolist():
+                print("something is up in tegral")
+
+            u.append(z.y[2].tolist())
+
+            # Enters if-statement if passed transition pressure
+            press_b = press[-1]
+            if press_b - self.func_transition(n) < 0:
+                press_a = press[-2]
+                which_loop = 'second loop'
+                a = rad[-2]  # last positive pressure
+                b = rad[-1]  # first negative pressure
+                c = 0.5 * (a + b)
+
+            # if z.y[1]) == transition_pressure, will not enter second while loop
+            if z.y[1] == self.func_transition(n):
+                rad[-1] = z.t
+                mass[-1] = z.y[0]
+                press[-1] = z.y[1]
+                u[-1] = z.y[2]
+
+        # Bisection Method
+        counter = 0
+        while z.successful() and abs(self.func_transition(n) - z.y[1]) > max(
+                self.func_transition(n) * relative_tolerance, 10000) and which_loop == 'second loop':
+            counter += 1
+            z.integrate(c)
+            press_c = z.y[1]
+            if press_a > self.func_transition(n) and press_c > self.func_transition(n):
+                press_a = press_c
+                a = c
+            else:
+                press_b = press_c
+                b = c
+            c = 0.5 * (a + b)
+        print("This layer went through " + repr(counter) + " bisection method steps.")
+        # TODO: MAKE SURE PRESSURE RETURNS A POSITIVE VALUE
+        rad[-1] = z.t
+        mass[-1] = z.y[0]
+        press[-1] = z.y[1]
+        u[-1] = z.y[2]
+        print("rad {}".format(z.t))
+        print("mass {}".format(z.y[0]))
+        print("press {}".format(z.y[1]))
+        print("u {}".format(z.y[2]))
+        print(type(z.y[1]))
+        print(type(self.func_transition(n)))
+
+        if not z.successful():
+            raise RuntimeError("Integration failed.")
+        if save_all:
+            return rad[-1], mass[-1], press[-1], u[-1], rad, mass, press, u
+        else:
+            return rad[-1], mass[-1], press[-1], u[-1]
+
+    ############################
 
     def integratePlanet(self):
         print("Planet initialized.")
@@ -77,7 +179,7 @@ class Planet:
 
 
         # checking that list is sorted and monotonically decreasing
-        if sorted(transpress, reverse=True) != transpress:
+        if sorted(transpress[:2], reverse=True) != transpress[:2]: # checking if just core and mantle transition pressures are sorted
             raise ValueError("Transition pressure list entered is not sorted.")
             sys.exit(0)
         elif transpress[0] == transpress[self.nLayers]:
@@ -90,79 +192,12 @@ class Planet:
             next_rho = eos(pressure, n, 0)
             next_C_p = eos(pressure, n, 1)
             next_T = eos(pressure, n, 2)
+            self.current_temp = next_T
+            U = 4. * pi * (t ** 2.) * next_rho * next_C_p * next_T
 
-            return [4. * pi * (t ** 2.) * next_rho, -(G * y[0] * next_rho / (t ** 2.)), 4. * pi * (t ** 2.) * next_rho * next_C_p * next_T]
+            return [4. * pi * (t ** 2.) * next_rho, -(G * y[0] * next_rho / (t ** 2.)), U]
 
-
-
-        def RK4(derivatives, y0, t0, dt, transition_pressure, n):
-            z = ode(derivatives).set_integrator('dopri5').set_initial_value(y0, t0).set_f_params(self.all_rho_C_p_T, n)
-            # mass - y[0]
-            # press - y[1]
-            # u - y[2]
-            # radius - t
-            which_loop = 'first loop'
-
-            while z.successful() and z.y[1] - transition_pressure > 0 and which_loop == 'first loop':
-                t_next = z.t + dt
-                z.integrate(t_next)
-                rad.append(np.array(z.t).tolist())
-                mass.append(np.array(z.y[0]).tolist())
-                press.append(np.array(z.y[1]).tolist())
-
-                # Heat capacity
-                u.append(z.y[2].tolist())
-
-                # Enters if-statement if passed transition pressure
-                press_b = press[-1]
-                if press_b - transition_pressure < 0:
-                    press_a = press[-2]
-                    which_loop = 'second loop'
-                    a = rad[-2]  # last positive pressure
-                    b = rad[-1]  # first negative pressure
-                    c = 0.5 * (a + b)
-
-                # if z.y[1]) == transition_pressure, will not enter second while loop
-                if z.y[1] == transition_pressure:
-                    rad[-1] = z.t
-                    mass[-1] = z.y[0]
-                    press[-1] = z.y[1]
-                    u[-1] = z.y[2]
-
-            # Bisection Method
-            counter = 0
-            while z.successful() and abs(transition_pressure - z.y[1]) > max(transition_pressure * relative_tolerance, 10000) and which_loop == 'second loop':
-                counter += 1
-                z.integrate(c)
-                press_c = z.y[1]
-                if press_a > transition_pressure and press_c > transition_pressure:
-                    press_a = press_c
-                    a = c
-                else:
-                    press_b = press_c
-                    b = c
-                c = 0.5 * (a + b)
-            print("This layer went through " + repr(counter) + " bisection method steps.")
-            # TODO: MAKE SURE PRESSURE RETURNS A POSITIVE VALUE
-            rad[-1] = z.t
-            mass[-1] = z.y[0]
-            press[-1] = z.y[1]
-            u[-1] = z.y[2]
-            print("rad {}".format(z.t))
-            print("mass {}".format(z.y[0]))
-            print("press {}".format(z.y[1]))
-            print("u {}".format(z.y[2]))
-
-
-
-            if not z.successful():
-                raise RuntimeError("Integration failed.")
-            if save_all:
-                return rad[-1], mass[-1], press[-1], u[-1], rad, mass, press, u
-            else:
-                return rad[-1], mass[-1], press[-1], u[-1]
-
-        i = 1
+        i = 0
         first_layer = True
         mass_init = 0
         rad_init = 0
@@ -175,14 +210,21 @@ class Planet:
         transition_u_list[0] = u_init
 
         while i <= self.nLayers:
+            print(transpress)
             print("layer %g" % (i))
             # First tests whether or not to integrate layer
             # This takes care of [p_c, p_c, 0] and [p_c, 0, 0] cases
-            if transpress[i] == transpress[i - 1]:  # Don't integrate layer
+            if transpress[i] == "lower_mantle_transpress":
+                bool_check = (transpress[i + 1] == transpress[i - 1])
+            else:
+                bool_check = (transpress[i] == transpress[i - 1] or transpress[i] == transpress[-1])
+
+            if bool_check:  # Don't integrate layer
                 transition_rad_list[i] = transition_rad_list[i - 1]
                 transition_mass_list[i] = transition_mass_list[i - 1]
                 transition_press_list[i] = transition_press_list[i - 1]
                 transition_u_list[i] = transition_u_list[i - 1]
+                return
 
 
             else:  # need to integrate layer
@@ -193,7 +235,9 @@ class Planet:
                     mass_0 = (4 / 3) * pi * pow(t0, 3) * self.all_rho_C_p_T(p_c, i, 0)
                     C_p_0 = self.all_rho_C_p_T(p_c, i, 1)
                     T_0 = self.all_rho_C_p_T(p_c, i, 2)
+                    self.current_temp = T_0
                     y0 = [mass_0, p_c, mass_0 * C_p_0 * T_0] # HEAT CAPACITY
+                    print(y0)
                     print("first layer %d Initial Radius: %g Initial Mass: %g Central Pressure: %g U: %g" % (i, rad_init, y0[0], y0[1], y0[2]))
                     rad_init = t0
                     # Update detailed profile arrays
@@ -208,13 +252,14 @@ class Planet:
                 else:
                     # Take values at end of last layer as ICs
                     y0 = [mass_init, press_init, u_init]
+                    print(y0)
 
                 # integrate layer
                 if save_all:
                     print("integrate layer %d" % (i))
                     # full lists of all radii, mass, and pressures calculated for each integration by RK4
                     # properties given t0 and y0
-                    rad_init, mass_init, press_init, u_init, more_rad, more_mass, more_press, more_u = RK4(f, y0, rad_init, dt,
+                    rad_init, mass_init, press_init, u_init, more_rad, more_mass, more_press, more_u = self.RK4(f, y0, rad_init, dt,
                                                                                            transpress[i], i)
                     rad.extend(more_rad)
                     mass.extend(more_mass)
@@ -223,14 +268,16 @@ class Planet:
                     # heat capacity
                     u.extend(more_u)
                 else:
+
                     print("integrate layer %d" % (i))
-                    rad_init, mass_init, press_init, u_init = RK4(f, y0, rad_init, dt, transpress[i], i)
+                    rad_init, mass_init, press_init, u_init = self.RK4(f, y0, rad_init, dt, transpress[i], i)
+                    print(self.z.y[1] - self.func_transition(i) > 0)
+
                 # Update arrays containing properties of planets at transition
                 transition_rad_list[i] = rad_init
                 transition_mass_list[i] = mass_init
                 transition_press_list[i] = press_init
                 transition_u_list[i] = u_init
-
             i += 1
 
         print("Planet complete.")

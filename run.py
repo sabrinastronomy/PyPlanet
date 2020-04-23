@@ -7,7 +7,7 @@ testing = True
 location = "/Users/sabrinaberger/RockyPlanets"
 
 
-thermal_location = location + "/thermalData"
+thermal_location = location + "/thermalData_test"
 test_eos_location = location + "/testEoSData"
 
 # try:
@@ -29,8 +29,14 @@ def varying_temp(type_eos, temperatures, central_pressures, grid_size, loc):
 
     for temp in temperatures:
         temp_plan_grid = PlanetGrid(temp, central_pressures, grid_size, str(type_eos), loc)
-        temp_plan_grid.integrateGrid()
+        xx, yy, radius_grid, mass_grid, press_grid, core_mass_grid, core_rad_grid, u_grid = temp_plan_grid.integrateGrid()
         planetary_grids.append(temp_plan_grid)
+    np.save("samp_planet_rad.npy", radius_grid)
+    np.save("samp_planet_mass.npy", mass_grid)
+    np.save("samp_planet_press.npy", press_grid)
+    np.save("samp_planet_u.npy", u_grid)
+
+
 
 
 if __name__ == "__main__":
@@ -47,8 +53,10 @@ if __name__ == "__main__":
 
     # THERMAL EVOLUTION
     default_central_pressures = [9, 12]
-    default_grid_size = [4, 4]
-    temp_range = np.linspace(300, 3000, 100)
+    # default_grid_size = [4, 4]
+    default_grid_size = [2, 2]
+
+    temp_range = np.linspace(300, 3000, 10)
     # adiabatic
     varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size, thermal_location)
     # constant temperature
