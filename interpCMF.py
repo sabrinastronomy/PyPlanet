@@ -16,7 +16,7 @@ cmfs_of_interest = [earth_cmf, mars_cmf]
 # final_location = "/Users/sabrinaberger/RockyPlanets/MassRadiusDiagramData/"
 location = "/Users/sabrinaberger/RockyPlanets"
 
-class PlanetInterp:
+# class PlanetInterp:
 
 #stackoverflow clode
 def non_increasing(L):
@@ -111,7 +111,25 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
         cmf_list = grid_to_1Darray(file_load(location, "core_mass_grid", temp))
         cmr_list = grid_to_1Darray(file_load(location, "core_rad_grid", temp))
         u_list = grid_to_1Darray(file_load(location, "u_grid", temp))
+        if temp == 3000:
+            u_grid = file_load(location, "u_grid", temp)
+            r_grid = file_load(location, "radius_grid", temp)
+            p_grid = file_load(location, "p_c_grid", temp)
+            p_perc_grid = file_load(location, "p_cmb_percentage_grid", temp)
 
+            plt.contourf(np.log10(p_grid), p_perc_grid, np.log10(u_grid))
+            plt.xlabel('log($P_c$) (Pa)')
+            plt.ylabel('$P_{CMB}$/$P_c$')
+            plt.title("U")
+            plt.savefig("u_example_contour.pdf")
+            plt.close()
+
+            plt.contourf(np.log10(r_grid), p_perc_grid, np.log10(u_grid))
+            plt.xlabel('log($P_c$) (Pa)')
+            plt.ylabel('$P_{CMB}$/$P_c$')
+            plt.title("R")
+            plt.savefig("r_example_contour.pdf")
+            plt.close()
 
         p_c_unique_dict = {}
         mass_values = [] # test plots
@@ -191,7 +209,8 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
             radii = np.array(radii).flatten()
             us = np.array(us).flatten()
             cmfs = np.array(cmfs).flatten()
-            order = masses.argsort()
+            # order = masses.argsort()
+            order = radii.argsort()
             masses = masses[order]
             radii = radii[order]
             us = us[order]
@@ -203,8 +222,8 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
                                              fill_value="extrapolate")
 
 
-            u_func = interpolate.interp1d(masses, us)
-            r_func = interpolate.interp1d(masses, radii)
+            u_func = interpolate.interp1d(masses, us, fill_value="extrapolate")
+            r_func = interpolate.interp1d(masses, radii, fill_value="extrapolate")
 
             u_calc = u_func(masses_of_interest)
             r_calc = r_func(masses_of_interest)
@@ -212,10 +231,10 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
             # Checking monotonicity
             # u_calc = u_func(mass_0)
             # r_calc = r_func(mass_0)
-            #
+
             # if not monotonic(masses):
             #     print("mass is not monotonic")
-
+            #
             # if not monotonic(us):
             #     plt.close()
             #     plt.plot(us)
@@ -238,6 +257,10 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
     if label is not "u":
         mass_temped.append(mass_values)
         return np.array(u_temped), np.array(mass_temped), np.array(radius_temped), list(p_c_unique_dict.keys())
+
+    print(temp)
+    print("U_monotonicity {}".format(monotonic(np.array(u_temped).flatten())))
+    print("R_monotonicity {}".format(monotonic(np.array(radius_temped).flatten())))
 
     return np.array(u_temped).flatten(), np.array(radius_temped).flatten(), list(p_c_unique_dict.keys())
 

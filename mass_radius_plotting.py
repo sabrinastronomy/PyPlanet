@@ -25,7 +25,7 @@ plt.ylabel('log($radius$) (m)')
 plt.savefig("adiabat_radius.pdf")
 plt.close()
 
-property = plt.contourf(temp, radius, mass, cmap=plt.get_cmap('magma_r'))
+property = plt.contourf(temp, radius, mass, p)
 cbar = plt.colorbar(property)
 cbar.ax.set_ylabel('log($mass$) (kg)')
 plt.xlabel('Surface Temperature (K)')

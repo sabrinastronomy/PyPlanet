@@ -21,7 +21,7 @@ def ttt(u_arr, temps_arr, r_arr, T_star, R_star, a, T_eq):
         T_1 = temps_arr[j]
 
         if T_2 <= T_eq:
-            t_1 = nan
+            t_1 = float("NaN")
 
         else:
             delt = T_s_t(R_2, R_1, U_2, U_1, T_2, T_1, T_star, R_star, a)
@@ -45,7 +45,7 @@ def T_s_t(R_p_2, R_p_1, U_2, U_1, T_s_2, T_s_1, T_star, R_star, a):
 def T_equil(T_star, R_star, a):
         return T_star * (R_star/(2*a))**(1/2)
 
-def T_s_t_plotter(star_type, cmfs_of_interest, masses_of_interest, names_of_interest, lss=['dotted', '-'], a_colors=['k', 'm', 'g'], afrac_values=[0.001, 0.006], host_temp=6000, host_rs=ap.R_sun.value,):
+def T_s_t_plotter(star_type, cmfs_of_interest, masses_of_interest, names_of_interest, lss=['dotted', '-'], a_colors=['k', 'm', 'g'], afrac_values=[0.001, 0.006], host_temp=6000, host_rs=ap.R_sun.value):
     # Get u and r from mass_radius_relations interpolated values for one CMF
     # plt.hlines(y=700, ls='dashed', colors='r', xmin=0, xmax=10e14, label="~ $T_{eq, max}$ discovered (K2-266c)")
     for mass, name, ls in zip(masses_of_interest, names_of_interest, lss):
@@ -82,8 +82,9 @@ def T_s_t_plotter(star_type, cmfs_of_interest, masses_of_interest, names_of_inte
 
 if __name__ == "__main__":
     location = "/Users/sabrinaberger/RockyPlanets"
-    data = location + "/thermalData/"
-    temp_range = np.linspace(300, 3000, 100)[::-1]
+    data = location + "/thermalData_upper_mantle/adiabatic/"
+    save = location + "/thermalData_upper_mantle/adiabatic/"
+    temp_range = np.linspace(300, 3000, 10)
     mars_cmf = 0.26
     earth_cmf = 0.33
     cmfs_of_interest = [earth_cmf]
@@ -95,22 +96,23 @@ if __name__ == "__main__":
     # masses_of_interest = [earth_mass, mars_mass]
     masses_of_interest = [earth_mass, mars_mass, merc_mass]
     labels = [r"$M_{\oplus}$", r"$M_{Mars}$", r"$M_{Mercury}$"]
-    for mass, label in zip(masses_of_interest, labels):
+    colors = ['k', 'b', 'r']
+    for mass, label, c in zip(masses_of_interest, labels, colors):
         u_arr, r_arr, p_c_arr = planet_interp(data, temp_range, cmfs_of_interest, mass)
         radius_values = np.array(r_arr)/const.R_earth.value
+        plt.loglog(temp_range, radius_values, c=c, label=label)
 
-        plt.loglog(temp_range, radius_values, c= 'k', label = label)
     plt.xlabel(r"T [K]")
     plt.ylabel(r"$R_{p}$ $[R_{\oplus}]$")
     plt.title("Radius and Surface Temperature")
     plt.legend()
-    plt.savefig("rad_T_s_log.png")
+    plt.savefig(save + "rad_T_s_log.png")
     plt.close()
 
-    animate("therm", temp_range)
+    # animate("therm", temp_range)
 
 
-    # T_s_t_plotter("Sun-like host", cmfs_of_interest, masses_of_interest, ["$M_{Earth}$"], afrac_values = [0.1, 1], lss=["-"])
+    T_s_t_plotter("Sun-like host", cmfs_of_interest, masses_of_interest, ["$M_{Earth}$"], afrac_values = [0.1, 1], lss=["-"])
     # T_s_t_plotter("M dwarf host", cmfs_of_interest, masses_of_interest, ["$M_{Earth}$"], afrac_values = [0.01, 0.1], host_temp=3000, host_rs=0.5*ap.R_sun.value, lss=["-"])
 
 

@@ -8,16 +8,10 @@ from numpy import *
 
 # Grid of planets
 
-core_material = minerals.Murakami_2013.fe_perovskite()
-mantle_material = minerals.SLB_2011.mg_fe_silicate_perovskite()
-upper_mantle_material = minerals.SLB_2011.mg_fe_olivine()
-
-layers_normal = [core_material, mantle_material, upper_mantle_material]
-minfractions_normal = [[1], [0.1, 0.1, 0.8], [0.8, 0.2]]
 
 class PlanetGrid:
-    def __init__(self, anchor_temp, central_pressures, grid_size, temp_profile, location, want_full_profile=True,
-                 relative_tolerance=1e-5, layers_types=layers_normal, minfractions=minfractions_normal):
+    def __init__(self, anchor_temp, central_pressures, grid_size, temp_profile, location, layers_types, minfractions, want_full_profile=True,
+                 relative_tolerance=1e-5):
         # Initial parameters
         self.location = location
         self.temp_profile = temp_profile
@@ -107,11 +101,11 @@ class PlanetGrid:
                     fraction = yy[i][j]
                     intermediate_transition_pressures.append(p_c) # central pressure is the first transition pressure
                     intermediate_transition_pressures.append(fraction * p_c) # CMB pressure is the 2nd transition pressure
-                    intermediate_transition_pressures.append("lower mantle transpress")
+                    # intermediate_transition_pressures.append("lower mantle transpress")
                     for k, (layer, minfrac) in enumerate(zip(layers_types, minfractions)):
                         layers.append(Layer("layer{}".format(k), layer, minfrac, self.temp_profile))
-                    intermediate_transition_pressures.append(0.) # surface pressure is the 2nd transition pressure
-                print(intermediate_transition_pressures)
+                    intermediate_transition_pressures.append(0.) # surface pressure is the always the final transition pressure stopping integration
+                print("p_c = {:e}, p_cmb = {:e}, p_surface = {:e}".format(intermediate_transition_pressures[0], intermediate_transition_pressures[1], intermediate_transition_pressures[2]))
                 p_cmb = intermediate_transition_pressures[1]
                 print("layers " + str(layers))
                 planet_eos = EoS(p_c, p_cmb, self.temp_profile,

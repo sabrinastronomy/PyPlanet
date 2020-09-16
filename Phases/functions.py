@@ -555,7 +555,7 @@ def Ih_or_VII(Temperature,Pressure):
         return 'Ice_Ih'
 def find_Planet_radius(radius_planet, core_mass_frac, structure_params, compositional_params, grids, Core_wt_per, layers):
 
-    import planet
+    import test_planet
     import minphys
 
     def calc_CRF(value, args):
@@ -569,8 +569,8 @@ def find_Planet_radius(radius_planet, core_mass_frac, structure_params, composit
 
 
         structure_params[6] = value
-        Planet      = planet.initialize_by_radius(*[radius_planet, structure_params, compositional_params, layers])
-        Planet      = planet.compress(*[Planet, grids, Core_wt_per, structure_params, layers])
+        Planet      = test_planet.initialize_by_radius(*[radius_planet, structure_params, compositional_params, layers])
+        Planet      = test_planet.compress(*[Planet, grids, Core_wt_per, structure_params, layers])
         planet_mass = minphys.get_mass(Planet,layers)
 
         CMF = planet_mass[num_core_layers]/planet_mass[-1]
@@ -609,8 +609,8 @@ def find_Planet_radius(radius_planet, core_mass_frac, structure_params, composit
             if values[1] > values[0]:
                 return (0,-200.)
 
-        Planet = planet.initialize_by_radius(*[radius_planet, structure_params, compositional_params, layers])
-        Planet = planet.compress(*[Planet, grids, Core_wt_per, structure_params, layers])
+        Planet = test_planet.initialize_by_radius(*[radius_planet, structure_params, compositional_params, layers])
+        Planet = test_planet.compress(*[Planet, grids, Core_wt_per, structure_params, layers])
 
 
         planet_mass      = minphys.get_mass(Planet,layers)
@@ -648,8 +648,8 @@ def find_Planet_radius(radius_planet, core_mass_frac, structure_params, composit
         #print 'core rad frac {}'.format(structure_params[6])
         #print 'h2o rad fraction {}'.format(structure_params[8])
 
-        Planet = planet.initialize_by_radius(*[radius_planet, structure_params, compositional_params, layers])
-        Planet = planet.compress(*[Planet, grids, Core_wt_per, structure_params, layers])
+        Planet = test_planet.initialize_by_radius(*[radius_planet, structure_params, compositional_params, layers])
+        Planet = test_planet.compress(*[Planet, grids, Core_wt_per, structure_params, layers])
         return Planet
 
     else:
@@ -665,8 +665,8 @@ def find_Planet_radius(radius_planet, core_mass_frac, structure_params, composit
         args = [radius_planet, structure_params, compositional_params, layers,grids,Core_wt_per,core_mass_frac]
         structure_params[6] = brentq(calc_CRF,.40,.75,args=args,xtol=1e-4)
 
-        Planet = planet.initialize_by_radius(*[radius_planet, structure_params, compositional_params, layers])
-        Planet = planet.compress(*[Planet, grids, Core_wt_per, structure_params, layers])
+        Planet = test_planet.initialize_by_radius(*[radius_planet, structure_params, compositional_params, layers])
+        Planet = test_planet.compress(*[Planet, grids, Core_wt_per, structure_params, layers])
 
 
         return Planet
