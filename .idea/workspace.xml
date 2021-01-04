@@ -1,82 +1,546 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a855957-18ad-44bb-82a1-73adfc3175a1" name="Default" comment="">
+    <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/OOP.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phases/ExoPlex" beforeDir="false" afterPath="$PROJECT_DIR$/Phases/ExoPlex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phases/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Phases/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/eos.py" beforeDir="false" afterPath="$PROJECT_DIR$/eos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interpCMF.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpCMF.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mass_radius_plotting.py" beforeDir="false" afterPath="$PROJECT_DIR$/mass_radius_plotting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planet.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planet_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet_grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/therm_ev.py" beforeDir="false" afterPath="$PROJECT_DIR$/therm_ev.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/DEW13HP02ver_elements.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/DEW13HP02ver_oxides.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/DEW13HP622ver_elements.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/DEW13HP622ver_oxides.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/DEW13ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/FOCver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/DEW13HP02ver_elements.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/DEW13HP02ver_oxides.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/DEW13HP622ver_elements.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/DEW13HP622ver_oxides.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/DEW13ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/FOCver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/README_PERPLE_X_6.6.8_compiled_MATLAB_Scripts.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/b89ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/b92ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/ba96ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/bb84ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/cr_hp02ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hhp04ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp02ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp02ver_endmember_abbreviations.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp02ver_with_pre_may_2012_pmelt_endmembers.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp02ver_with_salt.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp04ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp11ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp11ver_metal.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp11ver_salt.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp622ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp62ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp93ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hp96ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hpAQver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/hpha02ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/kel04ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/koma06ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/metal_mix.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/perplex_option.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/perplex_option.dat.default" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/perplex_plot_option.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/sfo05ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/solution_model.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/solution_models_not_reformatted.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/stx07ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/stx08ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/stx11_solution_model.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/stx11ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/sup92ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/Perple_X_6.7.8_data_files/supcrt92_abbreviations.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/README_PERPLE_X_6.6.8_compiled_MATLAB_Scripts.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/actcor" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/b89ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/b92ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/ba96ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/bb84ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/cr_hp02ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/ctransf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/delete_me" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/earth.arf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/earth.blk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/earth.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/earth.plt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/earth.ps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/earth.tof" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/earth_VERTEX_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/example.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/fluids" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/frendly" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/group.blk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/group.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/group.plt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/group.ps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/group_VERTEX_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hhp04ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp02ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp02ver_endmember_abbreviations.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp02ver_with_pre_may_2012_pmelt_endmembers.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp02ver_with_salt.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp04ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp11ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp11ver_metal.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp11ver_salt.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp622ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp62ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp93ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hp96ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hpAQver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/hpha02ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/htog" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/kel04ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/koma06ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/meemum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/metal_mix.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/perplex_option.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/perplex_option.dat.default" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/perplex_plot_option.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/present.blk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/present.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/present.pdf.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/present.plt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/present.ps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/present_VERTEX_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/pspts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/pssect" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/pstable" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/psvdraw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/pt2curv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/sfo05ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/solution_model.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/solution_models_not_reformatted.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/stx07ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/stx08ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/stx11_solution_model.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/stx11ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/sup92ver.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/supcrt92_abbreviations.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/test.blk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/test.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/test.plt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/test.prn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/test_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/test_VERTEX_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/test_WERAMI_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial.arf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial.blk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial.plt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial.prn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial.ps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial.tof" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial_1.tab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial_VERTEX_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/trial_WERAMI_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/unsplt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/vertex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PerPlex/werami" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/.idea/Phases.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PyPlanet.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/ExoPlex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/adding_phases.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/build.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/functions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/minphys.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/perplex_material.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/run_perplex.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/test.arf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/test.blk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/test.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/test.plt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/test.tof" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/test_1.tab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/test_VERTEX_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/test_WERAMI_options.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/vertex.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phases/werami.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_calc_liquidpv_mantle_density.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_calc_liquidpv_mantle_density.cpython-37m-darwin.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pre_calc_liquidpv_mantle_density.pyx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tequilibrium.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/temp.macosx-10.9-x86_64-3.7/Pre_calc_liquidpv_mantle_density.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/Readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/averaging_schemes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/chemicalpotentials.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/composite.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/Ahmad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/Avseth_et_al_2010_fig3_K.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/Dewaele.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/Hashin_Shtrikman_1963_fig1_K.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/Hashin_Shtrikman_1963_fig2_G.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/Hashin_Shtrikman_1963_fig3_E.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/berryman_fig4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/matas_vp_forcomparison.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/matas_vs_forcomparison.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/murakami_book_chapter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/murakami_book_chapter_b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/murakami_vs_cmp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/slb_fig1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/slb_fig10a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/slb_fig3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/slb_fig7_Cp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/slb_fig7_G.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/slb_fig7_K.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/slb_fig7_vol.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/watt_1976_a1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_figures/watt_1976_a2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_geotherm/anderson_82.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_geotherm/brown_81.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_geotherm/example_geotherm.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_masses/atomic_masses.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_minphys/Murakami_periclase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_minphys/Murakami_perovskite.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_minphys/slb_fig7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_perplex/fo50_HP2011_params.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_perplex/fo_HP2011_params.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_perplex/fo_SLB2011_params.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_perplex/test_SLB_entropy_and_landau.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_perplex/test_entropy_and_landau.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/HHPH2013_endmembers.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/HHPH2013data_to_burnman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/HPdata_to_burnman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/SLBdata_to_burnman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/perplex_slb_2011_names.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/slb_2011.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/slb_2011_aliases.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/slb_2011_landau.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/slb_2011_solutions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_raw_endmember_datasets/tc-ds62_solutions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/STW105.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/ak135.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/ak135_lowermantle.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/iasp91.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/prem.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/pwave_fast.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/pwave_slow.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/swave_fast.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/data/input_seismic/swave_slow.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/birch_murnaghan.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/birch_murnaghan_4th.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/cork.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/debye.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/einstein.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/equation_of_state.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/helper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/hp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/mie_grueneisen_debye.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/modified_tait.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/property_modifiers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/slb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/eos/vinet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/geotherm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/material.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/mineral.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/mineral_helpers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/HHPH_2013.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/HP_2011_ds62.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/HP_2011_fluids.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/Matas_etal_2007.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/Murakami_2013.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/Murakami_etal_2012.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/SLB_2005.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/SLB_2011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/SLB_2011_ZSB_2013.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/Sundman_1991.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/minerals/other.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/partitioning.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/perplex.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/processchemistry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/seismic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/solidsolution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/solutionmodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/tools.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/build/lib/burnman/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman.egg-info/PKG-INFO" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman.egg-info/SOURCES.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman.egg-info/dependency_links.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman.egg-info/requires.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman.egg-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/averaging_schemes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/chemicalpotentials.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/composite.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/Ahmad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/Avseth_et_al_2010_fig3_K.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/Dewaele.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/Hashin_Shtrikman_1963_fig1_K.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/Hashin_Shtrikman_1963_fig2_G.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/Hashin_Shtrikman_1963_fig3_E.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/berryman_fig4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/matas_vp_forcomparison.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/matas_vs_forcomparison.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/murakami_book_chapter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/murakami_book_chapter_b.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/murakami_vs_cmp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/slb_fig1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/slb_fig10a.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/slb_fig3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/slb_fig7_Cp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/slb_fig7_G.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/slb_fig7_K.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/slb_fig7_vol.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/watt_1976_a1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_figures/watt_1976_a2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_geotherm/anderson_82.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_geotherm/brown_81.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_geotherm/example_geotherm.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_masses/atomic_masses.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_minphys/Murakami_periclase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_minphys/Murakami_perovskite.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_minphys/slb_fig7.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_perplex/fo50_HP2011_params.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_perplex/fo_HP2011_params.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_perplex/fo_SLB2011_params.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_perplex/test_SLB_entropy_and_landau.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_perplex/test_entropy_and_landau.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/HHPH2013_endmembers.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/HHPH2013data_to_burnman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/HPdata_to_burnman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/SLBdata_to_burnman.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/perplex_slb_2011_names.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/slb_2011.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/slb_2011_aliases.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/slb_2011_landau.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/slb_2011_solutions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_raw_endmember_datasets/tc-ds62_solutions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/STW105.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/ak135.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/ak135_lowermantle.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/iasp91.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/prem.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/pwave_fast.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/pwave_slow.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/swave_fast.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/data/input_seismic/swave_slow.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/birch_murnaghan.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/birch_murnaghan_4th.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/cork.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/debye.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/einstein.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/equation_of_state.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/helper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/hp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/mie_grueneisen_debye.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/modified_tait.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/property_modifiers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/slb.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/eos/vinet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/geotherm.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/material.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/mineral.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/mineral_helpers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/HHPH_2013.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/HP_2011_ds62.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/HP_2011_fluids.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/Matas_etal_2007.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/Murakami_2013.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/Murakami_etal_2012.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/SLB_2005.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/SLB_2011.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/SLB_2011_ZSB_2013.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/Sundman_1991.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/minerals/other.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/partitioning.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/perplex.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/processchemistry.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/seismic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/solidsolution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/solutionmodel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/tools.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/burnman/version.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/changelog.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/Murakami_perovskite.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/paper_averaging.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/paper_benchmark.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/paper_fit_data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/paper_incorrect_averaging.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/paper_onefit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/paper_opt_pv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/paper_uncertain.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/paper_uncertainty.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/CHRU2014/slb_benchmark.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/ipython/Compute_seismic_velocities_advanced.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/ipython/Compute_seismic_velocities_beginner.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/tutorial/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/tutorial/step_1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/tutorial/step_2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/contrib/tutorial/step_3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/dist/burnman-0.9.0-py3.7.egg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_averaging.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_beginner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_build_planet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_chemical_potentials.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_compare_all_methods.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_composition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_fit_data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_geotherms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_gibbs_modifiers.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_grid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_inv_murakami.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_optimize_pv.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_premite_isothermal.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_seismic.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_solid_solution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_spintransition.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_tools.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_user_input_material.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/examples/example_woutput.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/benchmarks/benchmark.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/benchmarks/chemical_potential_benchmarks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/benchmarks/configurational_entropy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/benchmarks/debye.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/benchmarks/dicats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/benchmarks/endmember_benchmarks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/benchmarks/olivine_phase_diagram_benchmark.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/benchmarks/solidsolution_benchmarks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/colors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/gen_doc.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/helper_solid_solution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/performance.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/pyrolite_uncertainty.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/slb_benchmark.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/misc/table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/averaging.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/background.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/background_aggregates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/background_gibbsminimization.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/background_solidsolutions.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/background_thermodynamics.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/background_thermoelastics.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/background_userinputs.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/burnjack-small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/burnjack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/conf.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/doc_readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/eos.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/examples.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_averaging.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_beginner.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_build_planet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_compare_all_methods.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_composition.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_fO2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_geotherm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_opt_pv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_seismic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_seismic2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_solid_solution_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_solid_solution_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_solid_solution_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_solid_solution_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/example_spintransition.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/structure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/tut-step1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/tut-step2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/figures/tut-step3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/geotherms.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/index.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/index_pdf.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/main.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/materials.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/mineral_database.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/overview.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/ref.bib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/seismic.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/thermodynamics.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman-0.9.0/sphinx/zreferences.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/density_liquidpv.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/eos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/eos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/firstphases.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/in progress - __init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/in progress - __init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interpCMF.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_radius_plotting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_radius_relations_in_progress.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/planet_grid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/plotting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pre_adiabat_silicate_melt.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup_pre_adiabat2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testing_pre_adiabat2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/therm_ev.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/PyPlanet$firstphases.coverage" NAME="firstphases Coverage Results" MODIFIED="1518206470277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$planet.coverage" NAME="planet Coverage Results" MODIFIED="1533174333059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$eos.coverage" NAME="eos Coverage Results" MODIFIED="1509117033415" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$perple.coverage" NAME="perple Coverage Results" MODIFIED="1515586394064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$therm_ev.coverage" NAME="therm_ev Coverage Results" MODIFIED="1590223345912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$run_perplex__2_.coverage" NAME="run_perplex (2) Coverage Results" MODIFIED="1516653538982" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Phases" />
-    <SUITE FILE_PATH="coverage/PyPlanet$run_perplex.coverage" NAME="run_perplex Coverage Results" MODIFIED="1514017130727" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ExoPlex/ExoPlex" />
-    <SUITE FILE_PATH="coverage/PyPlanet$mass_radius_plotting.coverage" NAME="mass_radius_plotting Coverage Results" MODIFIED="1508334448868" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../All Research/RockyPlanets/Code" />
-    <SUITE FILE_PATH="coverage/PyPlanet$Tequilibrium.coverage" NAME="Tequilibrium Coverage Results" MODIFIED="1529333337686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$run.coverage" NAME="run Coverage Results" MODIFIED="1590173849491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/OOP$run.coverage" NAME="run Coverage Results" MODIFIED="1501002759953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$run_perplex__1_.coverage" NAME="run_perplex (1) Coverage Results" MODIFIED="1515001102424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$t_eq.coverage" NAME="t_eq Coverage Results" MODIFIED="1512727227773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-        <option value="Setup Script" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JupyterTrust" id="b5ef6689-9b62-426e-ba0d-d87227487812" />
-  <component name="ProjectId" id="1crayS6qAsURp3QMxg6vEmTSCic" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="1lx461yOqjvLaRQExTEH5AfdhFt" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$APPLICATION_CONFIG_DIR$/scratches" />
+      <recent name="$PROJECT_DIR$/../" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/burnman-0.9.0/burnman" />
-      <recent name="$PROJECT_DIR$/burnman-0.9.0" />
-      <recent name="$PROJECT_DIR$/PerPlex" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Pre_calc_liquidpv_mantle_density.pyx">
-    <configuration name="Pre_calc_liquidpv_mantle_density.pyx" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="OOP" />
+  <component name="RunManager" selected="Python.run">
+    <configuration name="Tequilibrium" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -88,7 +552,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Pre_calc_liquidpv_mantle_density.pyx" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Tequilibrium.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -98,7 +562,7 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="OOP" />
+      <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -119,20 +583,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="eos" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="OOP" />
+    <configuration name="mass_radius_relations_in_progress" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/eos.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/mass_radius_relations_in_progress.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -141,22 +605,41 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="OOP" />
+    <configuration name="run" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyPlanet" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/run.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testing_pre_adiabat2 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Jisheng" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Jisheng/testing_pre_adiabat2.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -164,7 +647,7 @@
       <method v="2" />
     </configuration>
     <configuration name="testing_pre_adiabat2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="OOP" />
+      <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -185,245 +668,46 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="therm_ev" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="OOP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/therm_ev.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Nosetests">
-      <module name="OOP" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_regexPattern" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;.&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Python.run" />
-      <item itemvalue="Python.therm_ev" />
-      <item itemvalue="Python.eos" />
-      <item itemvalue="Python.testing_pre_adiabat2" />
-      <item itemvalue="Python.Pre_calc_liquidpv_mantle_density.pyx" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Pre_calc_liquidpv_mantle_density.pyx" />
-        <item itemvalue="Python.testing_pre_adiabat2" />
         <item itemvalue="Python.run" />
-        <item itemvalue="Python.eos" />
-        <item itemvalue="Python.therm_ev" />
+        <item itemvalue="Python.mass_radius_relations_in_progress" />
+        <item itemvalue="Python.testing_pre_adiabat2 (1)" />
+        <item itemvalue="Python.testing_pre_adiabat2" />
+        <item itemvalue="Python.Tequilibrium" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2a855957-18ad-44bb-82a1-73adfc3175a1" name="Default" comment="" />
-      <created>1500996403634</created>
+      <changelist id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="" />
+      <created>1608525229857</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1500996403634</updated>
-      <workItem from="1550608822675" duration="2016000" />
-      <workItem from="1550613181786" duration="371000" />
-      <workItem from="1550650168428" duration="3475000" />
-      <workItem from="1552451774957" duration="5528000" />
-      <workItem from="1552935951325" duration="19000" />
-      <workItem from="1553086039711" duration="979000" />
-      <workItem from="1554275643245" duration="1685000" />
-      <workItem from="1554493339312" duration="28000" />
-      <workItem from="1554783106499" duration="96000" />
-      <workItem from="1554786707594" duration="1311000" />
-      <workItem from="1559894840244" duration="17131000" />
-      <workItem from="1560869433890" duration="41000" />
-      <workItem from="1560880001183" duration="18282000" />
-      <workItem from="1562582089818" duration="1076000" />
-      <workItem from="1563594697976" duration="904000" />
-      <workItem from="1565346736298" duration="412000" />
-      <workItem from="1567804635436" duration="936000" />
-      <workItem from="1569005201654" duration="1000" />
-      <workItem from="1570508038495" duration="7000" />
-      <workItem from="1570675185176" duration="24000" />
-      <workItem from="1576774765017" duration="960000" />
-      <workItem from="1578427132076" duration="1000" />
-      <workItem from="1578973460945" duration="13000" />
-      <workItem from="1579062343716" duration="17066000" />
-      <workItem from="1579577080741" duration="400000" />
-      <workItem from="1579847512131" duration="7068000" />
-      <workItem from="1580109366118" duration="7000" />
-      <workItem from="1580358291935" duration="7526000" />
-      <workItem from="1580925365792" duration="470000" />
-      <workItem from="1580944086950" duration="2461000" />
-      <workItem from="1580946934883" duration="228000" />
-      <workItem from="1580947202257" duration="7362000" />
-      <workItem from="1580968189383" duration="4230000" />
-      <workItem from="1581015672736" duration="2166000" />
-      <workItem from="1582225836984" duration="744000" />
-      <workItem from="1582298324299" duration="222000" />
-      <workItem from="1583428962630" duration="1652000" />
-      <workItem from="1583983040052" duration="5472000" />
-      <workItem from="1584229552173" duration="1688000" />
-      <workItem from="1584677306089" duration="351000" />
-      <workItem from="1585183799432" duration="13340000" />
-      <workItem from="1585208492386" duration="2860000" />
-      <workItem from="1585246024687" duration="1521000" />
-      <workItem from="1585267717733" duration="15000" />
-      <workItem from="1585719877927" duration="1105000" />
-      <workItem from="1585805758723" duration="2816000" />
-      <workItem from="1585889421751" duration="301000" />
-      <workItem from="1586408127021" duration="16112000" />
-      <workItem from="1587621477153" duration="437000" />
-      <workItem from="1587715577177" duration="186000" />
-      <workItem from="1587741380880" duration="361000" />
-      <workItem from="1588048126947" duration="6595000" />
-      <workItem from="1588117228784" duration="5051000" />
-      <workItem from="1588234174271" duration="2872000" />
-      <workItem from="1588817847267" duration="8499000" />
-      <workItem from="1588869616062" duration="1531000" />
-      <workItem from="1588903754032" duration="196000" />
-      <workItem from="1588959626727" duration="1373000" />
-      <workItem from="1589431883166" duration="830000" />
-      <workItem from="1589531315367" duration="5510000" />
-      <workItem from="1590040945735" duration="10067000" />
-      <workItem from="1590057765514" duration="59000" />
-      <workItem from="1590075048835" duration="15193000" />
-      <workItem from="1590161231455" duration="5088000" />
-      <workItem from="1590222127114" duration="2478000" />
-      <workItem from="1590511743318" duration="7000" />
-      <workItem from="1591289422862" duration="5073000" />
-      <workItem from="1591681068923" duration="191000" />
-      <workItem from="1592446547280" duration="322000" />
-      <workItem from="1592457246008" duration="30000" />
-      <workItem from="1592460306058" duration="4420000" />
-      <workItem from="1592559818996" duration="582000" />
-      <workItem from="1592597704938" duration="2000" />
-      <workItem from="1593579779205" duration="312000" />
-      <workItem from="1593665522507" duration="598000" />
-      <workItem from="1593671739064" duration="247000" />
-      <workItem from="1593884880826" duration="1256000" />
-      <workItem from="1593918681894" duration="24000" />
-      <workItem from="1594074595836" duration="598000" />
-      <workItem from="1594082602255" duration="550000" />
-      <workItem from="1594147259883" duration="323000" />
-      <workItem from="1594915847186" duration="2937000" />
-      <workItem from="1594929045027" duration="113000" />
-      <workItem from="1596654914631" duration="1254000" />
-      <workItem from="1596726771143" duration="173000" />
-      <workItem from="1596727738336" duration="4835000" />
-      <workItem from="1596784278446" duration="141000" />
-      <workItem from="1596814937358" duration="336000" />
-      <workItem from="1597026538607" duration="192000" />
-      <workItem from="1597333916378" duration="4794000" />
-      <workItem from="1597856619593" duration="896000" />
-      <workItem from="1597954433256" duration="47000" />
-      <workItem from="1598044865226" duration="421000" />
-      <workItem from="1599139665711" duration="4798000" />
-      <workItem from="1599692109851" duration="5639000" />
-      <workItem from="1599754832866" duration="4643000" />
+      <updated>1608525229857</updated>
+      <workItem from="1608525231196" duration="1684000" />
+      <workItem from="1608537172491" duration="10166000" />
+      <workItem from="1609706335903" duration="10180000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <ignored-roots>
-      <path value="$PROJECT_DIR$/Phases/ExoPlex" />
-    </ignored-roots>
-  </component>
   <component name="WindowStateProjectService">
-    <state width="1638" height="243" key="GridCell.Tab.0.bottom" timestamp="1599161793535">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="593" y="220" key="#Inspections" timestamp="1609714449867">
+      <screen x="0" y="25" width="1920" height="1055" />
     </state>
-    <state width="1638" height="243" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1599161793535" />
-    <state width="1638" height="136" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1597345734469" />
-    <state width="1638" height="243" key="GridCell.Tab.0.center" timestamp="1599161793534">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="593" y="220" key="#Inspections/1920.363.1680.1025/0.25.1920.1055@0.25.1920.1055" timestamp="1609714449867" />
+    <state x="446" y="343" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608620372923">
+      <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state width="1638" height="243" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1599161793534" />
-    <state width="1638" height="136" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1597345734468" />
-    <state width="1638" height="243" key="GridCell.Tab.0.left" timestamp="1599161793533">
-      <screen x="0" y="0" width="1680" height="1050" />
+    <state x="446" y="343" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1680.1025@0.25.1680.1025" timestamp="1608620372923" />
+    <state x="545" y="252" width="670" height="657" key="search.everywhere.popup" timestamp="1608622262827">
+      <screen x="0" y="25" width="1680" height="1025" />
     </state>
-    <state width="1638" height="243" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1599161793533" />
-    <state width="1638" height="136" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1597345734468" />
-    <state width="1638" height="243" key="GridCell.Tab.0.right" timestamp="1599161793534">
-      <screen x="0" y="0" width="1680" height="1050" />
-    </state>
-    <state width="1638" height="243" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1599161793534" />
-    <state width="1638" height="136" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1597345734468" />
-    <state x="341" y="183" key="SettingsEditor" timestamp="1596729158727">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="341" y="164" key="SettingsEditor/0.0.1680.1050@0.0.1680.1050" timestamp="1596729146106" />
-    <state x="341" y="183" key="SettingsEditor/0.23.1680.1027@0.23.1680.1027" timestamp="1596729158727" />
-    <state x="465" y="77" width="1138" height="698" key="dock-window-1" timestamp="1599760760609">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="465" y="77" width="1138" height="698" key="dock-window-1/0.23.1680.1027@0.23.1680.1027" timestamp="1599760760609" />
-    <state x="555" y="250" width="670" height="676" key="search.everywhere.popup" timestamp="1596730724732">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="555" y="232" width="670" height="692" key="search.everywhere.popup/0.0.1680.1050@0.0.1680.1050" timestamp="1596729142360" />
-    <state x="555" y="250" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1596730724732" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/interpCMF.py</url>
-          <line>231</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-      <default-breakpoints>
-        <breakpoint type="python-exception">
-          <properties notifyOnTerminate="true" exception="BaseException">
-            <option name="notifyOnTerminate" value="true" />
-          </properties>
-        </breakpoint>
-      </default-breakpoints>
-    </breakpoint-manager>
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/PyPlanet$run.coverage" NAME="run Coverage Results" MODIFIED="1599153487038" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$eos.coverage" NAME="eos Coverage Results" MODIFIED="1597342415144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$therm_ev.coverage" NAME="therm_ev Coverage Results" MODIFIED="1591293649390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <state x="545" y="252" width="670" height="657" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1608622262827" />
+    <state x="623" y="259" width="670" height="676" key="search.everywhere.popup/1920.363.1680.1025/0.25.1920.1055@0.25.1920.1055" timestamp="1608541608968" />
   </component>
 </project>
