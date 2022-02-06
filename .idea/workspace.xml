@@ -10,6 +10,7 @@
       <change afterPath="$PROJECT_DIR$/burnman/burnman/data/input_raw_endmember_datasets/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/burnman/contrib/eos_fitting/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman" beforeDir="false" afterPath="$PROJECT_DIR$/burnman" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/burnman/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/burnman/burnman/chemicalpotentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/chemicalpotentials.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/burnman/burnman/composite.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/composite.py" afterDir="false" />
@@ -93,29 +94,18 @@
       <change beforePath="$PROJECT_DIR$/burnman/tests/test_spin.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_spin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/burnman/tests/test_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_tools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/burnman/tests/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/burnman" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eos.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/in progress - __init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/interpCMF.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mass_radius_relations_in_progress.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/planet.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/planet_grid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plotting/Tequilibrium.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plotting/cumulative-1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plotting/mass_radius_plotting.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plotting/plotting.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/samp_planet_mass.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/samp_planet_press.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/samp_planet_rad.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/samp_planet_u.npy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/therm_ev.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/burnman" />
@@ -330,7 +320,7 @@
       <workItem from="1615561267236" duration="777000" />
       <workItem from="1615997254753" duration="5000" />
       <workItem from="1643946740987" duration="768000" />
-      <workItem from="1644007439789" duration="13749000" />
+      <workItem from="1644007439789" duration="14066000" />
     </task>
     <servers />
   </component>
