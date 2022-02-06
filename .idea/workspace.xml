@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/burnman" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/plotting/cumulative-1.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/PyPlanet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PyPlanet.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
@@ -241,7 +244,7 @@
       <workItem from="1615561267236" duration="777000" />
       <workItem from="1615997254753" duration="5000" />
       <workItem from="1643946740987" duration="768000" />
-      <workItem from="1644007439789" duration="13153000" />
+      <workItem from="1644007439789" duration="13528000" />
     </task>
     <servers />
   </component>
