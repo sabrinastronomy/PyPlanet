@@ -7,8 +7,18 @@ testing = True
 
 location = "/Users/sabrinaberger/RockyPlanets"
 
-minfractions_normal = [[1], [[0.1, 0.1, 0.8], [0.8, 0.2]]]
-minfractions_hot = [[1], [0.1, 0.1, 0.8]]
+minfractions_normal = [[1], [[0.9, 0.1, 0.0], [0.8, 0.2]]]
+minfractions_hot = [[1], [0.9, 0.1, 0.0]]
+
+# core molar fractions corresponding to:
+# formula = 'FeSiO3', i.e., Murakami_2013.fe_perovskite
+
+# (lower) mantle molar fractions corresponding to
+# [mg_perovskite(), '[Mg][Si]O3'], [fe_perovskite(), '[Fe][Si]O3'], [al_perovskite(), '[Al][Al]O3']
+# i.e., SLB_2011.mg_fe_silicate_perovskite
+
+# (upper) mantle molar fractions corresponding to
+# 'Mg2Si2O6', i.e., SLB_2011.enstatite
 
 # BURNMAN MATERIALS USED WITHIN PLANET (not including liquid silicates)
 core_material = burnman.minerals.Murakami_2013.fe_perovskite()
@@ -18,7 +28,7 @@ upper_mantle_material = burnman.minerals.SLB_2011.enstatite()
 layers_normal = [[core_material], [mantle_material, upper_mantle_material]]
 layers_hot = [[core_material], [mantle_material]]
 
-thermal_location = location + "/thermalData_upper_mantle"
+thermal_location = location + "/complete_data_with_silicate_mantle"
 test_eos_location = location + "/testEoSData"
 
 def varying_temp(type_eos, temperatures, central_pressures, grid_size, loc):
@@ -60,12 +70,14 @@ if __name__ == "__main__":
     #
 
     # THERMAL EVOLUTION
-    default_central_pressures = [11, 12]
+    default_central_pressures = [12, 12]
     default_grid_size = [2, 2]
     temp_range = np.linspace(300, 3000, 10)
+    # print(temp_range)
+    temp_range = [2600]
     # adiabatic
     varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size, thermal_location)
     # constant temperature
-    varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size, thermal_location)
+    # varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size, thermal_location)
 
 

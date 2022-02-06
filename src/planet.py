@@ -45,11 +45,18 @@ class Planet:
     def all_rho_C_p_T(self, pressure, n, i): # TODO Check this
         # first element of EoS is density(pressure) i = 0
         # second element of EoS is C_p(pressure) i = 1
-        # third element of EoS is T pressure) i = 2
+        # third element of EoS is T(pressure) i = 2
         eoss = self.eoss
         if n == 1 or n == 0:
+            print("n = {}".format(n))
+            print("i = {}".format(i))
+
             return eoss[0][i](pressure)
+
         else:
+            print("n = {}".format(n))
+            print("i = {}".format(i))
+
             return eoss[1][i](pressure)
 
 
@@ -102,7 +109,10 @@ class Planet:
             press = -(G * y[0] * next_rho / (t ** 2.))
             thermal_energy = 4. * pi * (t ** 2.) * next_rho * next_C_p * next_T
             grav_energy = 4 * pi * t * next_rho * G * mass
-            tot_energy = thermal_energy + grav_energy
+            print(f"Thermal energy = {thermal_energy}")
+            print(f"grav energy = {grav_energy}")
+
+            tot_energy = thermal_energy - grav_energy
             return [mass, press, tot_energy]
 
 

@@ -1,9 +1,9 @@
 import subprocess
 import time
-import os
 from src.eos import *
 from planet import Planet
 from numpy import *
+import os
 
 # Grid of planets
 
@@ -23,7 +23,7 @@ class PlanetGrid:
         # self.layers, self.intermediate_transition_pressures, self.minfractions = zip(*layers_transp_minfractions) # these are the transition pressures at each layer
 
         if not os.path.exists(self.save_folder):
-            print("Currently making {} folder for the curre")
+            print("Currently making {} folder for the current run.".format(self.save_folder))
             subprocess.call(["mkdir", self.save_folder])
 
         # p_cmb = core mantle boundary pressure

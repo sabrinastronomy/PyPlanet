@@ -37,6 +37,8 @@ def get_molten_silicates_rho(press, temp):
     :param press: pressures to interpolate to (Pascals)
     :param temp: temperatures to interpolate to (K)
     :return: densities for molten silicate layer from given input params
+
+    Note: Part of this code was written by Jisheng Zhang
     """
     print('Read molten silicate density table')
     silicate_data = np.loadtxt('/Users/sabrinaberger/RockyPlanets/Jisheng/density_liquidpv.txt')
@@ -58,6 +60,26 @@ def get_molten_silicates_rho(press, temp):
     p_t_rho_interp = interpolate.interp2d(pv, tv, rho, kind='cubic')
     return p_t_rho_interp(press, temp)
 
+def get_molten_silicates_cv(press, temp):
+    """
+    Get molten silicates heat capacity from Jisheng Zhang's (UChicago) code's output data file
+    :param press: pressures to interpolate to (Pascals)
+    :param temp: temperatures to interpolate to (K)
+    :return: heat capacities for molten silicate layer from given input params
+
+    Note: Part of this code was written by Jisheng Zhang
+    """
+    CV_file = np.loadtxt('/Users/sabrinaberger/RockyPlanets/Jisheng/CV_silicate_melt.txt')
+    CV_P = CV_file[0]
+    CV_file = CV_file[1:]
+    CV_T = np.linspace(1800.0, 3000.0, 1201)
+    pv, tv = np.meshgrid(CV_P, CV_T)
+    f_CV = interpolate.interp2d(pv, tv, CV_file, kind='cubic')
+    print("molten")
+    print(temp)
+    print(press)
+    print("____")
+    return f_CV(press, temp)
 
 class Layer:
     def __init__(self, name, material, composition, temp_profile):
@@ -144,54 +166,91 @@ class EoS:
         olivine_trans = upper_lower_mantle(anchor_temperature)
         # Returns the pressure of the phase transition to the
         # lower mantle (olivine/ringwoodite)
-        pressures = self.pressures = np.linspace(0, self.p_c, 1e4)
+        pressures = self.pressures = np.linspace(0, self.p_c, int(1e4))
         for i in enumerate(self.layers):
             if i == 0:
                 self.temperatures.append(np.empty(len(pressures)))
             else:
-                self.temperatures.append(np.fill(self.anchor_temperature))
+                self.temperatures.append(np.full(len(pressures), self.anchor_temperature))
 
         temperatures = self.temperatures
-        # lower mantle pressure
-        for mm, layer in zip(self.layer_mm, self.layers):
-            print("mm {}".format(mm))
-            if type(mm) is not float:
-                pressures_lower = np.linspace(olivine_trans, p_c, 1e4)
-                pressures_upper = np.linspace(0, olivine_trans, 1e4)
-                pressures = np.asarray([pressures_lower, pressures_upper])
-                layer_rho_data = []
-                layer_cp_data = []
-                for i, lay in enumerate(layer):
-                    if i == len(layer) - 1:  # LIQUID SILICATE
-                        # returns molten silicates 2-D interpolated functions
-                        densities = get_molten_silicates_rho(pressures[i], temperatures[i])[0]
-                        # TODO: heat_capacities = get_molten_silicates_cv(pressures[i], temperatures[i])
-                        heat_capacities = np.full(len(densities), 1)  # TODO: wrong!
-                        layer_rho_data.append(densities)
-                        layer_cp_data.append(heat_capacities)
-                    else:
-                        layer_rho_data.append(lay.composite.evaluate(['density'], pressures[i], temperatures))
-                        layer_cp_data.append(
-                            lay.composite.evaluate(['heat_capacity_v'], pressures[i], temperatures))
-                    pressures = self.pressures = pressures.flatten()
-                    layer_rho_data = np.asarray(layer_rho_data).flatten()
-                    layer_cp_data = np.asarray(layer_cp_data).flatten()
+        print("p_c {}".format(p_c))
+        print("layers {}".format(self.layers))
+
+        ### CREATING ALL LAYER EOSs ###
+        if p_cmb == 0:
+            # NO MANTLE
+            # CHECK THIS
+            self.get_temp.append(lambda x: anchor_temperature)  # returns anchor temperature for every input pressure
+            self.layer_eos.append(["", ""])
+        else:
+            for mm, layer in zip(self.layer_mm, self.layers):
+                print("layer {}".format(layer))
+                print("mm {}".format(mm))
+                if type(mm) is not float:
+                    pressures_lower = np.linspace(olivine_trans, p_c, int(1e4))
+                    pressures_upper = np.linspace(0, olivine_trans, int(1e4))
+                    pressures = np.asarray([pressures_lower, pressures_upper])
+                    layer_rho_data = []
+                    layer_cp_data = []
+                    ### Getting corresponding EoSs below
+                    for i, lay in enumerate(layer.composite):
+                        print(layer)
+                        if i == len(layer.composite) - 1:  # LIQUID SILICATE
+                            # returns molten silicates 2-D interpolated functions
+                            densities = get_molten_silicates_rho(pressures[i], temperatures[i])[0]
+                            print("densities {}".format(densities))
+                            heat_capacities = get_molten_silicates_cv(pressures[i], temperatures[i])
+                            layer_rho_data.append(densities)
+                            layer_cp_data.append(heat_capacities)
+                        else:
+                            layer_rho_data.append((lay.evaluate(['density'], pressures[i], temperatures[i])[0]))
+                            layer_cp_data.append(
+                                (lay.evaluate(['molar_heat_capacity_v'], pressures[i], temperatures[i])[0]) / mm[i])
+                    layer_rho_data = np.concatenate((layer_rho_data[0], layer_rho_data[1]))
+                    layer_cp_data = np.concatenate((layer_cp_data[0], layer_cp_data[1]))
+                    pressures = self.pressures = np.concatenate((pressures[0], pressures[1]))
+                    temperatures = self.pressures = np.concatenate((temperatures[0], temperatures[1]))
+
                     self.layer_eos.append([create_function(pressures, layer_rho_data),
-                                           create_function(pressures, layer_cp_data / mm)])
-            else:
-                pressures = self.pressures = np.linspace(0, self.p_c, 1e4)
-                layer_rho_data = layer.composite.evaluate(['density'], pressures, temperatures)
-                layer_cp_data = layer.composite.evaluate(['heat_capacity_v'], pressures, temperatures)
-                self.layer_eos.append(
-                    [create_function(pressures, layer_rho_data), create_function(pressures, layer_cp_data / mm)])
+                                           create_function(pressures, layer_cp_data)])
+
+                else:
+                    pressures = self.pressures = np.linspace(0.01, self.p_c, int(1e4))
+                    print("mm {}".format(mm))
+                    print("layer.composite {}".format(layer.composite))
+                    if layer.name == "layer1":
+                        print("self.p_c")
+                        print("trouble PT")
+                        print(len(pressures))
+                        print(pressures)
+
+                        print(len(temperatures))
+                        print(temperatures)
+
+                        print("---------------")
+                        layer_1_temperatures = temperatures[0]
+                        layer_rho_data = layer.composite.evaluate(['density'], pressures, layer_1_temperatures)[0]
+                        layer_cp_data = layer.composite.evaluate(['molar_heat_capacity_v'], pressures, layer_1_temperatures)[
+                                            0] / mm
+                        self.layer_eos.append([create_function(pressures, layer_rho_data),
+                                               create_function(pressures, layer_cp_data)])
+                    plt.close()
+                    plt.scatter(pressures, temperatures[0])
+                    plt.title("Mantle PT")
+                    plt.show()
+
+        for i, layer in enumerate(self.layer_eos):
+            # adding the temperature function as third element in each element in EoS
+            self.layer_eos[i].append(lambda x: anchor_temperature)
 
     def adiabatic_eos_function_generate(self):
         p_cmb = self.p_cmb
         p_c = self.p_c
         anchor_temperature = self.anchor_temperature
         # adiabatic temperature profile assumed
-        self.pressures_other = np.linspace(100, p_cmb, 1e4)  # pressures in other layers
-        self.pressures_core = np.linspace(p_c, p_cmb, 1e4).tolist()  # pressures in core
+        self.pressures_other = np.linspace(100, p_cmb, int(1e4))  # pressures in other layers
+        self.pressures_core = np.linspace(p_c, p_cmb, int(1e4)).tolist()  # pressures in core
         self.pressures_core.reverse()
         pressures = self.pressures_other  # starting at lower pressure = 0
         # CREATING ALL LAYER EOSs
@@ -216,15 +275,11 @@ class EoS:
                     self.get_temp.append(create_function(pressures, temperatures))
                     if layer.name == "layer1":
                         layer_rho_data = layer.composite.evaluate(['density'], pressures, temperatures)[0]
-                        layer_cp_data = layer.composite.evaluate(['heat_capacity_v'], pressures, temperatures)[
+                        layer_cp_data = layer.composite.evaluate(['molar_heat_capacity_v'], pressures, temperatures)[
                                             0] / mm
                         self.layer_eos.append([create_function(pressures, layer_rho_data),
-                                               create_function(pressures, layer_cp_data)])
-                    plt.close()
-                    plt.scatter(pressures, temperatures)
-                    plt.title("Mantle PT")
-                    plt.show()
-
+                                               create_function(pressures, layer_cp_data),
+                                               self.get_temp[-1]])
                 else:
                     key = 0
                     pressures_upper = self.pressures_other[(
@@ -241,7 +296,7 @@ class EoS:
                         if press > olivine_trans:
                             pressures_upper = np.asarray(pressures[:key])
                             temperatures_upper = np.asarray(temperatures[:key])
-                            pressures_lower = np.linspace(olivine_trans, p_c, 1e4)
+                            pressures_lower = np.linspace(olivine_trans, p_c, int(1e4))
                             temperatures_lower = geotherm.adiabatic(pressures_lower, temperatures_upper[-1],
                                                                     layer.composite[0])
                             break
@@ -262,58 +317,69 @@ class EoS:
                             # returns molten silicates 2-D interpolated functions
                             densities = get_molten_silicates_rho(pressures[i], temperatures[i])[0]
                             print("densities {}".format(densities))
-                            # TODO: heat_capacities = get_molten_silicates_cv(pressures[i], temperatures[i])
-                            heat_capacities = np.full(len(densities), 1) # TODO: wrong!
+                            heat_capacities = get_molten_silicates_cv(pressures[i], temperatures[i])
                             layer_rho_data.append(densities)
                             layer_cp_data.append(heat_capacities)
                         else:
                             layer_rho_data.append((lay.evaluate(['density'], pressures[i], temperatures[i])[0]))
                             layer_cp_data.append(
-                                (lay.evaluate(['heat_capacity_v'], pressures[i], temperatures[i])[0]) / mm[i])
+                                (lay.evaluate(['molar_heat_capacity_v'], pressures[i], temperatures[i])[0]) / mm[i])
                     layer_rho_data = np.concatenate((layer_rho_data[0], layer_rho_data[1]))
                     layer_cp_data = np.concatenate((layer_cp_data[0], layer_cp_data[1]))
                     pressures = self.pressures = np.concatenate((pressures[0], pressures[1]))
                     temperatures = self.pressures = np.concatenate((temperatures[0], temperatures[1]))
 
-                    self.layer_eos.append([create_function(pressures, layer_rho_data),
-                                           create_function(pressures, layer_cp_data)])
+
                     self.get_temp.append(create_function(pressures, temperatures))
+                    self.layer_eos.append([create_function(pressures, layer_rho_data),
+                                           create_function(pressures, layer_cp_data),
+                                           self.get_temp[-1]])
 
     def core_eos_function_generate(self):
-        ### CREATING CORE EOSs ###
         p_cmb = self.p_cmb
         p_c = self.p_c
         anchor_temperature = self.anchor_temperature
+        ### CREATING CORE EOSs ###
         if p_c == p_cmb:
             # NO CORE
             print("self.temperatures " + str(self.temperatures))
             print("self.get_temp " + str(self.get_temp))
-
-            # self.temperatures.insert(0, ([self.temperatures[-1]]))
-            self.get_temp.insert(0, self.get_temp[-1])
+            if self.temp_profile == "_adiabatic_":
+                self.get_temp.insert(0, self.get_temp[-1])
             self.layer_eos.insert(0, ["", ""])
 
         else:
-            first_layer_temps = self.temperatures[0][-1]  # lower mantle top temperature which is anchor temperature
-            core = self.layers[0]
-            core_mm = self.layer_mm[0]
-            self.temperatures.insert(0, geotherm.adiabatic(self.pressures_core, first_layer_temps,
-                                                           core.composite))  # first pressure is p_cmb
-            core_temperatures = self.temperatures[0]
-
+            print("self.temperatures " + str(self.temperatures))
+            if self.temp_profile == "_adiabatic_":
+                first_layer_temps = self.temperatures[0][-1]  # lower mantle top temperature which is anchor temperature
+                core = self.layers[0]
+                core_mm = self.layer_mm[0]
+                self.temperatures.insert(0, geotherm.adiabatic(self.pressures_core, first_layer_temps,
+                                                               core.composite))  # first pressure is p_cmb
+                core_temperatures = self.temperatures[0]
+            elif self.temp_profile == "_constant_":
+                core = self.layers[0]
+                core_mm = self.layer_mm[0]
+                core_temperatures = self.temperatures[0]
+                self.pressures_core = self.pressures
             core_rho_data = core.composite.evaluate(['density'], self.pressures_core, core_temperatures)
-            core_cp_data = core.composite.evaluate(['heat_capacity_v'], self.pressures_core, core_temperatures)
+            core_cp_data = core.composite.evaluate(['molar_heat_capacity_v'], self.pressures_core, core_temperatures)
 
             core_rho_data = core_rho_data.flatten()
             core_cp_data = core_cp_data.flatten()
 
             self.layer_eos.insert(0, [create_function(self.pressures_core, core_rho_data),
                                       create_function(self.pressures_core, core_cp_data / core_mm)])
-            self.get_temp.insert(0, create_function(self.pressures_core, core_temperatures))
-
-        for i, layer in enumerate(
-                self.layer_eos):  # adding the temperature function as third element in each element in EoS
-            self.layer_eos[i].append(self.get_temp[i])
+            if self.temp_profile == "_adiabatic_":
+                self.get_temp.insert(0, create_function(self.pressures_core, core_temperatures))
+            for i, layer in enumerate(
+                self.layer_eos):
+                # adding the temperature function as third element in each element in EoS
+                if self.temp_profile == "_adiabatic_":
+                    self.layer_eos[i].append(self.get_temp[i])
+                if self.temp_profile == "_constant_":
+                    self.layer_eos[i].append(lambda x: anchor_temperature)
+        print("self.layer_eos" + str(self.layer_eos))
         print("layers" + str(self.layers))
         print("temp" + str(self.get_temp))
         print("eos" + str(self.layer_eos))
