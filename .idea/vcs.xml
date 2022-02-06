@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Phases/ExoPlex" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/burnman" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/src/burnman" vcs="Git" />
   </component>
 </project>

@@ -5,23 +5,112 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/burnman" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/plotting/cumulative-1.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PyPlanet.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PyPlanet.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/eos.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/eos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/planet.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/planet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/planet_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/planet_grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/plotting/Tequilibrium.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/plotting/Tequilibrium.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/samp_planet_mass.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/samp_planet_mass.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/samp_planet_press.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/samp_planet_press.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/samp_planet_rad.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/samp_planet_rad.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/samp_planet_u.npy" beforeDir="false" afterPath="$PROJECT_DIR$/src/samp_planet_u.npy" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/burnman/build/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/burnman/burnman/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/burnman/burnman/data/input_raw_endmember_datasets/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/burnman/contrib/eos_fitting/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/chemicalpotentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/chemicalpotentials.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/composite.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/composite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/data/input_raw_endmember_datasets/HGP633data_to_burnman.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/data/input_raw_endmember_datasets/HGP633data_to_burnman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/data/input_raw_endmember_datasets/HPdata_to_burnman.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/data/input_raw_endmember_datasets/HPdata_to_burnman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/eos/cork.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/eos/cork.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/eos/debye.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/eos/debye.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/eos/dks_liquid.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/eos/dks_liquid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/eos/einstein.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/eos/einstein.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/eos/hp.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/eos/hp.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/eos/mie_grueneisen_debye.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/eos/mie_grueneisen_debye.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/eos/slb.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/eos/slb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/geotherm.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/geotherm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/layer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/mineral.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/mineral.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/minerals/JH_2015.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/minerals/JH_2015.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/output_seismo.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/output_seismo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/solutionmodel.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/solutionmodel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/burnman/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/burnman/tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_averaging.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_averaging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_benchmark.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_incorrect_averaging.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_incorrect_averaging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_onefit.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_onefit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_opt_pv.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_opt_pv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_uncertain.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/CHRU2014/paper_uncertain.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/tutorial/step_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/tutorial/step_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/tutorial/step_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/tutorial/step_2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/contrib/tutorial/step_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/contrib/tutorial/step_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_anisotropy.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_anisotropy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_averaging.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_averaging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_beginner.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_beginner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_build_planet.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_build_planet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_chemical_potentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_chemical_potentials.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_compare_all_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_compare_all_methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_composite_seismic_velocities.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_composite_seismic_velocities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_dataset_uncertainties.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_dataset_uncertainties.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_fit_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_fit_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_fit_eos.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_fit_eos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_geodynamic_adiabat.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_geodynamic_adiabat.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_geotherms.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_geotherms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_gibbs_modifiers.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_gibbs_modifiers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_grid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_inv_murakami.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_inv_murakami.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_layer.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_layer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_optimize_pv.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_optimize_pv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_perplex.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_perplex.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_seismic_travel_times.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_seismic_travel_times.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_solid_solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_solid_solution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_spintransition.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_spintransition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_woutput.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_woutput.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/example_writeout_for_synthetic_seismo.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/example_writeout_for_synthetic_seismo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/examples/output_figures/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/examples/output_figures/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/benchmarks/DKS_mixing.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/DKS_mixing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/benchmarks/ab_initio_liquids.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/ab_initio_liquids.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/benchmarks/ab_initio_solids.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/ab_initio_solids.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/benchmarks/chemical_potential_benchmarks.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/chemical_potential_benchmarks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/benchmarks/endmember_benchmarks.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/endmember_benchmarks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/benchmarks/liquid_iron_comparison.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/liquid_iron_comparison.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/benchmarks/property_modifier_benchmarks.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/property_modifier_benchmarks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/benchmarks/solidsolution_benchmarks.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/benchmarks/solidsolution_benchmarks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/helper_solid_solution.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/helper_solid_solution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/performance.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/performance.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/misc/pyrolite_uncertainty.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/misc/pyrolite_uncertainty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/sphinx/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/sphinx/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_anisotropy.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_anisotropy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_averaging.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_averaging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_chemical_potentials.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_chemical_potentials.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_composite.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_composite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_debye.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_debye.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_decorators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_eos.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_eos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_eos_consistency.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_eos_consistency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_geotherm.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_geotherm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_helper_rock_switcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_helper_rock_switcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_material.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_material.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_partitioning.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_partitioning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_perplex.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_perplex.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_planet.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_planet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_seismic.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_seismic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_spin.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_spin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/test_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/test_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/burnman/tests/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/burnman/tests/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/burnman" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/eos.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/in progress - __init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interpCMF.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mass_radius_relations_in_progress.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/planet.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/planet_grid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plotting/Tequilibrium.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plotting/cumulative-1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plotting/mass_radius_plotting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/plotting/plotting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/samp_planet_mass.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/samp_planet_press.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/samp_planet_rad.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/samp_planet_u.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setup.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/therm_ev.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +118,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/burnman" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -38,9 +127,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/planet_grid.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JupyterTrust" id="b5ef6689-9b62-426e-ba0d-d87227487812" />
   <component name="ProjectId" id="1lx461yOqjvLaRQExTEH5AfdhFt" />
@@ -74,10 +160,10 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/plotting" />
       <recent name="$PROJECT_DIR$/../" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Python.run">
@@ -244,7 +330,7 @@
       <workItem from="1615561267236" duration="777000" />
       <workItem from="1615997254753" duration="5000" />
       <workItem from="1643946740987" duration="768000" />
-      <workItem from="1644007439789" duration="13528000" />
+      <workItem from="1644007439789" duration="13749000" />
     </task>
     <servers />
   </component>
