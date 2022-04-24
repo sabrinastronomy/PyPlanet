@@ -52,6 +52,6 @@ This interpolates to various core mass fractions that the user specifies from a 
 This generates an equilibrium temperature plot as a function of mass and radius.
 ## plotting.py
 This provides code to plot a grid of planets.
-
+<img src="./paper_plots/mass__adiabatic__1800.0.pdf" width="220" height="240" />
 ![An example of a grid of planetary masses from an adiabatic temperature profile with anchor temperature = 1800 K.](./paper_plots/mass__adiabatic__1800.0.pdf)
 
