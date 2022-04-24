@@ -1,114 +1,82 @@
 import matplotlib.pyplot as plt
 from numpy import *
 from matplotlib import ticker, colors
+import astropy.constants as const
+
+plt.rc('font', family='serif')
 
 # Property Plots
 
 class PlotBasic:
 
-    def __init__(self, temp, type, p_c, p_cmb_percentage, radius, mass, surf_press="", core_mass="", core_rad="", p_cmb_percentage_simulated="", radius_higher="",
-                 path="/Users/sabrinaberger/All Research/RockyPlanets/2017Plots/"):
+    def __init__(self, temp, typ, p_c, p_cmb_percentage, radius, mass, temp_diff=0, radius_lower="",
+                 path="../paper_plots/", difference=True, surf_press="", core_mass="", core_rad="", p_cmb_percentage_simulated=""):
 
         self.temperature = temp
-        self.type = type
+        self.temp_diff = temp_diff
+        self.typ = typ
         self.path = path
+        self.difference = difference
 
         # collecting places where files are stored and loading grid
         self.p_c = load(p_c)
         self.p_cmb_percentage = load(p_cmb_percentage)
+        self.radius = load(radius)/const.R_earth.value
 
-        self.radius = load(radius)
+        if self.difference:
+            self.radius_lower = load(radius_lower)/const.R_earth.value
+            self.radius_difference = (self.radius - self.radius_lower)
+        self.mass = load(mass)/const.M_earth.value
+        self.num_planets = len(self.mass.flatten())
 
-        if radius_higher is not "":
-            self.radius_higher = load(radius_higher)
-            print(max(self.radius_higher.any()))
-            print(max(self.radius))
-            self.radius_difference = (self.radius_higher - self.radius)/self.radius
-        print(self.radius_difference)
-        self.mass = load(mass)
-        self.surf_press = load(surf_press)
-        self.core_mass = load(core_mass)
-        self.core_rad = load(core_rad)
-        self.p_cmb_percentage_simulated = load(p_cmb_percentage_simulated)
+        # self.surf_press = load(surf_press)
+        # self.core_mass = load(core_mass)
+        # self.core_rad = load(core_rad)
+        # self.p_cmb_percentage_simulated = load(p_cmb_percentage_simulated)
 
         self.contourify()  # where x axis is automatically log(P_c) and y axis is p_cmb_percentage/P_c
 
         # generate all contour plots with contourify
 
+    def makePropertyPlot(self, propertyName, units, propertyArray, plotTitle, filename, colorscheme='magma_r'):
+
+        property = plt.contourf(log10(self.p_c), self.p_cmb_percentage, log10(propertyArray), cmap=plt.get_cmap(colorscheme))
+
+        cbar = plt.colorbar(property)
+        cbar.ax.set_ylabel(propertyName + ' ' + units)
+
+        plt.xlabel('log($P_c$) (Pa)')
+        plt.ylabel('$P_{CMB}$/$P_c$')
+        plt.title(plotTitle)
+        print(self.path)
+        plt.savefig(self.path + filename, dpi=600)
+        plt.close()
+
     def contourify(self):
-        def makePropertyPlot(propertyName, units, propertyArray, plotTitle, filename, colorscheme='magma_r', difference = True):
-
-            if difference:
-                property = plt.contourf(log10(self.p_c), self.p_cmb_percentage, propertyArray,
-                                        cmap=plt.get_cmap(colorscheme))
-            else:
-                property = plt.contourf(log10(self.p_c), self.p_cmb_percentage, log10(propertyArray),  cmap=plt.get_cmap(colorscheme))
-            # property.set_xscale('log')
-            # property.set_yscale('log')
-            cbar = plt.colorbar(property)
-            cbar.ax.set_ylabel(propertyName + ' ' + units)
+        self.makePropertyPlot(r'$R_{pl}$', r'[$R_{\bigoplus}$]', self.radius, f'Total Radius for {self.num_planets} Planets ' + str(self.typ) + " " + str(self.temperature) + ' K',
+                         'radius_' + self.typ + "_" + str(self.temperature) + '.pdf')
+        self.makePropertyPlot(r'$M_{pl}$', r'[$M_{\bigoplus}$]', self.mass, f'Total Mass for {self.num_planets} Planets ' + str(self.typ) + " " + str(self.temperature) + ' K',
+                         'mass_' + self.typ + "_" + str(self.temperature) + '.pdf')
+        if self.difference:
+            self.makePropertyPlot('diff', '', self.radius_difference, 'diff', 'difference_new.pdf')
+            self.makePropertyPlot(r'$R_{pl}$', r'[$R_{\bigoplus}$]', self.radius_lower, f'Total Radius for {self.num_planets} Planets ' + " " + str(self.temp_diff) + ' K',
+                         'radius_constant_' + str(self.temperature) + '.pdf')
 
 
+temp_diff = 300
 
-            # levs = np.power(10, lev_exp)
+for temp in [1800.0]:
+    direc_with_phases_adiabatic = f"/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/PyPlanet/paper_data/complete_data_with_silicate_mantle/{temp}_adiabatic_data/"
+    direc_with_phases_constant = f"/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/PyPlanet/paper_data/complete_data_with_silicate_mantle/{temp_diff}_constant_data/"
 
-            plt.xlabel('log($P_c$) (Pa)')
-            plt.ylabel('$P_{CMB}$/$P_c$')
-            # plt.xlim(10, 12)
-            plt.title(plotTitle)
-            plt.savefig(self.path + filename, dpi=600)
-            plt.close()
+    p_c = direc_with_phases_adiabatic + f"p_c_grid_adiabatic_{temp}.pyc.npy"
+    p_cmb_percentage = direc_with_phases_adiabatic + f"p_cmb_percentage_grid_adiabatic_{temp}.pyc.npy"
+    radius = direc_with_phases_adiabatic + f"radius_grid_adiabatic_{temp}.pyc.npy"
+    mass = direc_with_phases_adiabatic + f"mass_grid_adiabatic_{temp}.pyc.npy"
+    radius_difference = direc_with_phases_constant + f"radius_grid_constant_{temp_diff}.pyc.npy"
 
-        makePropertyPlot('log(Radius)', '(m)', self.radius, 'Total Radius ' + str(self.type) + " " + str(self.temperature) + ' K',
-                         'radius_' + self.type + "_" + str(self.temperature) + '.pdf')
-        makePropertyPlot('log(Mass)', '(kg)', self.mass, 'Total Mass ' + str(self.type) + " " + str(self.temperature) + ' K',
-                         'mass_' + self.type + "_" + str(self.temperature) + '.pdf')
-        makePropertyPlot('(3000K Radius - 300K Radius)/300K Radius', '', self.radius_difference, 'Radial difference - 3000 K and 300 K Constant', 'DIFFERENCE.pdf')
-#
-# class CompareRadius(PlotBasic):
-#
-#     def __init__(self, other_radius, other_type, other_temperature):
-#         PlotBasic.__init__(self, temperature, type, radius, path)
-#         self.other_radius = other_radius
-#         self.other_type = other_type
-#         self.other_temperature = other_temperature
-#         self.difference = self.other_radius - self.radius
+    PlotBasic(temp, "_adiabatic_", p_c, p_cmb_percentage, radius, mass, temp_diff=temp_diff, radius_lower=radius_difference, difference=True)
 
-
-#
-#
-#
-#     property = plt.contourf(x_1, y_1, rad_grid_diff, cmap=plt.get_cmap('magma_r'))
-#     cbar = plt.colorbar(property)
-#     cbar.ax.set_ylabel("(3000K Radius - 300K Radius)/300K Radius")
-#     plt.xlabel('log($P_c$) (Pa)')
-#     plt.xlim(10, 12)
-#     plt.ylabel('$P_{CMB}$/$P_c$')
-#     plt.savefig('/Users/sabrinaberger/Desktop/2017_Paper_Plots/difference.pdf')
-#     plt.close()
-#     plt.show()
-#
-#
-# radius_grid300 = load("/Users/sabrinaberger/RockyPlanets/DataFiles/radius_grid300.pyc.npy")
-# radius_grid3000 = load("/Users/sabrinaberger/RockyPlanets/DataFiles/radius_grid3000.pyc.npy")
-# rad_grid_diff = (radius_grid3000 - radius_grid300)/radius_grid300
-#
-
-
-
-# prop_1 = load("/Users/sabrinaberger/RockyPlanets/MassRadiusDiagramData/300_0.26.pyc.npy")
-# prop_2 = load("/Users/sabrinaberger/RockyPlanets/MassRadiusDiagramData/300_0.33.pyc.npy")
-# print(prop_1)
-#
-# print([prop_1[7], prop_2[7]], [prop_1[6], prop_2[6]])
-
-# core_mass_1 = load("DataFiles/core_mass_grid_adiabatic_300.0.pyc.npy")
-# core_mass_2 = load("DataFiles/core_mass_grid_adiabatic_600.0.pyc.npy")
-#
-# core_press_1 = load("DataFiles/p_c_adiabatic_300.0.pyc.npy")
-#
-# print(core_mass_1)
-# print(core_press_1)
 
 # Optimization Plots
 #
@@ -120,7 +88,7 @@ class PlotBasic:
 # pressures = load("DataFiles/OPTtotalPressures.pyc.npy")
 # times = load("DataFiles/OPTtotalTime.pyc.npy")
 
-# relative_tolerance, totalTime, totalRadii, totalMasses, totalPressures = loadtxt("optimize_grid_data.txt", dtype='float', usecols=(0,1,2,3,4), unpack=True)
+# relative_tolerance, totalTime, totalRadii, totalMasses, totalPressures = loadtxt("optimize_grid_data.txt", dtyp='float', usecols=(0,1,2,3,4), unpack=True)
 
 # print(masses[0], masses[-1])
 # print(masses1000[0], masses1000[-1])

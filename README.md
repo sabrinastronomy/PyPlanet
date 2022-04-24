@@ -28,27 +28,30 @@ Dependencies:
 You can also interpolate to other masses and radii beyond your simulation by using the interpolation feature.
 
 # Description of Individual .py files
-##run.py
+## run.py
 This wraps planet_grid.py such that you can integrate multiple planetary grids at an array of temperatures. These profiles can be either constant or adiabatic.
 
-##planet_grid.py
+## planet_grid.py
 This generates planetary grids of arbitrary size according to the user's specifications. 
 
-##eos.py
+## eos.py
 This generates the equations of state for the planet. The equations of state are generated with Burnman except for the molten silicate upper mantle. This region pulls from a pre-generated table of pressures, temperatures, heat capacities, and densities.
 
 
-##planet.py
+## planet.py
 This does the main integration of the planet given the parameters set in planet_grid.py and the equation of state generated in eos.py.
 
-##therm_ev.py
+## therm_ev.py 
 This computes the thermal evolution of a planet.
-##mass_radius_relations.py
+## mass_radius_relations.py
 This generates the mass radius relationship of planets given a particular grid generated in planet_grid.py.
-##interpCMF.py
+## interpCMF.py
 This interpolates to various core mass fractions that the user specifies from a planetary grid.
-#Plotting
-##T_equilibrium.py
+# Plotting
+## T_equilibrium.py
 This generates an equilibrium temperature plot as a function of mass and radius.
-##plotting.py
+## plotting.py
 This provides code to plot a grid of planets.
+
+![An example of a grid of planetary masses from an adiabatic temperature profile with anchor temperature = 1800 K.]((https://raw.githubusercontent.com/sabrinastronomy/sabrinastronomy/master/paper_plots/mass__adiabatic__1800.0.pdf)
+

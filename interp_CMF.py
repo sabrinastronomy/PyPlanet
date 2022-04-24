@@ -5,18 +5,15 @@ import matplotlib.pyplot as plt
 import scipy.constants as sp
 from glob import glob
 import os
-import imageio
 
 # test
-
-
 
 mars_cmf = 0.26
 earth_cmf = 0.33
 cmfs_of_interest = [earth_cmf, mars_cmf]
 # source_location = "/Users/sabrinaberger/RockyPlanets/DataFiles/"
 # final_location = "/Users/sabrinaberger/RockyPlanets/MassRadiusDiagramData/"
-location = "/Users/sabrinaberger/RockyPlanets"
+location = "/Users/sabrinaberger/paper_data/complete_data_with_silicate_mantle/"
 
 # class PlanetInterp:
 

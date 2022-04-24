@@ -1,10 +1,15 @@
+"""
+This file contains the interpolation method to go from full planetary grids to mass-radius relations.
+Written by Sabrina Berger
+"""
+
 from scipy import interpolate
 import numpy as np
 import astropy.constants as const
 
-# mars_cmf = 0.26
-# earth_cmf = 0.33
-# cmfs_of_interest = [earth_cmf, mars_cmf]
+mars_cmf = 0.26
+earth_cmf = 0.33
+cmfs_of_interest = [earth_cmf, mars_cmf]
 # source_location = "/Users/sabrinaberger/RockyPlanets/DataFiles/"
 # final_location = "/Users/sabrinaberger/RockyPlanets/MassRadiusDiagramData/"
 
@@ -55,9 +60,9 @@ def planet_interp(location, label, anchor_temps, cmf_of_interest):
 
             p_cmb_p_c = interpolate.interp1d(desired_cmf_list, desired_p_cmb_p_c_list, bounds_error=False, fill_value="extrapolate")
             p_cmb_p_c_cmf0 = p_cmb_p_c(cmf_of_interest)
-            mass = interpolate.interp1d(desired_p_cmb_p_c_list, desired_mass_list)
-            radius = interpolate.interp1d(desired_p_cmb_p_c_list, desired_radius_list)
-            cmr = interpolate.interp1d(desired_p_cmb_p_c_list, desired_cmr_list)
+            mass = interpolate.interp1d(desired_p_cmb_p_c_list, desired_mass_list, bounds_error=False, fill_value="extrapolate")
+            radius = interpolate.interp1d(desired_p_cmb_p_c_list, desired_radius_list, bounds_error=False, fill_value="extrapolate")
+            cmr = interpolate.interp1d(desired_p_cmb_p_c_list, desired_cmr_list, bounds_error=False, fill_value="extrapolate")
 
             mass_cmf0 = mass(p_cmb_p_c_cmf0)
             radius_cmf0 = radius(p_cmb_p_c_cmf0)
@@ -68,20 +73,27 @@ def planet_interp(location, label, anchor_temps, cmf_of_interest):
             radius_values.append(radius_cmf0)
         mass_values = np.array(mass_values)/const.M_earth.value
         radius_values = np.array(radius_values)/const.R_earth.value
-        print("done")
+        print(f"done with temp: {temp}")
         return np.sort(mass_values), np.sort(radius_values)
 
         #save interpolated values
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
-    temp_range = np.linspace(300, 3000, 10)
-    data_files_stored_in = "/Users/sabrinaberger/RockyPlanets/thermalData_upper_mantle/"
-    mass_plots = np.zeros(len(temp_range))
-    radius_plots = np.zeros(len(temp_range))
+    # temp_range = np.linspace(300, 3000, 10)
+    data_files_stored_in = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/PyPlanet/paper_data/complete_data_with_silicate_mantle/"
+    temp_type = "_constant_"
+    # getting constant planet
+    for i, temp in enumerate([300]):
+        mass_plots_300K, radius_plots_300K = planet_interp(data_files_stored_in + "{}{}data".format(temp, temp_type) + "/", temp_type, [temp], 0.33)
+
+    # temp_range = np.linspace(300, 3000, 10)[:8]
+    temp_range_test = [2400.0]
+    # mass_plots = np.zeros(len(temp_range))
+    # radius_plots = np.zeros(len(temp_range))
     temp_type = "_adiabatic_"
-    for i, temp in enumerate(temp_range):
+    for i, temp in enumerate(temp_range_test):
         mass_plots, radius_plots = planet_interp(data_files_stored_in + "{}{}data".format(temp, temp_type) + "/", temp_type, [temp], 0.33)
-    plt.plot(mass_plots, radius_plots)
+        plt.plot(mass_plots, 100*(radius_plots-radius_plots_300K)/radius_plots_300K)
     print("plotted")
-    plt.savefig("new_mr.pdf")
+    plt.savefig("paper_plots/new_mr.pdf")

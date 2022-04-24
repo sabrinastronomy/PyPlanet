@@ -1,6 +1,13 @@
-import subprocess
-import time
-from src.eos import *
+"""
+This file contains the class PlanetGrid that initializes a planetary grid of varying temperatures
+and central pressure/CMB pressure ratios. The planetary grid can be integrated from here.
+Written by Sabrina Berger
+"""
+
+# importing packages
+import subprocess  # for creating directories
+import time  # for timing integrations
+from eos import *  # where eoses
 from planet import Planet
 from numpy import *
 import os
@@ -10,7 +17,7 @@ import os
 
 class PlanetGrid:
     def __init__(self, anchor_temp, central_pressures, grid_size, temp_profile, location, layers_types, minfractions, want_full_profile=True,
-                 relative_tolerance=1e-5):
+                 relative_tolerance=1e-5, testing=False):
         # Initial parameters
         self.location = location
         self.temp_profile = temp_profile
@@ -39,6 +46,7 @@ class PlanetGrid:
         self.dt = 200
         self.layers_types = layers_types
         self.minfractions = minfractions
+        self.testing = testing
 
         # Aliases
         num_rows = self.num_rows
@@ -55,6 +63,7 @@ class PlanetGrid:
 
         # Thermal evolution
         self.u_grid = ndarray(shape=(num_rows, num_cols))  # relative total thermal energy
+
 
     def integrateGrid(self):
         # Time and Count Parameters
@@ -89,12 +98,13 @@ class PlanetGrid:
                 layers = self.layers
                 self.intermediate_transition_pressures = []
                 intermediate_transition_pressures = self.intermediate_transition_pressures
+                print("----------------------------------------------------------------------------------------------")
 
                 print("Location in mesh grid: %d %d \n P_c = %e \n P_cmb/P_c =% g" % (i, j, self.xx[i][j], self.yy[i][j]))
                 print("Planet: " + str(planet_number) + " out of " + str(self.num_rows * self.num_cols))
 
 
-                if len(intermediate_transition_pressures) is 0:
+                if len(intermediate_transition_pressures) == 0:
                     # Instantiating all pressures
                     p_c = xx[i][j]
                     fraction = yy[i][j]
@@ -111,23 +121,23 @@ class PlanetGrid:
                                  layers, self.anchor_temp)
                 planet = Planet(planet_eos, self.t0, self.dt, self.relative_tolerance,
                                 intermediate_transition_pressures)
+                if not self.testing:
+                    planet.integratePlanet()
+                    # Taking last value from each integrated property array which is the estimated value of the given property for the planet just integrated
+                    print("radius_grid.shape: " + str(radius_grid.shape))
+                    print("planet.rad[-1]: " + str(planet.rad[-1]))
+                    radius_grid[i][j] = planet.rad[-1]
+                    mass_grid[i][j] = planet.mass[-1]
+                    press_grid[i][j] = planet.press[-1]
 
-                planet.integratePlanet()
+                    core_mass_grid[i][j] = planet.transition_mass_list[1] / planet.mass[-1]
+                    core_rad_grid[i][j] = planet.transition_rad_list[1] / planet.rad[-1]
 
-                # Taking last value from each integrated property array which is the estimated value of the given property for the planet just integrated
-                print("radius_grid.shape " + str(radius_grid.shape))
-                radius_grid[i][j] = planet.rad[-1]
-                mass_grid[i][j] = planet.mass[-1]
-                press_grid[i][j] = planet.press[-1]
+                    p_cmb_simulated[i][j] = planet.transition_press_list[1]
+                    p_cmb_grid[i][j] = intermediate_transition_pressures[1] # getting the core mantle boundary pressures
 
-                core_mass_grid[i][j] = planet.transition_mass_list[1] / planet.mass[-1]
-                core_rad_grid[i][j] = planet.transition_rad_list[1] / planet.rad[-1]
-
-                p_cmb_simulated[i][j] = planet.transition_press_list[1]
-                p_cmb_grid[i][j] = intermediate_transition_pressures[1] # getting the core mantle boundary pressures
-
-                # Thermal evolution
-                u_grid[i][j] = planet.u[-1]
+                    # Thermal evolution
+                    u_grid[i][j] = planet.u[-1]
 
                 planet_number += 1
 
@@ -142,7 +152,7 @@ class PlanetGrid:
         save(save_folder + "p_cmb_grid" + temp_profile + str(anchor_temp) + ".pyc", p_cmb_grid)
         save(save_folder + "u_grid" + temp_profile + str(anchor_temp) + ".pyc", u_grid)
 
-        print("The following data files have been created: ")
+        print("The following data files have been created or overwritten: ")
         print(save_folder + "p_c_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "p_cmb_percentage_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "radius_grid" + temp_profile + str(anchor_temp) + ".pyc")

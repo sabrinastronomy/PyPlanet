@@ -1,7 +1,7 @@
 from eos import *
 import scipy.constants as sp
 import astropy.constants as ap
-from interpCMF import planet_interp
+from interp_CMF import planet_interp
 import matplotlib.pyplot as plt
 import astropy.constants as const
 

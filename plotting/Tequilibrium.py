@@ -99,7 +99,7 @@ ax.scatter(1, 1, c = Teq_Earth, label="Earth", cmap=my_cmap_r, s=100, alpha = 0.
 plt.text(1.5, -0.3,'Earth')
 plt.arrow(1.5, 0, -0.4, 0.8, width =0.04, color='k')
 # formatter = matplotlib.ticker.LogFormatter(10, labelOnlyBase=False)
-cbar = fig.colorbar(im, ticks=[math.ceil(np.nanmin(T_eq_arr)), 500, 800, 1000, 2000, 3000, math.floor(np.nanmax(T_eq_arr))], format='%.0f')
+cbar = fig.colorbar(im, ticks=[100, 200, 300, 400, 500, 700, 1000, 2000, 3000, 4000, 5000, 7000], format='%.0f')
 
 cbar.ax.set_ylabel(r'$T_{equilibrium} [T_{eq, \oplus}]$')
 
