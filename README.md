@@ -53,8 +53,5 @@ This generates an equilibrium temperature plot as a function of mass and radius.
 ## plotting.py
 This provides code to plot a grid of planets.
 
-[[https://github.com/sabrinastronomy/PyPlanet/blob/ec7da75bee550da3b4d2bcb8067b4ad693a92a1f/paper_plots/mass__adiabatic__1800.0.pdf|alt=octocat]]
-
-
-![An example of a grid of planetary masses from an adiabatic temperature profile with anchor temperature = 1800 K.](https://raw.githubusercontent.com/sabrinastronomy/PyPlanet/blob/ec7da75bee550da3b4d2bcb8067b4ad693a92a1f/paper_plots/mass__adiabatic__1800.0.pdf)
+![](https://github.com/sabrinastronomy/PyPlanet/blob/ec7da75bee550da3b4d2bcb8067b4ad693a92a1f/paper_plots/mass__adiabatic__1800.0.pdf)
 
