@@ -1,4 +1,4 @@
-from src.eos import *
+from eos import *
 import scipy.constants as sp
 import astropy.constants as ap
 from interpCMF import planet_interp
