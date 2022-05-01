@@ -51,7 +51,6 @@ This interpolates to various core mass fractions that the user specifies from a 
 ## T_equilibrium.py
 This generates an equilibrium temperature plot as a function of mass and radius.
 ## plotting.py
-This provides code to plot a grid of planets.
+This provides code to plot a grid of planets. An example of what's plotted for a grid of 300K constant planets is shown below:
 
-![](https://github.com/sabrinastronomy/PyPlanet/blob/ec7da75bee550da3b4d2bcb8067b4ad693a92a1f/paper_plots/mass__adiabatic__1800.0.pdf)
-
+[radius_constant_1800.0.pdf](https://github.com/sabrinastronomy/PyPlanet/files/8550699/radius_constant_1800.0.pdf)
