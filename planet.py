@@ -1,3 +1,8 @@
+"""
+This file contains class Planet that contains a full integration of a planet with all its parameters.
+Written by Sabrina Berger
+"""
+
 # VARIABLES
 # t is radius
 # y[0] = mass, y[1] = pressure

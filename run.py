@@ -12,8 +12,7 @@ import burnman.minerals  # relevant burnman minerals package
 testing = False
 
 # This is the location where ALL output planetary grids are stored
-# TODO change for your use
-location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/PyPlanet/paper_data"
+location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/paper_data"
 thermal_location = location + "/complete_data_with_silicate_mantle"
 test_eos_location = location + "/testEoSData"
 
@@ -26,11 +25,12 @@ one layer and an iron silicate
 formula = 'FeSiO3', i.e., Murakami_2013.fe_perovskite
 ---------------------------------------------------------
 MANTLE 
-lower and upper mantle
+lower and upper mantle 
 
+If less than 2500 K:
 LOWER
 -----------------------------
-If perovskite (lower pressures):
+If perovskite (higher pressures):
 lower mantle molar fractions corresponding to
 [90% mg_perovskite(), '[Mg][Si]O3'], [10 % fe_perovskite(), '[Fe][Si]O3'], [0 % al_perovskite(), '[Al][Al]O3']
 i.e., SLB_2011.mg_fe_silicate_perovskite
@@ -39,24 +39,26 @@ transition between lower and upper found through olivine transition pressure
 
 UPPER
 -----------------------------
-If less than 2500 K:
 upper mantle molar fractions corresponding to
-'Mg2Si2O6', i.e., SLB_2011.enstatite
-molar fractions are [0.8, 0.2]
+forsterite: 'Mg2Si2O6' and fayalite: '[Fe]2SiO4' i.e., SLB_2011.mg_fe_olivine
+molar fractions are [0.9, 0.1]
+
 
 If greater than 2500 K:
+LOWER AND UPPER 
+-----------------------------
 upper mantle is a liquid silicate (see molten_silicates_tables)
 """
 
 core_material = burnman.minerals.Murakami_2013.fe_perovskite()
 mantle_material = burnman.minerals.SLB_2011.mg_fe_silicate_perovskite()
-upper_mantle_material = burnman.minerals.SLB_2011.enstatite() # when T < 2500 K and solid material in all mantle
+upper_mantle_material = burnman.minerals.SLB_2011.mg_fe_olivine(molar_fractions=(0.9, 0.1)) # when T < 2500 K and solid material in all mantle
 
 layers_normal = [[core_material], [mantle_material, upper_mantle_material]]
 layers_hot = [[core_material], [mantle_material]] # when T > 2500 K and liquid silicate in upper mantle
 
 # 0th element = core molar fraction, 1st element = mantle molar fractions
-minfractions_normal = [[1], [[0.9, 0.1, 0.0], [0.8, 0.2]]]  # used when temperatures are less than 2500 K, es
+minfractions_normal = [[1], [[0.9, 0.1, 0.0], [1]]]  # used when temperatures are less than 2500 K, es
 minfractions_hot = [[1], [0.9, 0.1, 0.0]]  # molten upper mantle, liquid silicates added within eos.py
 
 
@@ -94,11 +96,13 @@ if __name__ == "__main__":  # only executes if running run.py versus calling a f
 
     default_central_pressures = [8, 12]
     default_grid_size = [10, 10]
-    temp_range = [300]
+    temp_range = [3000]
 
     # adiabatic planetary grids
-    # varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size, thermal_location)
+    varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size, thermal_location, testing)
     # constant temperature planetary grids
+    temp_range = [300, 3000]
+
     varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size, thermal_location, testing)
 
 

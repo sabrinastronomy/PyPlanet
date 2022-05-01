@@ -7,7 +7,7 @@ Written by Sabrina Berger
 # importing packages
 import subprocess  # for creating directories
 import time  # for timing integrations
-from eos import *  # where eoses
+from eos_new import *  # where eoses
 from planet import Planet
 from numpy import *
 import os
@@ -27,7 +27,6 @@ class PlanetGrid:
         self.want_full_profile = want_full_profile
         self.relative_tolerance = relative_tolerance
         self.save_folder = location + "/" + str(anchor_temp) + temp_profile + "data/"
-        # self.layers, self.intermediate_transition_pressures, self.minfractions = zip(*layers_transp_minfractions) # these are the transition pressures at each layer
 
         if not os.path.exists(self.save_folder):
             print("Currently making {} folder for the current run.".format(self.save_folder))
@@ -36,6 +35,7 @@ class PlanetGrid:
         # p_cmb = core mantle boundary pressure
         # p_c = central pressure
 
+        # generating central pressures and ratio of core mantle boundary to central pressures
         self.p_c_list = np.array(
             [10 ** x for x in linspace(self.central_pressures[0], self.central_pressures[1], self.grid_size[0])])
         self.p_cmb_p_c = linspace(0, 1, self.grid_size[1])  # transition pressure when multiplied by p_c
