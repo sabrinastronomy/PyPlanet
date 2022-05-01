@@ -8,17 +8,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/eos_new.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eos.py" beforeDir="false" afterPath="$PROJECT_DIR$/eos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper_plots/difference_new.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper_plots/mass__adiabatic__1800.0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper_plots/radius__adiabatic__1800.0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/paper_plots/radius_constant_1800.0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/planet.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/planet_grid.py" beforeDir="false" afterPath="$PROJECT_DIR$/planet_grid.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plotting/plotting.py" beforeDir="false" afterPath="$PROJECT_DIR$/plotting/plotting.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +241,7 @@
       <workItem from="1643946740987" duration="768000" />
       <workItem from="1644007439789" duration="14066000" />
       <workItem from="1651268241491" duration="299000" />
-      <workItem from="1651296723605" duration="20355000" />
+      <workItem from="1651296723605" duration="20668000" />
     </task>
     <servers />
   </component>

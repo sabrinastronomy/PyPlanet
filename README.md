@@ -7,6 +7,8 @@
 Rocky planets are diverse in structure and composition compared to the Earth. Their temperature profiles could also differ greatly from Earth depending on their mass and distance from their host stars. Interior structure models of rocky exoplanets have not yet studied the full range of possible temperature profiles. We develop the following open source Python module, *PyPlanet*, for rocky planets with an arbitrary number of layers and equations of state. We apply this model to explore many possible temperature profiles and quantify the thermal effects on the mass-radius relations of rocky planets with compositions similar to other rocky planets in our solar system, such as Mars and Mercury. This detailed modeling will be crucial for making robust inferences about rocky planet structure and composition from transit and radial velocity observations. Our planetary grid explores central pressures around that of the Earth (approximately 360 GPa) between 10^9 and 10^12 Pa. We find that thermal profile considerations are significant for super-Earths but have an even larger effect on sub-Earth planets. A rocky planet's interior temperature profile can affect its radius by several percent and can exceed the observational uncertainties on measured exoplanet radii.
 
 # Requirements and Installation
+Easy Install: 
+pip install PyPlanet (coming soon!!!)
 Dependencies:
 - scipy==1.3.1
 - numpy==1.17.0
