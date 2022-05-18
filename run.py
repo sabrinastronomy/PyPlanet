@@ -12,7 +12,8 @@ import burnman.minerals  # relevant burnman minerals package
 testing = False
 
 # This is the location where ALL output planetary grids are stored
-location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/paper_data"
+# location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/paper_data"
+location = "/home/sabrinab/scratch"
 thermal_location = location + "/complete_data_with_silicate_mantle"
 test_eos_location = location + "/testEoSData"
 
