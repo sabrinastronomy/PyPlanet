@@ -164,8 +164,10 @@ class PlanetGrid:
         print(save_folder + "p_cmb_grid" + temp_profile + str(anchor_temp) + ".pyc")
         print(save_folder + "u_grid" + temp_profile + str(anchor_temp) + ".pyc")
 
+        print("Done. Integrated " + str(planet_number) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
+              str((time.time() - initial_time) / 60) + " minutes" + ".")
+
         if want_full_profile:
             return xx, yy, radius_grid, mass_grid, press_grid, core_mass_grid, core_rad_grid, u_grid
 
-        print("Done. Integrated " + str(planet_number) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
-              str((time.time() - initial_time) / 60) + " minutes" + ".")
+

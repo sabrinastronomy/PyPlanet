@@ -94,15 +94,19 @@ def varying_temp(type_eos, temperatures, central_pressures, grid_size, loc, test
 if __name__ == "__main__":  # only executes if running run.py versus calling a function
     # CREATE GRIDS AND DO THERMAL EVOLUTION
 
+    # done for most
+    # default_central_pressures = [8, 12]
+    # default_grid_size = [10, 10]
+    # temp_range = [2100, 1500, 2000]
+
+    #second step
     default_central_pressures = [8, 12]
-    default_grid_size = [10, 10]
-    temp_range = [3000]
+    default_grid_size = [100, 100]
+    temp_range = [300, 1000, 3000]
 
     # adiabatic planetary grids
     varying_temp("_adiabatic_", temp_range, default_central_pressures, default_grid_size, thermal_location, testing)
     # constant temperature planetary grids
-    temp_range = [300, 3000]
-
     varying_temp("_constant_", temp_range, default_central_pressures, default_grid_size, thermal_location, testing)
 
 

@@ -1,9 +1,7 @@
 from scipy import interpolate
 import numpy as np
-import astropy.constants as const
 import matplotlib.pyplot as plt
 import scipy.constants as sp
-from glob import glob
 import os
 
 # test
@@ -11,8 +9,6 @@ import os
 mars_cmf = 0.26
 earth_cmf = 0.33
 cmfs_of_interest = [earth_cmf, mars_cmf]
-# source_location = "/Users/sabrinaberger/RockyPlanets/DataFiles/"
-# final_location = "/Users/sabrinaberger/RockyPlanets/MassRadiusDiagramData/"
 location = "/Users/sabrinaberger/paper_data/complete_data_with_silicate_mantle/"
 
 # class PlanetInterp:
@@ -168,7 +164,7 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
 
             p_c_unique_dict[p_c] = [desired_mass_list, desired_radius_list, desired_u_list, desired_p_cmb_p_c_list, desired_cmf_list, desired_cmr_list]
 
-            if label is 'mr':
+            if label == 'mr':
                 # Mass & Radius
                 p_cmb_p_c = interpolate.interp1d(desired_cmf_list, desired_p_cmb_p_c_list, bounds_error=False, fill_value="extrapolate")
                 p_cmb_p_c_cmf0 = p_cmb_p_c(cmfs_of_interest)
@@ -190,13 +186,15 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
         # mass_values = np.array(mass_values)/const.M_earth.value
         # radius_values = np.array(radius_values)/const.R_earth.value
 
-        if label is "u":
+        if label == "u":
 
             masses = []
             radii = []
             us = []
             cmfs = []
-            for p_c in p_c_unique_dict.keys():
+            list_dict_keys = list(p_c_unique_dict.keys())
+            sorted_dict_keys = sorted(list_dict_keys)
+            for p_c in sorted_dict_keys:
                 arrs = p_c_unique_dict[p_c]
                 desired_mass_list, desired_radius_list, desired_u_list, desired_p_cmb_p_c_list, desired_cmf_list, desired_cmr_list = arrs[0], arrs[1], arrs[2], arrs[3], arrs[4], arrs[5]
                 masses.append(desired_mass_list)
@@ -208,7 +206,7 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
             radii = np.array(radii).flatten()
             us = np.array(us).flatten()
             cmfs = np.array(cmfs).flatten()
-            # order = masses.argsort()
+
             order = radii.argsort()
             masses = masses[order]
             radii = radii[order]
@@ -220,9 +218,13 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
             mass_cmfs = interpolate.interp1d(cmfs, masses, bounds_error=False,
                                              fill_value="extrapolate")
 
-
-            u_func = interpolate.interp1d(masses, us, fill_value="extrapolate")
-            r_func = interpolate.interp1d(masses, radii, fill_value="extrapolate")
+            plt.scatter(radii, us)
+            plt.xlabel("radius")
+            plt.ylabel("u")
+            plt.show()
+            plt.close()
+            u_func = interpolate.interp1d(masses, us)
+            r_func = interpolate.interp1d(masses, radii)
 
             u_calc = u_func(masses_of_interest)
             r_calc = r_func(masses_of_interest)
@@ -239,9 +241,10 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
             #     plt.plot(us)
             #     plt.plot(u_func(masses))
             #     plt.show()
+            #     plt.close()
             #     print(us)
             #     print("u is not monotonic")
-            # if len(u_temped) is not 0:
+            # if len(u_temped) != 0:
             #     if u_temped[-1] < u_calc:
             #         mark = True
             #         print("oops")
@@ -253,15 +256,15 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
             u_temped.append(u_calc)
             radius_temped.append(r_calc)
 
-    if label is not "u":
+    if label != "u":
         mass_temped.append(mass_values)
-        return np.array(u_temped), np.array(mass_temped), np.array(radius_temped), list(p_c_unique_dict.keys())
+        return np.array(u_temped), np.array(mass_temped), np.array(radius_temped), sorted_dict_keys
 
     print(temp)
     print("U_monotonicity {}".format(monotonic(np.array(u_temped).flatten())))
     print("R_monotonicity {}".format(monotonic(np.array(radius_temped).flatten())))
 
-    return np.array(u_temped).flatten(), np.array(radius_temped).flatten(), list(p_c_unique_dict.keys())
+    return np.array(u_temped).flatten(), np.array(radius_temped).flatten(), sorted_dict_keys
 
 
 def time(R_p, T_s, T_star, R_star, a, delU):

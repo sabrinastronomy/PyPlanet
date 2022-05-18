@@ -4,6 +4,9 @@ import astropy.constants as ap
 from interp_CMF import planet_interp
 import matplotlib.pyplot as plt
 import astropy.constants as const
+plt.rc('font', family='serif')
+
+paper_loc = "paper_plots/"
 
 
 def ttt(u_arr, temps_arr, r_arr, T_star, R_star, a, T_eq):
@@ -51,13 +54,13 @@ def T_s_t_plotter(star_type, cmfs_of_interest, masses_of_interest, names_of_inte
     for mass, name, ls in zip(masses_of_interest, names_of_interest, lss):
         u_arr, r_arr, p_c_arr = planet_interp(data, temp_range, cmfs_of_interest, masses_of_interest)
         plt.plot(r_arr, u_arr)
-        plt.savefig("r_u.pdf")
+        plt.savefig(paper_loc + "r_u.pdf")
         plt.close()
         for afrac, a_color, r_test in zip(afrac_values, a_colors, r_arr):
             a = afrac*ap.au.value
             T_eq = T_equil(host_temp, host_rs, a)
             t_arr = ttt(u_arr, temp_range, r_arr, host_temp, host_rs, a, T_eq)
-            print(t_arr[-1] - t_arr[0])
+            print("delta t " + str(t_arr[-1] - t_arr[0]))
 
             plt.hlines(y=T_eq, ls='dashed', colors=a_color, xmin=0, xmax=10e13)
             plt.semilogx(t_arr, temp_range, label="$T_{eq} = $" + str(np.round(T_eq, decimals=-1))[:-2] + "K (for " + name + " at $a = {} AU$".format(afrac) + ")", ls=ls, c=a_color)
@@ -65,7 +68,7 @@ def T_s_t_plotter(star_type, cmfs_of_interest, masses_of_interest, names_of_inte
             plt.title("Cooling Rates")
             plt.xlabel("$\Delta t$ from $T_{s, max}$")
             plt.ylabel("$T_s$ [K]")
-            plt.savefig("num_TE_{}_{}.pdf".format(star_type, a))
+            plt.savefig(paper_loc + "num_TE_{}_{}.pdf".format(star_type, a))
             plt.close()
 
 
@@ -74,17 +77,16 @@ def T_s_t_plotter(star_type, cmfs_of_interest, masses_of_interest, names_of_inte
             plt.xlabel("t [s]")
             plt.title("Radius and Cooling")
             plt.tight_layout()
-            plt.savefig("num_R_{}_{}.pdf".format(star_type, a))
+            plt.savefig(paper_loc + "num_R_{}_{}.pdf".format(star_type, a))
             plt.close()
 
 
 
 
 if __name__ == "__main__":
-    location = "/Users/sabrinaberger/RockyPlanets"
-    data = location + "/thermalData_upper_mantle/adiabatic/"
-    save = location + "/thermalData_upper_mantle/adiabatic/"
-    temp_range = np.linspace(300, 3000, 10)
+    data = f"/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/paper_data/therm_ev/"
+    save = "./"
+    temp_range = [300, 500, 1000, 2575, 2900, 3000]
     mars_cmf = 0.26
     earth_cmf = 0.33
     cmfs_of_interest = [earth_cmf]
@@ -94,8 +96,10 @@ if __name__ == "__main__":
     merc_mass = 3.285e23
 
     # masses_of_interest = [earth_mass, mars_mass]
-    masses_of_interest = [earth_mass, mars_mass, merc_mass]
-    labels = [r"$M_{\oplus}$", r"$M_{Mars}$", r"$M_{Mercury}$"]
+    masses_of_interest = [earth_mass]
+    labels = [r"$M_{\oplus}$"]
+    # masses_of_interest = [earth_mass, mars_mass, merc_mass]
+    # labels = [r"$M_{\oplus}$", r"$M_{Mars}$", r"$M_{Mercury}$"]
     colors = ['k', 'b', 'r']
     for mass, label, c in zip(masses_of_interest, labels, colors):
         u_arr, r_arr, p_c_arr = planet_interp(data, temp_range, cmfs_of_interest, mass)
@@ -106,13 +110,14 @@ if __name__ == "__main__":
     plt.ylabel(r"$R_{p}$ $[R_{\oplus}]$")
     plt.title("Radius and Surface Temperature")
     plt.legend()
-    plt.savefig(save + "rad_T_s_log.png")
+    plt.tight_layout()
+    plt.savefig(paper_loc + "rad_T_s_log.png")
     plt.close()
 
     # animate("therm", temp_range)
 
 
-    T_s_t_plotter("Sun-like host", cmfs_of_interest, masses_of_interest, ["$M_{Earth}$"], afrac_values = [0.1, 1], lss=["-"])
+    T_s_t_plotter("Sun-like host", cmfs_of_interest, masses_of_interest, ["$M_{Earth}$"], afrac_values = [1], lss=["-"])
     # T_s_t_plotter("M dwarf host", cmfs_of_interest, masses_of_interest, ["$M_{Earth}$"], afrac_values = [0.01, 0.1], host_temp=3000, host_rs=0.5*ap.R_sun.value, lss=["-"])
 
 

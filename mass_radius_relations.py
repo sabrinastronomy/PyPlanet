@@ -27,7 +27,12 @@ def planet_interp(location, label, anchor_temps, cmf_of_interest):
     radius_plots = []
     for temp in anchor_temps:
         properties = []
+        label = "_" + label + "_"
         p_c_list = grid_to_1Darray(np.load(location + "p_c_grid" + label + str(temp) + ".pyc" + ".npy"))
+        print("length {}".format(len(p_c_list)))
+        print("max {}".format(max(p_c_list)))
+        print("min {}".format(min(p_c_list)))
+
         p_cmb_pc_list = grid_to_1Darray(np.load(location + "p_cmb_percentage_grid" + label + str(temp) + ".pyc" + ".npy"))
         mass_list = grid_to_1Darray(np.load(location + "mass_grid" + label + str(temp) + ".pyc" + ".npy"))
         radius_list = grid_to_1Darray(np.load(location + "radius_grid" + label + str(temp) + ".pyc" + ".npy"))
@@ -80,20 +85,33 @@ def planet_interp(location, label, anchor_temps, cmf_of_interest):
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
-    # temp_range = np.linspace(300, 3000, 10)
-    data_files_stored_in = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/PyPlanet/paper_data/complete_data_with_silicate_mantle/"
-    temp_type = "_constant_"
-    # getting constant planet
-    for i, temp in enumerate([300]):
-        mass_plots_300K, radius_plots_300K = planet_interp(data_files_stored_in + "{}{}data".format(temp, temp_type) + "/", temp_type, [temp], 0.33)
 
-    # temp_range = np.linspace(300, 3000, 10)[:8]
-    temp_range_test = [2400.0]
-    # mass_plots = np.zeros(len(temp_range))
-    # radius_plots = np.zeros(len(temp_range))
-    temp_type = "_adiabatic_"
-    for i, temp in enumerate(temp_range_test):
-        mass_plots, radius_plots = planet_interp(data_files_stored_in + "{}{}data".format(temp, temp_type) + "/", temp_type, [temp], 0.33)
-        plt.plot(mass_plots, 100*(radius_plots-radius_plots_300K)/radius_plots_300K)
-    print("plotted")
+    temp_range_test = [3000]
+    colors = ["blue", "orange"]
+    styles_adiabatic = ["solid", "dashed"]
+    styles_constant = ["dotted", "dashdot"]
+    style_w_temps = [styles_adiabatic, styles_constant]
+    temp_types = ["adiabatic", "constant"]
+    cmfs = [0.33, 0.67]
+    for cmf, color in zip(cmfs, colors):
+        for temp_type, styles in zip(temp_types, style_w_temps):
+            for temp, style in zip(temp_range_test, styles):
+                # if temp == 1000 and temp_type == "constant":
+                #     continue
+                data_files_stored_in = f"/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/paper_data/complete_data_with_silicate_mantle/{temp}_{temp_type}_data/"
+                mass_plots, radius_plots = planet_interp(data_files_stored_in, temp_type, [temp], cmf)
+                plt.plot(mass_plots, radius_plots, c=color, ls=style)
+                if cmf == cmfs[0]:
+                    plt.plot(np.nan, np.nan, c="k", ls=style, label=f"{temp} K {temp_type.title()}")
+    # create legend
+    plt.plot(np.nan, np.nan, c="blue", ls="-", label="Earth: CMF = 0.33 ")
+    plt.plot(np.nan, np.nan, c="orange", ls="-", label="Mercury: CMF = 0.66 ")
+    # plt.xlim(1, 4.5)
+
+    plt.legend()
+    # plt.ylabel(r'$\log(R_{pl})$', r'[$R_{\bigoplus}$]')
+    # plt.xlabel(r'$\log(M_{pl})$', r'[$M_{\bigoplus}$]')
+    plt.title("Linear Mass-Radius Relationships")
+        # plt.plot(mass_plots, 100*(radius_plots-radius_plots_300K)/radius_plots_300K)
+    # print("plotted")
     plt.savefig("paper_plots/new_mr.pdf")
