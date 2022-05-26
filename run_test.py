@@ -101,8 +101,8 @@ if __name__ == "__main__":  # only executes if running run.py versus calling a f
     # temp_range = [2100, 1500, 2000]
 
     #second step
-    default_central_pressures = [8]
-    default_grid_size = [2, 2]
+    default_central_pressures = [8, 9]
+    default_grid_size = [4, 4]
     temp_range = [300]
 
     # adiabatic planetary grids

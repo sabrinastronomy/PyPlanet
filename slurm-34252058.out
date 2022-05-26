@@ -1,0 +1,11 @@
+Could not find conda environment: pyplanet
+You can list all discoverable environments with `conda info --envs`.
+
+Traceback (most recent call last):
+  File "/scratch/sabrinab/PyPlanet/run_test.py", line 7, in <module>
+    from planet_grid import PlanetGrid  # where the planet grid is created and run
+  File "/scratch/sabrinab/PyPlanet/planet_grid.py", line 10, in <module>
+    from eos_new import *  # where eoses
+  File "/scratch/sabrinab/PyPlanet/eos_new.py", line 5, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
