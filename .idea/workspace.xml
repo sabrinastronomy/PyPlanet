@@ -7,10 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/run_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,6 +32,9 @@
     </file-type-list>
   </component>
   <component name="JupyterTrust" id="b5ef6689-9b62-426e-ba0d-d87227487812" />
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1lx461yOqjvLaRQExTEH5AfdhFt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -52,6 +52,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -63,8 +64,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -73,7 +74,7 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.mass_radius_relations">
+  <component name="RunManager" selected="Python.run (1)">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,7 +97,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="interp_CMF" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="eos_newest" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -109,7 +110,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interp_CMF.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/eos_newest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,7 +119,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="mass_radius_relations" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="eos_phase_mantle" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -131,7 +132,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mass_radius_relations.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/eos_phase_mantle.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -140,7 +141,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="plotting" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="planet_grid" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -148,12 +149,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/plotting" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/plotting/plotting.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/planet_grid.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -166,9 +167,6 @@
       <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -184,7 +182,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="therm_evolution" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -192,12 +190,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/therm_evolution.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -208,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.mass_radius_relations" />
         <item itemvalue="Python.run (1)" />
-        <item itemvalue="Python.therm_evolution" />
-        <item itemvalue="Python.interp_CMF" />
-        <item itemvalue="Python.plotting" />
+        <item itemvalue="Python.eos_phase_mantle" />
+        <item itemvalue="Python.eos_newest" />
+        <item itemvalue="Python.scratch" />
+        <item itemvalue="Python.planet_grid" />
       </list>
     </recent_temporary>
   </component>
@@ -255,7 +253,50 @@
       <workItem from="1652457794282" duration="664000" />
       <workItem from="1652848786267" duration="1315000" />
       <workItem from="1653003028076" duration="554000" />
-      <workItem from="1653283936597" duration="376000" />
+      <workItem from="1653283936597" duration="1440000" />
+      <workItem from="1653594743488" duration="357000" />
+      <workItem from="1654024518350" duration="913000" />
+      <workItem from="1654557852735" duration="1482000" />
+      <workItem from="1654707180040" duration="2513000" />
+      <workItem from="1654744541596" duration="570000" />
+      <workItem from="1655361359783" duration="637000" />
+      <workItem from="1655684189734" duration="406000" />
+      <workItem from="1655686656839" duration="101000" />
+      <workItem from="1655882796340" duration="601000" />
+      <workItem from="1656113236961" duration="476000" />
+      <workItem from="1657415411645" duration="11807000" />
+      <workItem from="1657682630339" duration="317000" />
+      <workItem from="1658337716653" duration="1710000" />
+      <workItem from="1659059883807" duration="149000" />
+      <workItem from="1659103462164" duration="2580000" />
+      <workItem from="1659467204372" duration="664000" />
+      <workItem from="1659661554593" duration="1676000" />
+      <workItem from="1659817268837" duration="781000" />
+      <workItem from="1660496607373" duration="5972000" />
+      <workItem from="1660701214577" duration="478000" />
+      <workItem from="1660789176855" duration="249000" />
+      <workItem from="1660873395188" duration="555000" />
+      <workItem from="1660930779638" duration="452000" />
+      <workItem from="1661222600395" duration="775000" />
+      <workItem from="1661443985994" duration="3021000" />
+      <workItem from="1661530223744" duration="429000" />
+      <workItem from="1661628335229" duration="332000" />
+      <workItem from="1662344601620" duration="2718000" />
+      <workItem from="1663654188004" duration="2929000" />
+      <workItem from="1664244416894" duration="5005000" />
+      <workItem from="1664318577307" duration="7543000" />
+      <workItem from="1664379977274" duration="291000" />
+      <workItem from="1664391591520" duration="1522000" />
+      <workItem from="1664426685981" duration="2000" />
+      <workItem from="1667147321275" duration="6520000" />
+      <workItem from="1667275934408" duration="410000" />
+      <workItem from="1667510057515" duration="216000" />
+      <workItem from="1667512053466" duration="397000" />
+      <workItem from="1667711117513" duration="254000" />
+      <workItem from="1667773613194" duration="120000" />
+      <workItem from="1668360884741" duration="31014000" />
+      <workItem from="1669696586553" duration="5000" />
+      <workItem from="1670012961849" duration="31461000" />
     </task>
     <servers />
   </component>
@@ -266,35 +307,23 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/eos.py</url>
-          <line>193</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/plotting/plotting.py</url>
+          <url>file://$PROJECT_DIR$/plotting_scripts/plotting.py</url>
           <line>30</line>
           <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/therm_evolution.py</url>
-          <line>119</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/therm_evolution.py</url>
-          <line>60</line>
-          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/PyPlanet$eos_newest.coverage" NAME="eos_newest Coverage Results" MODIFIED="1667166621536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$interp_CMF.coverage" NAME="interp_CMF Coverage Results" MODIFIED="1651465922045" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$therm_evolution.coverage" NAME="therm_evolution Coverage Results" MODIFIED="1651468027354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$plotting.coverage" NAME="plotting Coverage Results" MODIFIED="1651431126429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plotting" />
     <SUITE FILE_PATH="coverage/PyPlanet$eos.coverage" NAME="eos Coverage Results" MODIFIED="1649441825323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$scratch_3.coverage" NAME="scratch_3 Coverage Results" MODIFIED="1650596088795" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/PyPlanet$run__1_.coverage" NAME="run (1) Coverage Results" MODIFIED="1650849241629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyPlanet$eos_phase.coverage" NAME="eos_phase Coverage Results" MODIFIED="1668366147503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyPlanet$eos_phase_mantle.coverage" NAME="eos_phase_mantle Coverage Results" MODIFIED="1670188668140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$mass_radius_relations.coverage" NAME="mass_radius_relations Coverage Results" MODIFIED="1652330325009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyPlanet$run__1_.coverage" NAME="run (1) Coverage Results" MODIFIED="1670201660928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

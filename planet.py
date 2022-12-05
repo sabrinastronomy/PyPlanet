@@ -47,21 +47,24 @@ class Planet:
 
 
 
-    def all_rho_C_p_T(self, pressure, n, i): # TODO Check this
-        # first element of EoS is density(pressure) i = 0
-        # second element of EoS is C_p(pressure) i = 1
-        # third element of EoS is T(pressure) i = 2
+    def all_rho_C_p_T(self, pressure, n, i):
+        """
+        Access different parts of the eoss array full of interpolated functions
+        pressure - target pressure to get value
+        n - layer number within planet
+        i - whatever function you're trying to access
+        first element of EoS is density(pressure) i = 0
+        second element of EoS is C_p(pressure) i = 1
+        third element of EoS is T(pressure) i = 2
+
+        Returns function of ith property evaluated at given pressure for the nth layer.
+        """
+
         eoss = self.eoss
         if n == 1 or n == 0:
-            # print("n = {}".format(n))
-            # print("i = {}".format(i))
-
             return eoss[0][i](pressure)
 
         else:
-            # print("n = {}".format(n))
-            # print("i = {}".format(i))
-
             return eoss[1][i](pressure)
 
 
@@ -73,7 +76,7 @@ class Planet:
         dt = self.dt
         relative_tolerance = self.relative_tolerance
         transpress = self.transpress
-        save_all= self.save_all
+        save_all = self.save_all
         rad = self.rad
         press = self.press
         mass = self.mass
@@ -91,14 +94,13 @@ class Planet:
         # checking that list is sorted and monotonically decreasing
         if sorted(transpress, reverse=True) != transpress:
             raise ValueError("Transition pressure list entered is not sorted.")
-            sys.exit(0)
         elif transpress[0] == transpress[self.nLayers]:
             print("%g %g %g" % (transpress[0], transpress[1], transpress[2]))
             raise ValueError("No layers to integrate.")
-            sys.exit(0)
 
         def f(t, y, eos, n):
             """
+            Function we're actually integrating
             :param t: current radius
             :param y: current pressure
             :param eos: equation of state being used for this layer
@@ -136,7 +138,6 @@ class Planet:
                 rad.append(np.array(z.t).tolist())
                 mass.append(np.array(z.y[0]).tolist())
                 press.append(np.array(z.y[1]).tolist())
-
                 # Heat capacity
                 u.append(z.y[2].tolist())
 
@@ -147,7 +148,7 @@ class Planet:
                     which_loop = 'second loop'
                     a = rad[-2]  # last positive pressure
                     b = rad[-1]  # first negative pressure
-                    c = 0.5 * (a + b)
+                    c = 0.5 * (a + b) # average them together
 
                 # if z.y[1]) == transition_pressure, will not enter second while loop
                 if z.y[1] == transition_pressure:
@@ -156,11 +157,17 @@ class Planet:
                     press[-1] = z.y[1]
                     u[-1] = z.y[2]
 
+            check_pressure = c
+            assert(check_pressure > 0) # don't want to pass negative pressure into integration
+
             # Bisection Method
             counter = 0
-            while z.successful() and abs(transition_pressure - z.y[1]) > max(transition_pressure * relative_tolerance, 10000) and which_loop == 'second loop':
+
+            while (z.y[1] < 0 or abs(transition_pressure - z.y[1]) > max(transition_pressure * relative_tolerance, 10000)) and which_loop == 'second loop':
                 counter += 1
-                z.integrate(c)
+                # print("counter")
+                # print(counter)
+                z.integrate(c)  # trying a different pressure (c)
                 press_c = z.y[1]
                 if press_a > transition_pressure and press_c > transition_pressure:
                     press_a = press_c
@@ -169,8 +176,12 @@ class Planet:
                     press_b = press_c
                     b = c
                 c = 0.5 * (a + b)
+                # print("next pressure in bisection method", c)
             print("This layer went through " + repr(counter) + " bisection method steps.")
-            # TODO: MAKE SURE PRESSURE RETURNS A POSITIVE VALUE
+            check_pressure = z.y[1]
+            assert(z.successful())
+            assert(check_pressure > 0)
+
             rad[-1] = z.t
             mass[-1] = z.y[0]
             press[-1] = z.y[1]
@@ -243,12 +254,12 @@ class Planet:
                     # properties given t0 and y0
                     rad_init, mass_init, press_init, u_init, more_rad, more_mass, more_press, more_u = RK4(f, y0, rad_init, dt,
                                                                                            transpress[i], i)
-                    rad.extend(more_rad)
-                    mass.extend(more_mass)
-                    press.extend(more_press)
+                    rad.append(more_rad)
+                    mass.append(more_mass)
+                    press.append(more_press)
 
                     # heat capacity
-                    u.extend(more_u)
+                    u.append(more_u)
                 else:
                     print("integrate layer %d" % (i))
                     rad_init, mass_init, press_init, u_init = RK4(f, y0, rad_init, dt, transpress[i], i)
