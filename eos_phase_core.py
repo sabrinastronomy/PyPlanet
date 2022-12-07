@@ -7,7 +7,7 @@ from pynbody.analysis.interpolate import interpolate3d
 class CoreEos:
     def __init__(self, type_prof, temperatures, pressures_core=None):
         assert type_prof == "_constant" or type_prof == "_adiabatic_"
-        self.eos_loc = "/Users/sabrinaberger/Desktop/EoS/"
+        self.eos_loc = "/home/scberger/EoS"
         os.chdir(self.eos_loc)  # loading in files from EoS directory
         self.type_prof = type_prof
         self.read_in_tables_interpolate()
@@ -86,16 +86,20 @@ class CoreEos:
             self.temperatures[molten_mask] = self.get_Fel_adiabatic_temp_profile(self.pressures[molten_mask], anchor_temperature)
 
         self.densities = np.empty(np.shape(self.pressures))
-        molten_densities = self.f_rho_Fel(self.temperatures[molten_mask], self.pressures[molten_mask])
-        non_molten_densities = self.f_rho_Fes(self.temperatures[non_molten_mask], self.pressures[non_molten_mask])[0, :]
-        if molten_densities.ndim == 2:
-            self.densities[molten_mask] = molten_densities[0, :]
-        else:
-            self.densities[molten_mask] = molten_densities
-        if non_molten_densities.ndim == 2:
-            self.densities[non_molten_mask] = non_molten_densities[0, :]
-        else:
-            self.densities[non_molten_mask] = non_molten_densities
+
+        if molten_mask.any():
+            molten_densities = self.f_rho_Fel(self.temperatures[molten_mask], self.pressures[molten_mask])
+            if molten_densities.ndim == 2:
+                self.densities[molten_mask] = molten_densities[0, :]
+            else:
+                self.densities[molten_mask] = molten_densities
+        if non_molten_mask.any():
+            non_molten_densities = self.f_rho_Fes(self.temperatures[non_molten_mask], self.pressures[non_molten_mask])[
+                                   0, :]
+            if non_molten_densities.ndim == 2:
+                self.densities[non_molten_mask] = non_molten_densities[0, :]
+            else:
+                self.densities[non_molten_mask] = non_molten_densities
 
         self.Cp = np.full(np.shape(self.densities), 840) # 840 J/K/kg - constant heat capacity in core
         self.core_mat = ["liq_iron" if bin_core else "sol_iron" for bin_core in molten_mask]

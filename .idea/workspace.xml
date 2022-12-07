@@ -9,7 +9,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eos_phase_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/eos_phase_core.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/eos_phase_mantle.py" beforeDir="false" afterPath="$PROJECT_DIR$/eos_phase_mantle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_planet.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_planet.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,9 +173,6 @@
       <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -304,12 +303,26 @@
       <workItem from="1668360884741" duration="31014000" />
       <workItem from="1669696586553" duration="5000" />
       <workItem from="1670012961849" duration="31461000" />
-      <workItem from="1670226459883" duration="600000" />
+      <workItem from="1670226459883" duration="5522000" />
+      <workItem from="1670286577743" duration="1339000" />
+      <workItem from="1670389545110" duration="1159000" />
     </task>
+    <task id="LOCAL-00001" summary="directory issue">
+      <created>1670227071804</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670227071804</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="directory issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="directory issue" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -318,6 +331,11 @@
           <url>file://$PROJECT_DIR$/plotting_scripts/plotting.py</url>
           <line>30</line>
           <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/eos_phase_core.py</url>
+          <line>81</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -332,6 +350,6 @@
     <SUITE FILE_PATH="coverage/PyPlanet$eos_phase.coverage" NAME="eos_phase Coverage Results" MODIFIED="1668366147503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$eos_phase_mantle.coverage" NAME="eos_phase_mantle Coverage Results" MODIFIED="1670188668140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/PyPlanet$mass_radius_relations.coverage" NAME="mass_radius_relations Coverage Results" MODIFIED="1652330325009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/PyPlanet$run__1_.coverage" NAME="run (1) Coverage Results" MODIFIED="1670201660928" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/PyPlanet$run__1_.coverage" NAME="run (1) Coverage Results" MODIFIED="1670390685810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

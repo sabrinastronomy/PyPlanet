@@ -103,11 +103,8 @@ class PlanetGrid:
 
         # iterating over mesh grid of p_cmb and p_cmb/p_c ratio where each distinct i and j pair correspond to a different planet
         for i in range(self.num_rows):
-            planet_number += 1
             for j in range(self.num_cols):
-                if self.debug_certain_planet:
-                    if planet_number != 2:
-                        continue
+                planet_number += 1
                 self.layers = [] # instances of EoS layer
                 layers = self.layers
                 self.intermediate_transition_pressures = []
