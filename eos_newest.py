@@ -218,7 +218,7 @@ class EoS:
             self.layer_eos.append(["", "", ""]) # return empty string place holders in the layer eos list
             return
         # creating placeholder lists for density and heat capacity
-        mantle_holder = eos_phase_mantle.AdiabaticMantleEOS(S_setting=self.entropy, P_mantle_planet=self.pressures_mantle, need_plot=True)
+        mantle_holder = eos_phase_mantle.AdiabaticMantleEOS(S_setting=self.entropy, P_mantle_planet=self.pressures_mantle, need_plot=False)
         layer_rho_data = mantle_holder.mantle_global_rho
         layer_cp_data = mantle_holder.mantle_global_Cp
         self.temperatures_mantle = mantle_holder.mantle_global_T

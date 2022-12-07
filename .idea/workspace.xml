@@ -7,12 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eos_phase_core.py" beforeDir="false" afterPath="$PROJECT_DIR$/eos_phase_core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eos_phase_mantle.py" beforeDir="false" afterPath="$PROJECT_DIR$/eos_phase_mantle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_planet.png" beforeDir="false" afterPath="$PROJECT_DIR$/test_planet.png" afterDir="false" />
-    </list>
+    <list default="true" id="4e71a348-93a2-4a31-8c5c-bbd84fbdf1f9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -173,6 +168,9 @@
       <module name="PyPlanet" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -305,7 +303,7 @@
       <workItem from="1670012961849" duration="31461000" />
       <workItem from="1670226459883" duration="5522000" />
       <workItem from="1670286577743" duration="1339000" />
-      <workItem from="1670389545110" duration="1159000" />
+      <workItem from="1670389545110" duration="1392000" />
     </task>
     <task id="LOCAL-00001" summary="directory issue">
       <created>1670227071804</created>
@@ -314,7 +312,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670227071804</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="directory issue">
+      <created>1670390901754</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670390901754</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
