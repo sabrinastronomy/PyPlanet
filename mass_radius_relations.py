@@ -6,6 +6,7 @@ Written by Sabrina Berger
 from scipy import interpolate
 import numpy as np
 import astropy.constants as const
+import numpy.ma as ma
 
 mars_cmf = 0.26
 earth_cmf = 0.33
@@ -13,13 +14,12 @@ cmfs_of_interest = [earth_cmf, mars_cmf]
 # source_location = "/Users/sabrinaberger/RockyPlanets/DataFiles/"
 # final_location = "/Users/sabrinaberger/RockyPlanets/MassRadiusDiagramData/"
 
-
 def grid_to_1Darray(grid):
     compressed = []
     for i in range(grid.shape[0]):
         for j in range(grid.shape[1]):
             compressed.append(grid[i][j])
-    return compressed
+    return np.asarray(compressed)
 
 
 def planet_interp(location, label, anchor_temps, cmf_of_interest):
@@ -28,17 +28,30 @@ def planet_interp(location, label, anchor_temps, cmf_of_interest):
     for temp in anchor_temps:
         properties = []
         label = "_" + label + "_"
-        p_c_list = grid_to_1Darray(np.load(location + "p_c_grid" + label + str(temp) + ".pyc" + ".npy"))
+        p_c_list = grid_to_1Darray(np.load(location + "p_c_grid" + label + str(temp) + ".npy"))
         print("length {}".format(len(p_c_list)))
         print("max {}".format(max(p_c_list)))
         print("min {}".format(min(p_c_list)))
 
-        p_cmb_pc_list = grid_to_1Darray(np.load(location + "p_cmb_percentage_grid" + label + str(temp) + ".pyc" + ".npy"))
-        mass_list = grid_to_1Darray(np.load(location + "mass_grid" + label + str(temp) + ".pyc" + ".npy"))
-        radius_list = grid_to_1Darray(np.load(location + "radius_grid" + label + str(temp) + ".pyc" + ".npy"))
-        cmf_list = grid_to_1Darray(np.load(location + "core_mass_grid" + label + str(temp) + ".pyc" + ".npy"))
-        cmr_list = grid_to_1Darray(np.load(location + "core_rad_grid" + label + str(temp) + ".pyc" + ".npy"))
+        p_cmb_pc_list = grid_to_1Darray(np.load(location + "p_cmb_percentage_grid" + label + str(temp) + ".npy"))
+        mass_list = grid_to_1Darray(np.load(location + "mass_grid" + label + str(temp) + ".npy"))
+        radius_list = grid_to_1Darray(np.load(location + "radius_grid" + label + str(temp) + ".npy"))
+        cmf_list = grid_to_1Darray(np.load(location + "core_mass_grid" + label + str(temp) + ".npy"))
+        cmr_list = grid_to_1Darray(np.load(location + "core_rad_grid" + label + str(temp) + ".npy"))
+
+        x = np.nonzero(radius_list > 0.1)[0]
+        print("how many?")
+        print(len(x))
+        print(len(radius_list))
+        p_cmb_pc_list = p_cmb_pc_list[x]
+        mass_list = mass_list[x]
+        radius_list = radius_list[x]
+        cmf_list = cmf_list[x]
+        cmr_list = cmr_list[x]
+        p_c_list = p_c_list[x]
+
         p_c_unique_dict = {}
+
         mass_values = [] # test plots
         radius_values = [] # test plots
         i = 0
@@ -85,73 +98,79 @@ def planet_interp(location, label, anchor_temps, cmf_of_interest):
 
 if __name__ == "__main__":
     import matplotlib.pyplot as plt
+    import matplotlib
 
-    # temp_range_test = [3000]
-    # colors = ["blue", "orange"]
-    # styles_adiabatic = ["solid", "dashed", "dashdot"]
-    # styles_constant = ["dashed", "solid"]
-    # style_w_temps = [styles_adiabatic, styles_constant]
-    # temp_types = ["adiabatic", "constant"]
-    # cmfs = [0.33, 0.67]
-    # for cmf, color in zip(cmfs, colors):
-    #     for temp_type, styles in zip(temp_types, style_w_temps):
-    #         for temp, style in zip(temp_range_test, styles):
-    #             # if temp == 1000 and temp_type == "constant":
-    #             #     continue
-    #             data_files_stored_in = f"/Users/sabrinaberger/complete_data_with_silicate_mantle/{temp}_{temp_type}_data/"
-    #             mass_plots, radius_plots = planet_interp(data_files_stored_in, temp_type, [temp], cmf)
-    #             plt.plot(mass_plots, radius_plots, c=color, ls=style)
-    #             if cmf == cmfs[0]:
-    #                 plt.plot(np.nan, np.nan, c="k", ls=style, label=f"{temp} K {temp_type.title()}")
-    # # create legend
-    # plt.plot(np.nan, np.nan, c="blue", ls="-", label="Earth: CMF = 0.33 ")
-    # plt.plot(np.nan, np.nan, c="orange", ls="-", label="Mercury: CMF = 0.66 ")
-    # # plt.xlim(1, 4.5)
-    #
-    # plt.legend()
-    # # plt.ylabel(r'$\log(R_{pl})$', r'[$R_{\bigoplus}$]')
-    # # plt.xlabel(r'$\log(M_{pl})$', r'[$M_{\bigoplus}$]')
-    # plt.title("Linear Mass-Radius Relationships")
-    #     # plt.plot(mass_plots, 100*(radius_plots-radius_plots_300K)/radius_plots_300K)
-    # # print("plotted")
-    # plt.savefig("paper_plots/linear_new_mr.pdf")
-    # plt.savefig("paper_plots/linear_new_mr.png", dpi=300)
-    # plt.close()
+    plt.rc('font', family='serif')
 
-    ### DIFFERENCE
-    temp_range_test = [300, 1000, 3000]
+    temp_range_test = [300, 3000]
     colors = ["blue", "orange"]
-    styles_adiabatic = ["dashdot", "dashed", "dotted"]
-    styles_constant = ["dashed", "solid"]
-    style_w_temps = [styles_adiabatic, styles_constant]
+    styles_adiabatic = ["solid", "dashed", "dashdot"]
+    # styles_constant = ["dashed", "solid"]
+    style_w_temps = [styles_adiabatic]
     temp_types = ["adiabatic"]
     cmfs = [0.33, 0.67]
-
     for cmf, color in zip(cmfs, colors):
         for temp_type, styles in zip(temp_types, style_w_temps):
             for temp, style in zip(temp_range_test, styles):
-                compare_mass_plots, compare_radius_plots = planet_interp("/Users/sabrinaberger/complete_data_with_silicate_mantle/300_constant_data/", "constant", [300], cmf)
-                data_files_stored_in = f"/Users/sabrinaberger/complete_data_with_silicate_mantle/{temp}_{temp_type}_data/"
+                # if temp == 1000 and temp_type == "constant":
+                #     continue
+
+                data_files_stored_in = f"/Users/sabrinaberger/paper/complete_data_with_silicate_mantle/{temp}_{temp_type}_data/"
                 mass_plots, radius_plots = planet_interp(data_files_stored_in, temp_type, [temp], cmf)
-                print(min(compare_mass_plots))
-
-                print(min(mass_plots))
-
-                perc_mass = 100*(mass_plots - compare_mass_plots)/compare_mass_plots
-                perc_rad = 100*(radius_plots - compare_radius_plots)/compare_radius_plots
-                plt.plot(mass_plots, perc_rad, c=color, ls=style)
+                plt.plot(mass_plots, radius_plots, c=color, ls=style)
                 if cmf == cmfs[0]:
                     plt.plot(np.nan, np.nan, c="k", ls=style, label=f"{temp} K {temp_type.title()}")
     # create legend
     plt.plot(np.nan, np.nan, c="blue", ls="-", label="Earth: CMF = 0.33 ")
     plt.plot(np.nan, np.nan, c="orange", ls="-", label="Mercury: CMF = 0.66 ")
     # plt.xlim(1, 4.5)
-    plt.ylabel("Radial % Difference from 300K Constant Planets")
+
     plt.legend()
-    # plt.ylabel(r'$\log(R_{pl})$', r'[$R_{\bigoplus}$]')
-    # plt.xlabel(r'$\log(M_{pl})$', r'[$M_{\bigoplus}$]')
-    plt.title("Comparing Mass-Radius Relationships")
+
+    plt.xlabel(r'$M_{\bigoplus}$')
+    plt.ylabel(r"$R_{\bigoplus}$")
+
+    plt.title("Linear Mass-Radius Relationships")
         # plt.plot(mass_plots, 100*(radius_plots-radius_plots_300K)/radius_plots_300K)
     # print("plotted")
-    plt.savefig("paper_plots/diff_new_mr.pdf")
-    plt.savefig("paper_plots/diff_new_mr.png", dpi=300)
+    plt.savefig("paper_plots/linear_new_mr.pdf")
+    plt.savefig("paper_plots/linear_new_mr.png", dpi=300)
+    plt.close()
+
+    ### DIFFERENCE
+    # temp_range_test = [300, 1000, 3000]
+    # colors = ["blue", "orange"]
+    # styles_adiabatic = ["dashdot", "dashed", "dotted"]
+    # styles_constant = ["dashed", "solid"]
+    # style_w_temps = [styles_adiabatic, styles_constant]
+    # temp_types = ["adiabatic"]
+    # cmfs = [0.33, 0.67]
+    #
+    # for cmf, color in zip(cmfs, colors):
+    #     for temp_type, styles in zip(temp_types, style_w_temps):
+    #         for temp, style in zip(temp_range_test, styles):
+    #             compare_mass_plots, compare_radius_plots = planet_interp("/Users/sabrinaberger/complete_data_with_silicate_mantle/300_constant_data/", "constant", [300], cmf)
+    #             data_files_stored_in = f"/Users/sabrinaberger/complete_data_with_silicate_mantle/{temp}_{temp_type}_data/"
+    #             mass_plots, radius_plots = planet_interp(data_files_stored_in, temp_type, [temp], cmf)
+    #             print(min(compare_mass_plots))
+    #
+    #             print(min(mass_plots))
+    #
+    #             perc_mass = 100*(mass_plots - compare_mass_plots)/compare_mass_plots
+    #             perc_rad = 100*(radius_plots - compare_radius_plots)/compare_radius_plots
+    #             plt.plot(mass_plots, perc_rad, c=color, ls=style)
+    #             if cmf == cmfs[0]:
+    #                 plt.plot(np.nan, np.nan, c="k", ls=style, label=f"{temp} K {temp_type.title()}")
+    # # create legend
+    # plt.plot(np.nan, np.nan, c="blue", ls="-", label="Earth: CMF = 0.33 ")
+    # plt.plot(np.nan, np.nan, c="orange", ls="-", label="Mercury: CMF = 0.66 ")
+    # # plt.xlim(1, 4.5)
+    # plt.ylabel("Radial % Difference from 300K Constant Planets")
+    # plt.legend()
+    # # plt.ylabel(r'$\log(R_{pl})$', r'[$R_{\bigoplus}$]')
+    # # plt.xlabel(r'$\log(M_{pl})$', r'[$M_{\bigoplus}$]')
+    # plt.title("Comparing Mass-Radius Relationships")
+    #     # plt.plot(mass_plots, 100*(radius_plots-radius_plots_300K)/radius_plots_300K)
+    # # print("plotted")
+    # plt.savefig("paper_plots/diff_new_mr.pdf")
+    # plt.savefig("paper_plots/diff_new_mr.png", dpi=300)

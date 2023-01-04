@@ -3,11 +3,13 @@ import os
 import numpy as np
 from scipy import interpolate
 from pynbody.analysis.interpolate import interpolate3d
+import matplotlib.pyplot as plt
+plt.rc('font', family='serif')
 
 class CoreEos:
     def __init__(self, type_prof, temperatures, pressures_core=None):
         assert type_prof == "_constant" or type_prof == "_adiabatic_"
-        self.eos_loc = "/home/scberger/EoS"
+        self.eos_loc = "/Users/sabrinaberger/Desktop/EoS"
         os.chdir(self.eos_loc)  # loading in files from EoS directory
         self.type_prof = type_prof
         self.read_in_tables_interpolate()
@@ -102,5 +104,23 @@ class CoreEos:
                 self.densities[non_molten_mask] = non_molten_densities
 
         self.Cp = np.full(np.shape(self.densities), 840) # 840 J/K/kg - constant heat capacity in core
-        self.core_mat = ["liq_iron" if bin_core else "sol_iron" for bin_core in molten_mask]
+        # key self.core_mat = ["liq_iron" if bin_core else "sol_iron" for bin_core in molten_mask]
+        self.core_mat = [0 if bin_core else 1 for bin_core in molten_mask]
 
+if __name__ == "__main__":  # only executes if running run.py versus calling a function
+    entropies = [300, 3000, 4000]
+    markers = [".", "D", "s"]
+    for S, marker in zip(entropies, markers):
+        new_mantle = CoreEos(S_setting=S)
+        print(min(new_mantle.pressures))
+        print(min(new_mantle.temperatures))
+
+        plt.scatter(new_mantle.pressures/1e9, new_mantle.temperatures, c=new_mantle.Cp, label=f"S = {S}", vmin=0, vmax=1700, marker=marker)
+    plt.xlabel("P [GPa]")
+    plt.ylabel("T [K]")
+    plt.vlines(23, 0, 4000, color="k")
+    plt.text(40, 1000, "perovskite")
+    plt.text(0, 1000, "enstatite")
+    plt.legend()
+    plt.colorbar(label=r"$\rho \rm ~[kg~m^{-3}]$ ")
+    plt.savefig("core_overview_entropies.png", dpi=300)

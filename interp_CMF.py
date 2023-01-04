@@ -259,6 +259,7 @@ def planet_interp(top_location, anchor_temps, cmfs_of_interest, masses_of_intere
     if label != "u":
         mass_temped.append(mass_values)
         return np.array(u_temped), np.array(mass_temped), np.array(radius_temped), sorted_dict_keys
+        return np.array(u_temped), np.array(mass_temped), np.array(radius_temped), sorted_dict_keys
 
     print(temp)
     print("U_monotonicity {}".format(monotonic(np.array(u_temped).flatten())))

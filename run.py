@@ -11,8 +11,9 @@ import burnman.minerals  # relevant burnman minerals package
 testing = False
 
 # This is the location where ALL output planetary grids are stored
+location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/Current Research/RockyPlanets/PyPlanet/paper"
 # location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/paper_data"
-location = "paper"
+# location = "paper"
 thermal_location = location + "/complete_data_with_silicate_mantle"
 
 """ 
@@ -103,8 +104,8 @@ if __name__ == "__main__":  # only executes if running run.py versus calling a f
 
     #second step
     default_central_pressures = [8, 12]
-    default_grid_size = [100, 100]
-    entropy_range = [3000] # new in 2022
+    default_grid_size = [30, 30]
+    entropy_range = [3000, 1000] # new in 2022
     # adiabatic planetary grids
     varying_temp("_adiabatic_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing)
     # constant temperature planetary grids
