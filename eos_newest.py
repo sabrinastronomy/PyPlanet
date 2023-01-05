@@ -261,10 +261,10 @@ class EoS:
                 if len(self.temperatures_mantle) > 1:  # only enters if there is a mantle
                     first_layer_temps = np.max(self.temperatures_mantle)  # lower mantle max temperature is the first pressure in the list of core pressures
                     print(f"last anchor temperature of core is {first_layer_temps}.")
-                    np.save("anchor_temp.npy", first_layer_temps)
+                    np.save(f"anchor_temp_{self.entropy}.npy", first_layer_temps)
                 else:
                     ### NO MANTLE
-                    first_layer_temps = np.load("anchor_temp.npy")
+                    first_layer_temps = np.load(f"anchor_temp_{self.entropy}.npy")
                 core_temp_adiabatic_pre = geotherm.adiabatic(self.pressures_core, first_layer_temps, core_sol.composite)  # core temps before putting them into the list of all core tempeartures
                 self.core_temperatures = core_temp_adiabatic_pre  # first temperature corresponds to cmb
             elif self.temp_profile == "_constant_":
