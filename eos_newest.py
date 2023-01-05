@@ -109,7 +109,7 @@ class EoS:
             exit()
             # self.temperatures = np.full(int(1e4), self.anchor_temperature) # creating a constant temperature array
             # self.mantle_constant_eos_function_generate()
-        elif self.temp_profile == "_adiabatic_":  # constant temperatures
+        elif self.temp_profile == "_adiabatic_":  # adiabatic temperatures
             self.mantle_adiabatic_eos_function_generate()
 
         # Create core EoS

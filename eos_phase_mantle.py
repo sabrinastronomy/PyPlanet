@@ -266,14 +266,23 @@ class AdiabaticMantleEOS:
 if __name__ == "__main__":  # only executes if running run.py versus calling a function
     entropies = [300, 3000, 4000]
     markers = [".", "D", "v"]
+    min_density = 10000
+    max_density = 0
     for S, marker in zip(entropies, markers):
         new_mantle = AdiabaticMantleEOS(need_plot=False, S_setting=S)
-        plt.scatter(new_mantle.mantle_global_P/1e9, new_mantle.mantle_global_T, c=new_mantle.mantle_global_rho, label=f"S = {S}", marker=marker, vmin=1000, vmax=5000)
+        if max_density < max(new_mantle.mantle_global_rho):
+            max_density = max(new_mantle.mantle_global_rho)
+        if min_density > min(new_mantle.mantle_global_rho):
+            min_density = min(new_mantle.mantle_global_rho)
+        plt.scatter(new_mantle.mantle_global_P/1e9, new_mantle.mantle_global_T, c=new_mantle.mantle_global_rho, label=f"S = {S}", marker=marker, vmin=2500, vmax=5500)
+    print(min_density)
+    print(max_density)
     plt.xlabel("P [GPa]")
     plt.ylabel("T [K]")
-    plt.vlines(23, 0, 4000, color="k")
-    plt.text(40, 1000, "perovskite")
-    plt.text(0, 1000, "enstatite")
+
+    plt.vlines(23, 0, 5000, color="k", ls="--")
+    plt.text(25, 1000, "perovskite")
+    plt.text(5, 1000, "enstatite")
     plt.legend()
     plt.colorbar(label=r"$\rho \rm ~[kg~m^{-3}]$ ")
     plt.savefig("overview_entropies.png", dpi=300)

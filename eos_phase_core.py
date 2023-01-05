@@ -107,20 +107,22 @@ class CoreEos:
         # key self.core_mat = ["liq_iron" if bin_core else "sol_iron" for bin_core in molten_mask]
         self.core_mat = [0 if bin_core else 1 for bin_core in molten_mask]
 
-if __name__ == "__main__":  # only executes if running run.py versus calling a function
-    entropies = [300, 3000, 4000]
-    markers = [".", "D", "s"]
-    for S, marker in zip(entropies, markers):
-        new_mantle = CoreEos(S_setting=S)
-        print(min(new_mantle.pressures))
-        print(min(new_mantle.temperatures))
-
-        plt.scatter(new_mantle.pressures/1e9, new_mantle.temperatures, c=new_mantle.Cp, label=f"S = {S}", vmin=0, vmax=1700, marker=marker)
-    plt.xlabel("P [GPa]")
-    plt.ylabel("T [K]")
-    plt.vlines(23, 0, 4000, color="k")
-    plt.text(40, 1000, "perovskite")
-    plt.text(0, 1000, "enstatite")
-    plt.legend()
-    plt.colorbar(label=r"$\rho \rm ~[kg~m^{-3}]$ ")
-    plt.savefig("core_overview_entropies.png", dpi=300)
+# if __name__ == "__main__":  # only executes if running run.py versus calling a function
+#     entropies = [300, 3000, 4000]
+#     markers = [".", "D", "s"]
+#     pressures_core = np.linspace(0, 1e11, int(1e4))  # pressures in core
+#     type_prof, temperatures, pressures_core = None)
+#     for S, marker in zip(entropies, markers):
+#         new_mantle = CoreEos(S_setting=S)
+#         print(min(new_mantle.pressures))
+#         print(min(new_mantle.temperatures))
+#
+#         plt.scatter(new_mantle.pressures/1e9, new_mantle.temperatures, c=new_mantle.Cp, label=f"S = {S}", vmin=0, vmax=1700, marker=marker)
+#     plt.xlabel("P [GPa]")
+#     plt.ylabel("T [K]")
+#     plt.vlines(23, 0, 4000, color="k")
+#     plt.text(40, 1000, "perovskite")
+#     plt.text(0, 1000, "enstatite")
+#     plt.legend()
+#     plt.colorbar(label=r"$\rho \rm ~[kg~m^{-3}]$ ")
+#     plt.savefig("core_overview_entropies.png", dpi=300)

@@ -3,6 +3,7 @@ This file wraps all other scripts such that you can run a full varying temperatu
 Written by Sabrina Berger
 """
 
+import sys
 # importing packages
 from planet_grid import PlanetGrid  # where the planet grid is created and run
 import numpy as np  # numpy
@@ -104,8 +105,10 @@ if __name__ == "__main__":  # only executes if running run.py versus calling a f
 
     #second step
     default_central_pressures = [8, 12]
-    default_grid_size = [30, 30]
-    entropy_range = [3000, 1000] # new in 2022
+    default_grid_size = [25, 25]
+    entropy = sys.argv[1]
+    entropy_range = [int(entropy)] # new in 2022
+
     # adiabatic planetary grids
     varying_temp("_adiabatic_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing)
     # constant temperature planetary grids
