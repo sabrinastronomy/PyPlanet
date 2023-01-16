@@ -114,6 +114,8 @@ class EoS:
 
         # Create core EoS
         self.core_eos_function_generate()
+
+        # getting pressures associated with each material so that we can later find the ones associated with the actual planets
         if self.layers_mat_dict["core"] != None and self.layers_mat_dict["mantle"] != None:
             self.pressures_concatenate = np.concatenate((self.layers_mat_dict["core"][0], self.layers_mat_dict["mantle"][0]))
             self.materials_concatenate = np.concatenate((self.layers_mat_dict["core"][1], self.layers_mat_dict["mantle"][1]))
@@ -264,7 +266,10 @@ class EoS:
                     np.save(f"anchor_temp_{self.entropy}.npy", first_layer_temps)
                 else:
                     ### NO MANTLE
-                    first_layer_temps = np.load(f"anchor_temp_{self.entropy}.npy")
+                    try:
+                        first_layer_temps = np.load(f"anchor_temp_{self.entropy}.npy") # just using anchor temp from previous planet in grid
+                    except:
+                        first_layer_temps = self.entropy
                 core_temp_adiabatic_pre = geotherm.adiabatic(self.pressures_core, first_layer_temps, core_sol.composite)  # core temps before putting them into the list of all core tempeartures
                 self.core_temperatures = core_temp_adiabatic_pre  # first temperature corresponds to cmb
             elif self.temp_profile == "_constant_":

@@ -9,7 +9,7 @@ plt.rc('font', family='serif')
 class CoreEos:
     def __init__(self, type_prof, temperatures, pressures_core=None):
         assert type_prof == "_constant" or type_prof == "_adiabatic_"
-        self.eos_loc = "/Users/sabrinaberger/Desktop/EoS"
+        self.eos_loc = "/home/scberger/scratch-midway2/EoS"
         os.chdir(self.eos_loc)  # loading in files from EoS directory
         self.type_prof = type_prof
         self.read_in_tables_interpolate()
