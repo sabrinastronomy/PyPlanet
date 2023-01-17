@@ -18,7 +18,7 @@ import os
 
 
 class PlanetGrid:
-    def __init__(self, entropy, central_pressures, grid_size, temp_profile, location, layers_types, minfractions, want_full_profile=True,
+    def __init__(self, entropy, central_pressures, grid_size, temp_profile, location, layers_types, minfractions,
                  relative_tolerance=1e-5, testing=False, debug_certain_planet=False, certain_planet=None, restart=False):
         # Initial parameters
         self.location = location
@@ -26,7 +26,6 @@ class PlanetGrid:
         self.entropy = entropy
         self.central_pressures = central_pressures
         self.grid_size = grid_size  # grid_size[0] = number of central pressures, grid_size[1] = number of ratios of CMB pressure/central pressure
-        self.want_full_profile = want_full_profile
         self.relative_tolerance = relative_tolerance
         save_folder = self.save_folder = location + "/" + str(entropy) + temp_profile + "data/"
         self.debug_certain_planet = debug_certain_planet # boolean if you want to debug a specific planet in the grid
@@ -105,6 +104,8 @@ class PlanetGrid:
         p_cmb_grid = self.p_cmb_grid
         entropy = self.entropy
         full_radius_grid = self.full_radius_grid
+        press_mat_actual = self.press_mat_actual
+
         xx = self.xx
         yy = self.yy
         temp_profile = self.temp_profile # whether a constant or adiabatic planet is being integrated
@@ -204,7 +205,8 @@ class PlanetGrid:
                     save(save_folder + "p_cmb_simulated" + temp_profile + str(entropy), p_cmb_simulated)
                     save(save_folder + "p_cmb_grid" + temp_profile + str(entropy), p_cmb_grid)
                     save(save_folder + "u_grid" + temp_profile + str(entropy), u_grid)
-                    save(save_folder + "materials" + temp_profile + str(entropy), self.press_mat_actual)
+                    save(save_folder + "materials" + temp_profile + str(entropy), press_mat_actual)
+                    save(save_folder + "full_radius_grid" + temp_profile + str(entropy), full_radius_grid)
 
                     print("The following data files have been created or overwritten: ")
                     print(save_folder + "p_c_grid" + temp_profile + str(entropy))
@@ -217,12 +219,9 @@ class PlanetGrid:
                     print(save_folder + "p_cmb_simulated" + temp_profile + str(entropy))
                     print(save_folder + "p_cmb_grid" + temp_profile + str(entropy))
                     print(save_folder + "u_grid" + temp_profile + str(entropy))
+                    print(save_folder + "materials" + temp_profile + str(entropy))
+                    print(save_folder + "full_radius_grid" + temp_profile + str(entropy))
                     print("Saved materials and full radius profile...")
 
         print("Done. Integrated " + str(planet_number) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
               str((time.time() - initial_time) / 60) + " minutes" + ".")
-
-        # if want_full_profile:
-        #     return xx, yy, radius_grid, mass_grid, press_grid, core_mass_grid, core_rad_grid, u_grid
-
-

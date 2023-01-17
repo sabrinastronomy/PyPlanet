@@ -115,7 +115,7 @@ if __name__ == "__main__":  # only executes if running run.py versus calling a f
     entropy_range = [int(entropy)] # new in 2022
 
     # adiabatic planetary grids
-    varying_temp("_adiabatic_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing, restart=True)
+    varying_temp("_adiabatic_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing, restart=False)
     # constant temperature planetary grids
     # varying_temp("_constant_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing)
 
