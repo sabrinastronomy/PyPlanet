@@ -115,7 +115,8 @@ class PlanetGrid:
 
         if self.restart:
             mask = self.radius_grid == -1  # creating mask where True if the element hasn't been explored yet
-            last_index = np.unravel_index(np.argmax(mask, axis=None), mask.shape) # should get the first index that's 0
+            last_index = np.unravel_index(np.argmax(mask, axis=None), mask.shape) # should get the first index that's -1
+            print("STARTING GRID FROM: ")
             print(last_index)
             iterator_rows = range(last_index[0], self.num_rows)
             iterator_cols = range(last_index[1], self.num_cols)

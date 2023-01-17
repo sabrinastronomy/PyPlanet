@@ -5,7 +5,6 @@ Written by Jisheng Zhang and Sabrina Berger
 """
 
 eos_loc = "/home/scberger/scratch-midway2/EoS"
-
 import numpy as np
 from scipy import interpolate
 from pynbody.analysis.interpolate import interpolate2d
