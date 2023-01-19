@@ -6,7 +6,7 @@ Written by Sabrina Berger
 
 # importing packages
 
-
+from mpi4py import MPI
 import subprocess  # for creating directories
 import time  # for timing integrations
 import eos_newest
@@ -20,7 +20,7 @@ import os
 class PlanetGrid:
     def __init__(self, entropy, central_pressures, grid_size, temp_profile, location, layers_types, minfractions,
                  relative_tolerance=1e-5, testing=False, debug_certain_planet=False, certain_planet=None, restart=False,
-                 last_index=None, use_MPI=True, rank=None):
+                 last_index=None, use_MPI=True, rank=None, comm=None):
         # Initial parameters
         self.location = location
         self.temp_profile = temp_profile
@@ -35,6 +35,7 @@ class PlanetGrid:
         self.last_index = last_index
         self.use_MPI = use_MPI
         self.rank = rank
+        self.comm_g = comm
 
         try:
             os.makedirs(self.save_folder)
@@ -75,7 +76,7 @@ class PlanetGrid:
             self.press_mat_actual = load(save_folder + "materials" + temp_profile + str(entropy) + ".npy", allow_pickle=True)
             self.full_radius_grid = load(save_folder + "full_rad_grids" + temp_profile + str(entropy) + ".npy")  # full radius grids
 
-        else:
+        elif self.use_MPI and rank == 0:
             self.radius_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # the total radii
             self.mass_grid = full(shape=(num_rows, num_cols), fill_value=-1, dtype=float64)  # the total masses
             self.press_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # the total pressures
@@ -84,6 +85,21 @@ class PlanetGrid:
             self.p_cmb_simulated = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # transition pressures computed during integration
             self.p_cmb_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # transition pressures inputted
 
+            # Thermal evolution
+            self.u_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # relative total thermal energy
+
+            # This is getting the materials in the planet at each pressure
+            self.full_radius_grid = ndarray(shape=(num_rows, num_cols), dtype=object)  # full radius grids
+            self.press_mat_actual = ndarray(shape=(num_rows, num_cols), dtype=object)
+
+        else:
+            self.radius_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # the total radii
+            self.mass_grid = full(shape=(num_rows, num_cols), fill_value=-1, dtype=float64)  # the total masses
+            self.press_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # the total pressures
+            self.core_mass_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # masses at CMB
+            self.core_rad_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # radii at CMB
+            self.p_cmb_simulated = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # transition pressures computed during integration
+            self.p_cmb_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # transition pressures inputted
 
             # Thermal evolution
             self.u_grid = full(shape=(num_rows, num_cols), fill_value=-1., dtype=float64)  # relative total thermal energy
@@ -96,6 +112,42 @@ class PlanetGrid:
     def integrateGrid(self):
         # Time and Count Parameters
         planet_number = 0
+        print("Type of EoS used in this grid: " + self.temp_profile)
+
+        if self.use_MPI:
+            iterator_rows = [self.rank]
+            # scattering grid across nodes
+            self.radius_grid = self.comm_g.scatter(self.radius_grid, root=0)
+            self.mass_grid = self.comm_g.scatter(self.mass_grid, root=0)
+            self.press_grid = self.comm_g.scatter(self.press_grid, root=0)
+            self.core_mass_grid = self.comm_g.scatter(self.core_mass_grid, root=0)
+            self.core_rad_grid = self.comm_g.scatter(self.core_rad_grid, root=0)
+            self.p_cmb_simulated = self.comm_g.scatter(self.p_cmb_simulated, root=0)
+            self.p_cmb_grid = self.comm_g.scatter(self.p_cmb_grid, root=0)
+            # Thermal evolution
+            self.u_grid = self.comm_g.scatter(self.u_grid, root=0)
+            # This is getting the materials in the planet at each pressure
+            self.full_radius_grid = self.comm_g.scatter(self.full_radius_grid, root=0)
+            self.press_mat_actual = self.comm_g.scatter(self.press_mat_actual, root=0)
+            print(f"Integrating planets in row {self.rank} on node #{self.rank}.")
+        elif self.restart:
+            mask = self.radius_grid == -1  # creating mask where True if the element hasn't been explored yet
+            if self.last_index == None:
+                self.last_index = np.unravel_index(np.argmax(mask, axis=None), mask.shape) # should get the first index that's -1
+
+            iterator_rows = range(self.last_index[0], self.num_rows)
+            iterator_cols = range(self.last_index[1], self.num_cols)
+
+            print("STARTING GRID FROM: ")
+            print(self.last_index)
+        else:
+            if self.last_index != None:
+
+                iterator_rows = range(self.last_index[0], self.num_rows)
+                iterator_cols = range(self.last_index[1], self.num_cols)
+            else:
+                iterator_rows = range(self.num_rows)
+                iterator_cols = range(self.num_cols)
 
         # Aliases
         radius_grid = self.radius_grid
@@ -117,30 +169,7 @@ class PlanetGrid:
         layers_types = self.layers_types
         minfractions = self.minfractions
 
-        if self.restart:
-            mask = self.radius_grid == -1  # creating mask where True if the element hasn't been explored yet
-            if self.last_index == None:
-                self.last_index = np.unravel_index(np.argmax(mask, axis=None), mask.shape) # should get the first index that's -1
-
-            iterator_rows = range(self.last_index[0], self.num_rows)
-            iterator_cols = range(self.last_index[1], self.num_cols)
-        else:
-            if self.last_index != None:
-
-                iterator_rows = range(self.last_index[0], self.num_rows)
-                iterator_cols = range(self.last_index[1], self.num_cols)
-            else:
-                iterator_rows = range(self.num_rows)
-                iterator_cols = range(self.num_cols)
-
-        print("STARTING GRID FROM: ")
-        print(self.last_index)
-        print("Type of EoS used in this grid: " + self.temp_profile)
-
         # iterating over mesh grid of p_cmb and p_cmb/p_c ratio where each distinct i and j pair correspond to a different planet
-        if self.use_MPI:
-            iterator_rows = [self.rank]
-            print(f"Integrating planets in row {self.rank} on node #{self.rank}.")
 
         initial_time = time.time()
 
@@ -209,34 +238,50 @@ class PlanetGrid:
             print("Done with row. Integrated " + str(planet_number) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
                   str((time.time() - initial_time) / 60) + " minutes" + ".")
 
-            # saves after each row that's integrated, this means that if your job runs out of time, your grid might be incomplete
-            save(save_folder + "p_c_grid" + temp_profile + str(entropy), xx)
-            save(save_folder + "p_cmb_percentage_grid" + temp_profile + str(entropy), yy)
-            save(save_folder + "radius_grid" + temp_profile + str(entropy), radius_grid)
-            save(save_folder + "mass_grid" + temp_profile + str(entropy), mass_grid)
-            save(save_folder + "surf_press_grid" + temp_profile + str(entropy), press_grid)
-            save(save_folder + "core_mass_grid" + temp_profile + str(entropy), core_mass_grid)
-            save(save_folder + "core_rad_grid" + temp_profile + str(entropy), core_rad_grid)
-            save(save_folder + "p_cmb_simulated" + temp_profile + str(entropy), p_cmb_simulated)
-            save(save_folder + "p_cmb_grid" + temp_profile + str(entropy), p_cmb_grid)
-            save(save_folder + "u_grid" + temp_profile + str(entropy), u_grid)
-            save(save_folder + "materials" + temp_profile + str(entropy), press_mat_actual)
-            save(save_folder + "full_radius_grid" + temp_profile + str(entropy), full_radius_grid)
+            self.comm_g.Barrier()
+            if self.use_MPI:
+                self.radius_grid = self.comm_g.gather(self.radius_grid, root=0)
+                self.mass_grid = self.comm_g.gather(self.mass_grid, root=0)
+                self.press_grid = self.comm_g.gather(self.press_grid, root=0)
+                self.core_mass_grid = self.comm_g.gather(self.core_mass_grid, root=0)
+                self.core_rad_grid = self.comm_g.gather(self.core_rad_grid, root=0)
+                self.p_cmb_simulated = self.comm_g.gather(self.p_cmb_simulated, root=0)
+                self.p_cmb_grid = self.comm_g.gather(self.p_cmb_grid, root=0)
+                # Thermal evolution
+                self.u_grid = self.comm_g.gather(self.u_grid, root=0)
+                # This is getting the materials in the planet at each pressure
+                self.full_radius_grid = self.comm_g.gather(self.full_radius_grid, root=0)
+                self.press_mat_actual = self.comm_g.gather(self.press_mat_actual, root=0)
 
-            print("The following data files have been created or overwritten: ")
-            print(save_folder + "p_c_grid" + temp_profile + str(entropy))
-            print(save_folder + "p_cmb_percentage_grid" + temp_profile + str(entropy))
-            print(save_folder + "radius_grid" + temp_profile + str(entropy))
-            print(save_folder + "mass_grid" + temp_profile + str(entropy))
-            print(save_folder + "surf_press_grid" + temp_profile + str(entropy))
-            print(save_folder + "core_mass_grid" + temp_profile + str(entropy))
-            print(save_folder + "core_rad_grid" + temp_profile + str(entropy))
-            print(save_folder + "p_cmb_simulated" + temp_profile + str(entropy))
-            print(save_folder + "p_cmb_grid" + temp_profile + str(entropy))
-            print(save_folder + "u_grid" + temp_profile + str(entropy))
-            print(save_folder + "materials" + temp_profile + str(entropy))
-            print(save_folder + "full_radius_grid" + temp_profile + str(entropy))
-            print("Saved materials and full radius profile...")
+            if not self.use_MPI or self.rank == 0: # if not using MPI or rank is 0, this is entered
+                # saves after each row that's integrated, this means that if your job runs out of time, your grid might be incomplete
+                save(save_folder + "p_c_grid" + temp_profile + str(entropy), xx)
+                save(save_folder + "p_cmb_percentage_grid" + temp_profile + str(entropy), yy)
+                save(save_folder + "radius_grid" + temp_profile + str(entropy), radius_grid)
+                save(save_folder + "mass_grid" + temp_profile + str(entropy), mass_grid)
+                save(save_folder + "surf_press_grid" + temp_profile + str(entropy), press_grid)
+                save(save_folder + "core_mass_grid" + temp_profile + str(entropy), core_mass_grid)
+                save(save_folder + "core_rad_grid" + temp_profile + str(entropy), core_rad_grid)
+                save(save_folder + "p_cmb_simulated" + temp_profile + str(entropy), p_cmb_simulated)
+                save(save_folder + "p_cmb_grid" + temp_profile + str(entropy), p_cmb_grid)
+                save(save_folder + "u_grid" + temp_profile + str(entropy), u_grid)
+                save(save_folder + "materials" + temp_profile + str(entropy), press_mat_actual)
+                save(save_folder + "full_radius_grid" + temp_profile + str(entropy), full_radius_grid)
+
+                print("The following data files have been created or overwritten: ")
+                print(save_folder + "p_c_grid" + temp_profile + str(entropy))
+                print(save_folder + "p_cmb_percentage_grid" + temp_profile + str(entropy))
+                print(save_folder + "radius_grid" + temp_profile + str(entropy))
+                print(save_folder + "mass_grid" + temp_profile + str(entropy))
+                print(save_folder + "surf_press_grid" + temp_profile + str(entropy))
+                print(save_folder + "core_mass_grid" + temp_profile + str(entropy))
+                print(save_folder + "core_rad_grid" + temp_profile + str(entropy))
+                print(save_folder + "p_cmb_simulated" + temp_profile + str(entropy))
+                print(save_folder + "p_cmb_grid" + temp_profile + str(entropy))
+                print(save_folder + "u_grid" + temp_profile + str(entropy))
+                print(save_folder + "materials" + temp_profile + str(entropy))
+                print(save_folder + "full_radius_grid" + temp_profile + str(entropy))
+                print("Saved materials and full radius profile...")
 
 
 

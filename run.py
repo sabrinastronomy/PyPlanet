@@ -98,7 +98,7 @@ def varying_temp(type_eos, entropy_range, central_pressures, grid_size, loc, tes
 
         temp_plan_grid = PlanetGrid(S, central_pressures, grid_size, str(type_eos), loc, layers_types=layers_normal,
                                     minfractions=minfractions_normal, testing=testing, restart=restart,
-                                    last_index=last_index, rank=rank)
+                                    last_index=last_index, rank=rank, comm=comm)
         # integrates grid
         temp_plan_grid.integrateGrid()
         # add grid to planetary_grids list
