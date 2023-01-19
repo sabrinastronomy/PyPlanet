@@ -5,7 +5,7 @@ Written by Sabrina Berger
 """
 
 # importing packages
-from mpi4py import MPI
+
 
 import subprocess  # for creating directories
 import time  # for timing integrations
@@ -15,15 +15,12 @@ from planet import Planet
 from numpy import *
 import os
 
-# Grid of planets
-# initializing MPS comm
-comm = MPI.COMM_WORLD
-rank = comm.Get_rank()
+
 
 class PlanetGrid:
     def __init__(self, entropy, central_pressures, grid_size, temp_profile, location, layers_types, minfractions,
                  relative_tolerance=1e-5, testing=False, debug_certain_planet=False, certain_planet=None, restart=False,
-                 last_index=None, use_MPI=True):
+                 last_index=None, use_MPI=True, rank=None):
         # Initial parameters
         self.location = location
         self.temp_profile = temp_profile
@@ -37,6 +34,7 @@ class PlanetGrid:
         self.restart = restart
         self.last_index = last_index
         self.use_MPI = use_MPI
+        self.rank = rank
 
         try:
             os.makedirs(self.save_folder)
@@ -141,9 +139,8 @@ class PlanetGrid:
 
         # iterating over mesh grid of p_cmb and p_cmb/p_c ratio where each distinct i and j pair correspond to a different planet
         if self.use_MPI:
-            comm.barrier()
-            iterator_rows = [rank]
-            print(f"Integrating planets in row {rank} on node #{rank}.")
+            iterator_rows = [self.rank]
+            print(f"Integrating planets in row {self.rank} on node #{self.rank}.")
 
         initial_time = time.time()
 
@@ -158,7 +155,7 @@ class PlanetGrid:
                 print("----------------------------------------------------------------------------------------------")
                 print("Location in mesh grid: %d %d \n P_c = %e \n P_cmb/P_c =% g" % (i, j, self.xx[i][j], self.yy[i][j]))
                 print("Planet: " + str(planet_number))
-                print(f"Planet is being integrated on node # {rank}.")
+                print(f"Planet is being integrated on node # {self.rank}.")
 
                 # Instantiating all pressures
                 p_c = xx[i][j]
