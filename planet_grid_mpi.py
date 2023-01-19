@@ -116,19 +116,19 @@ class PlanetGrid:
 
         if self.use_MPI:
             iterator_rows = [self.rank]
-            # scattering grid across nodes
-            self.radius_grid = self.comm_g.scatter(self.radius_grid, root=0)
-            self.mass_grid = self.comm_g.scatter(self.mass_grid, root=0)
-            self.press_grid = self.comm_g.scatter(self.press_grid, root=0)
-            self.core_mass_grid = self.comm_g.scatter(self.core_mass_grid, root=0)
-            self.core_rad_grid = self.comm_g.scatter(self.core_rad_grid, root=0)
-            self.p_cmb_simulated = self.comm_g.scatter(self.p_cmb_simulated, root=0)
-            self.p_cmb_grid = self.comm_g.scatter(self.p_cmb_grid, root=0)
+            # bcasting grid across nodes
+            self.radius_grid = self.comm_g.bcast(self.radius_grid, root=0)
+            self.mass_grid = self.comm_g.bcast(self.mass_grid, root=0)
+            self.press_grid = self.comm_g.bcast(self.press_grid, root=0)
+            self.core_mass_grid = self.comm_g.bcast(self.core_mass_grid, root=0)
+            self.core_rad_grid = self.comm_g.bcast(self.core_rad_grid, root=0)
+            self.p_cmb_simulated = self.comm_g.bcast(self.p_cmb_simulated, root=0)
+            self.p_cmb_grid = self.comm_g.bcast(self.p_cmb_grid, root=0)
             # Thermal evolution
-            self.u_grid = self.comm_g.scatter(self.u_grid, root=0)
+            self.u_grid = self.comm_g.bcast(self.u_grid, root=0)
             # This is getting the materials in the planet at each pressure
-            self.full_radius_grid = self.comm_g.scatter(self.full_radius_grid, root=0)
-            self.press_mat_actual = self.comm_g.scatter(self.press_mat_actual, root=0)
+            self.full_radius_grid = self.comm_g.bcast(self.full_radius_grid, root=0)
+            self.press_mat_actual = self.comm_g.bcast(self.press_mat_actual, root=0)
             print(f"Integrating planets in row {self.rank} on node #{self.rank}.")
         elif self.restart:
             mask = self.radius_grid == -1  # creating mask where True if the element hasn't been explored yet
