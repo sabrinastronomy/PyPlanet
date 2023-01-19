@@ -9,7 +9,7 @@ Written by Sabrina Berger
 
 from math import *
 import numpy as np
-from scipy.integrate import ode
+from scipy.integrate import ode, solve_ivp
 
 # defining constants
 G = float("6.67e-11")  # G = [N *(m/kg)^2]
@@ -126,7 +126,8 @@ class Planet:
 
 
         def RK4(derivatives, y0, t0, dt, transition_pressure, n):
-            z = ode(derivatives).set_integrator('dopri5').set_initial_value(y0, t0).set_f_params(self.all_rho_C_p_T, n)
+            z = solve_ivp(derivatives
+                          ).set_integrator('dopri5').set_initial_value(y0, t0).set_f_params(self.all_rho_C_p_T, n)
             # mass - y[0]
             # press - y[1]
             # u - y[2]
@@ -142,46 +143,6 @@ class Planet:
                 # Heat capacity
                 u.append(z.y[2].tolist())
 
-                # Enters if-statement if passed transition pressure
-                press_b = press[-1]
-                if press_b - transition_pressure < 0:
-                    press_a = press[-2]
-                    which_loop = 'second loop'
-                    a = rad[-2]  # last positive pressure
-                    b = rad[-1]  # first negative pressure
-                    c = 0.5 * (a + b) # average them together
-
-                # if z.y[1]) == transition_pressure, will not enter second while loop
-                if z.y[1] == transition_pressure:
-                    rad[-1] = z.t
-                    mass[-1] = z.y[0]
-                    press[-1] = z.y[1]
-                    u[-1] = z.y[2]
-
-            check_pressure = c
-            assert(check_pressure > 0) # don't want to pass negative pressure into integration
-
-            # Bisection Method
-            counter = 0
-
-            while (z.y[1] < 0 or abs(transition_pressure - z.y[1]) > max(transition_pressure * relative_tolerance, 10000)) and which_loop == 'second loop':
-                counter += 1
-                # print("counter")
-                # print(counter)
-                z.integrate(c)  # trying a different pressure (c)
-                press_c = z.y[1]
-                if press_a > transition_pressure and press_c > transition_pressure:
-                    press_a = press_c
-                    a = c
-                else:
-                    press_b = press_c
-                    b = c
-                c = 0.5 * (a + b)
-                # print("next pressure in bisection method", c)
-            print("This layer went through " + repr(counter) + " bisection method steps.")
-            check_pressure = z.y[1]
-            assert(z.successful())
-            assert(check_pressure > 0)
 
             rad[-1] = z.t
             mass[-1] = z.y[0]
@@ -222,7 +183,6 @@ class Planet:
                 transition_mass_list[i] = transition_mass_list[i - 1]
                 transition_press_list[i] = transition_press_list[i - 1]
                 transition_u_list[i] = transition_u_list[i - 1]
-
 
             else:  # need to integrate layer
                 # set ICs for integration

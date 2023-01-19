@@ -105,7 +105,7 @@ class EoS:
 
         # Create mantle EoS
         if self.temp_profile == "_constant_":  # constant temperatures
-            print("Not working")
+            print("Not working for Zhang 2022")
             exit()
             # self.temperatures = np.full(int(1e4), self.anchor_temperature) # creating a constant temperature array
             # self.mantle_constant_eos_function_generate()

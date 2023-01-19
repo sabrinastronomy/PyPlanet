@@ -19,7 +19,7 @@ thermal_location = location + "/complete_data_with_silicate_mantle" #TO DO chang
 
 
 #### local directory
-# location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/Current Research/RockyPlanets/PyPlanet/paper"
+# location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/Current Research/RockyPlanets/PyPlanet"
 # thermal_location = location
 """ 
 OVERVIEW OF BURNMAN MATERIALS USED WITHIN PLANET (not including liquid silicates which are implemented in eos.py)
@@ -66,7 +66,7 @@ minfractions_normal = [[1], [[1, 0, 0.0], [1]]]  # used when there isn't a silic
 minfractions_hot = [[1], [1, 0, 0.0]]  # molten upper mantle, liquid silicates added within eos.py
 
 
-def varying_temp(type_eos, entropy_range, central_pressures, grid_size, loc, testing, restart=False):
+def varying_temp(type_eos, entropy_range, central_pressures, grid_size, loc, testing, restart=False, last_index=None):
     """
     Creates planetary grids with varying anchor or constant temperatures and saves them
     :param type_eos: adiabatic/constant
@@ -91,7 +91,7 @@ def varying_temp(type_eos, entropy_range, central_pressures, grid_size, loc, tes
             # using enstatite for upper mantle
 
         temp_plan_grid = PlanetGrid(S, central_pressures, grid_size, str(type_eos), loc, layers_types=layers_normal,
-                                        minfractions=minfractions_normal, testing=testing, restart=restart)
+                                        minfractions=minfractions_normal, testing=testing, restart=restart, last_index=last_index)
         # integrates grid
         temp_plan_grid.integrateGrid()
         # add grid to planetary_grids list
@@ -108,14 +108,14 @@ if __name__ == "__main__":  # only executes if running run.py versus calling a f
     # temp_range = [2100, 1500, 2000]
 
     #second step
-    default_central_pressures = [8, 12]
-    default_grid_size = [25, 25]
-    entropy = sys.argv[1] #TO DO change back
-    # entropy = 200
+    default_central_pressures = [11, 12]
+    default_grid_size = [3, 3]
+    # entropy = sys.argv[1] #TO DO change back
+    entropy = 1000
     entropy_range = [int(entropy)] # new in 2022
 
     # adiabatic planetary grids
-    varying_temp("_adiabatic_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing, restart=False)
+    varying_temp("_adiabatic_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing, restart=False, last_index = (2,2))
     # constant temperature planetary grids
     # varying_temp("_constant_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing)
 

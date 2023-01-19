@@ -109,9 +109,9 @@ class CoreEos:
         self.core_mat = [0 if bin_core else 1 for bin_core in molten_mask]
 
 # if __name__ == "__main__":  # only executes if running run.py versus calling a function
-#     entropies = [300, 3000, 4000]
+#     entropies = [3000]
 #     markers = [".", "D", "s"]
-#     pressures_core = np.linspace(0, 1e11, int(1e4))  # pressures in core
+#     pressures_core = np.linspace(1e13, 1e14, int(10))  # pressures in core
 #     type_prof, temperatures, pressures_core = None)
 #     for S, marker in zip(entropies, markers):
 #         new_mantle = CoreEos(S_setting=S)
