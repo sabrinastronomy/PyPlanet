@@ -116,6 +116,7 @@ class PlanetGrid:
 
         if self.use_MPI:
             iterator_rows = [self.rank]
+            iterator_cols = range(self.num_cols)
             # bcasting grid across nodes
             self.radius_grid = self.comm_g.bcast(self.radius_grid, root=0)
             self.mass_grid = self.comm_g.bcast(self.mass_grid, root=0)
