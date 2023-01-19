@@ -23,7 +23,7 @@ rank = comm.Get_rank()
 class PlanetGrid:
     def __init__(self, entropy, central_pressures, grid_size, temp_profile, location, layers_types, minfractions,
                  relative_tolerance=1e-5, testing=False, debug_certain_planet=False, certain_planet=None, restart=False,
-                 last_index=None, use_MPI = True):
+                 last_index=None, use_MPI=True):
         # Initial parameters
         self.location = location
         self.temp_profile = temp_profile
@@ -124,32 +124,32 @@ class PlanetGrid:
             if self.last_index == None:
                 self.last_index = np.unravel_index(np.argmax(mask, axis=None), mask.shape) # should get the first index that's -1
 
-            print("STARTING GRID FROM: ")
-            print(self.last_index)
             iterator_rows = range(self.last_index[0], self.num_rows)
             iterator_cols = range(self.last_index[1], self.num_cols)
         else:
             if self.last_index != None:
-                print("STARTING GRID FROM: ")
-                print(self.last_index)
+
                 iterator_rows = range(self.last_index[0], self.num_rows)
                 iterator_cols = range(self.last_index[1], self.num_cols)
             else:
                 iterator_rows = range(self.num_rows)
                 iterator_cols = range(self.num_cols)
 
+        print("STARTING GRID FROM: ")
+        print(self.last_index)
         print("Type of EoS used in this grid: " + self.temp_profile)
 
         # iterating over mesh grid of p_cmb and p_cmb/p_c ratio where each distinct i and j pair correspond to a different planet
-        comm.barrier()
-        initial_time = time.time()
         if self.use_MPI:
+            comm.barrier()
             iterator_rows = [rank]
             print(f"Integrating planets in row {rank} on node #{rank}.")
+
+        initial_time = time.time()
+
         for i in iterator_rows:
             for j in iterator_cols:
                 print(f"i, j: {i}, {j}")
-
                 planet_number += 1
                 self.layers = [] # instances of EoS layer
                 layers = self.layers
@@ -158,8 +158,7 @@ class PlanetGrid:
                 print("----------------------------------------------------------------------------------------------")
                 print("Location in mesh grid: %d %d \n P_c = %e \n P_cmb/P_c =% g" % (i, j, self.xx[i][j], self.yy[i][j]))
                 print("Planet: " + str(planet_number))
-
-
+                print(f"Planet is being integrated on node # {rank}.")
 
                 # Instantiating all pressures
                 p_c = xx[i][j]
@@ -210,37 +209,38 @@ class PlanetGrid:
                         materials[k] = eos_newest.helper_func_get_closest(actual_press, planet_eos.pressures_concatenate, planet_eos.materials_concatenate)
                     self.press_mat_actual[i][j] = materials
 
-                # saves after each row that's integrated, this means that if your job runs out of time, your grid might be incomplete
-                save(save_folder + "p_c_grid" + temp_profile + str(entropy), xx)
-                save(save_folder + "p_cmb_percentage_grid" + temp_profile + str(entropy), yy)
-                save(save_folder + "radius_grid" + temp_profile + str(entropy), radius_grid)
-                save(save_folder + "mass_grid" + temp_profile + str(entropy), mass_grid)
-                save(save_folder + "surf_press_grid" + temp_profile + str(entropy), press_grid)
-                save(save_folder + "core_mass_grid" + temp_profile + str(entropy), core_mass_grid)
-                save(save_folder + "core_rad_grid" + temp_profile + str(entropy), core_rad_grid)
-                save(save_folder + "p_cmb_simulated" + temp_profile + str(entropy), p_cmb_simulated)
-                save(save_folder + "p_cmb_grid" + temp_profile + str(entropy), p_cmb_grid)
-                save(save_folder + "u_grid" + temp_profile + str(entropy), u_grid)
-                save(save_folder + "materials" + temp_profile + str(entropy), press_mat_actual)
-                save(save_folder + "full_radius_grid" + temp_profile + str(entropy), full_radius_grid)
+            print("Done with row. Integrated " + str(planet_number) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
+                  str((time.time() - initial_time) / 60) + " minutes" + ".")
 
-                print("The following data files have been created or overwritten: ")
-                print(save_folder + "p_c_grid" + temp_profile + str(entropy))
-                print(save_folder + "p_cmb_percentage_grid" + temp_profile + str(entropy))
-                print(save_folder + "radius_grid" + temp_profile + str(entropy))
-                print(save_folder + "mass_grid" + temp_profile + str(entropy))
-                print(save_folder + "surf_press_grid" + temp_profile + str(entropy))
-                print(save_folder + "core_mass_grid" + temp_profile + str(entropy))
-                print(save_folder + "core_rad_grid" + temp_profile + str(entropy))
-                print(save_folder + "p_cmb_simulated" + temp_profile + str(entropy))
-                print(save_folder + "p_cmb_grid" + temp_profile + str(entropy))
-                print(save_folder + "u_grid" + temp_profile + str(entropy))
-                print(save_folder + "materials" + temp_profile + str(entropy))
-                print(save_folder + "full_radius_grid" + temp_profile + str(entropy))
-                print("Saved materials and full radius profile...")
+            # saves after each row that's integrated, this means that if your job runs out of time, your grid might be incomplete
+            save(save_folder + "p_c_grid" + temp_profile + str(entropy), xx)
+            save(save_folder + "p_cmb_percentage_grid" + temp_profile + str(entropy), yy)
+            save(save_folder + "radius_grid" + temp_profile + str(entropy), radius_grid)
+            save(save_folder + "mass_grid" + temp_profile + str(entropy), mass_grid)
+            save(save_folder + "surf_press_grid" + temp_profile + str(entropy), press_grid)
+            save(save_folder + "core_mass_grid" + temp_profile + str(entropy), core_mass_grid)
+            save(save_folder + "core_rad_grid" + temp_profile + str(entropy), core_rad_grid)
+            save(save_folder + "p_cmb_simulated" + temp_profile + str(entropy), p_cmb_simulated)
+            save(save_folder + "p_cmb_grid" + temp_profile + str(entropy), p_cmb_grid)
+            save(save_folder + "u_grid" + temp_profile + str(entropy), u_grid)
+            save(save_folder + "materials" + temp_profile + str(entropy), press_mat_actual)
+            save(save_folder + "full_radius_grid" + temp_profile + str(entropy), full_radius_grid)
 
-        comm.barrier()
-        print("Done. Integrated " + str(planet_number) + " " + temp_profile[1:-1] + " planets successfully!" + " This took " +
-              str((time.time() - initial_time) / 60) + " minutes" + ".")
+            print("The following data files have been created or overwritten: ")
+            print(save_folder + "p_c_grid" + temp_profile + str(entropy))
+            print(save_folder + "p_cmb_percentage_grid" + temp_profile + str(entropy))
+            print(save_folder + "radius_grid" + temp_profile + str(entropy))
+            print(save_folder + "mass_grid" + temp_profile + str(entropy))
+            print(save_folder + "surf_press_grid" + temp_profile + str(entropy))
+            print(save_folder + "core_mass_grid" + temp_profile + str(entropy))
+            print(save_folder + "core_rad_grid" + temp_profile + str(entropy))
+            print(save_folder + "p_cmb_simulated" + temp_profile + str(entropy))
+            print(save_folder + "p_cmb_grid" + temp_profile + str(entropy))
+            print(save_folder + "u_grid" + temp_profile + str(entropy))
+            print(save_folder + "materials" + temp_profile + str(entropy))
+            print(save_folder + "full_radius_grid" + temp_profile + str(entropy))
+            print("Saved materials and full radius profile...")
+
+
 
 

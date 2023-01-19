@@ -7,7 +7,6 @@ Written by Sabrina Berger
 # importing packages
 import subprocess  # for creating directories
 import time  # for timing integrations
-
 import eos_newest
 from eos_newest import *  # where eoses
 from planet import Planet
@@ -60,7 +59,6 @@ class PlanetGrid:
 
         # To be calculated parameters
         if restart:
-
             self.radius_grid = load(save_folder + "radius_grid" + temp_profile + str(entropy) + ".npy")
             self.mass_grid = load(save_folder + "mass_grid" + temp_profile + str(entropy) + ".npy")
             self.press_grid = load(save_folder + "surf_press_grid" + temp_profile + str(entropy) + ".npy")
@@ -150,8 +148,6 @@ class PlanetGrid:
                 print("----------------------------------------------------------------------------------------------")
                 print("Location in mesh grid: %d %d \n P_c = %e \n P_cmb/P_c =% g" % (i, j, self.xx[i][j], self.yy[i][j]))
                 print("Planet: " + str(planet_number))
-
-
 
                 # Instantiating all pressures
                 p_c = xx[i][j]

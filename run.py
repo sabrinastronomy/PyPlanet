@@ -5,7 +5,7 @@ Written by Sabrina Berger
 
 import sys
 # importing packages
-from planet_grid import PlanetGrid  # where the planet grid is created and run
+from planet_grid_mpi import PlanetGrid  # where the planet grid is created and run
 import numpy as np  # numpy
 import burnman.minerals  # relevant burnman minerals package
 # This testing variable is for debugging purposes
@@ -115,7 +115,7 @@ if __name__ == "__main__":  # only executes if running run.py versus calling a f
     entropy_range = [int(entropy)] # new in 2022
 
     # adiabatic planetary grids
-    varying_temp("_adiabatic_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing, restart=False, last_index = (2,2))
+    varying_temp("_adiabatic_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing)
     # constant temperature planetary grids
     # varying_temp("_constant_", entropy_range, default_central_pressures, default_grid_size, thermal_location, testing)
 
