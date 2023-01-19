@@ -6,7 +6,9 @@ Written by Sabrina Berger
 import sys
 # importing packages
 from mpi4py import MPI
-from planet_grid_mpi import PlanetGrid  # where the planet grid is created and run
+from planet_grid_mpi import PlanetGridMPI  # where the planet grid is created and run
+from planet_grid import PlanetGrid  # where the planet grid is created and run
+
 import numpy as np  # numpy
 import burnman.minerals  # relevant burnman minerals package
 # This testing variable is for debugging purposes
@@ -17,12 +19,14 @@ location = "/home/scberger/scratch-midway2/PyPlanet"
 # location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/Current Research/RockyPlanets/PyPlanet/paper"
 # location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/RockyPlanets/paper_data"
 thermal_location = location + "/complete_data_with_silicate_mantle" #TO DO change back
-
+use_MPI = True
 # Grid of planets
-# initializing MPS comm
-comm = MPI.COMM_WORLD
-rank = comm.Get_rank()
-print(f"CURRENT RANK IS {rank}")
+if use_MPI:
+    # initializing MPS comm
+    comm = MPI.COMM_WORLD
+    rank = comm.Get_rank()
+    size = comm.Get_size()
+    print(f"CURRENT RANK IS {rank}")
 
 #### local directory
 # location = "/Users/sabrinaberger/Library/Mobile Documents/com~apple~CloudDocs/Current Research/RockyPlanets/PyPlanet"
@@ -95,10 +99,14 @@ def varying_temp(type_eos, entropy_range, central_pressures, grid_size, loc, tes
         #                                 minfractions=minfractions_hot, testing=testing)
         # else:
             # using enstatite for upper mantle
-
-        temp_plan_grid = PlanetGrid(S, central_pressures, grid_size, str(type_eos), loc, layers_types=layers_normal,
-                                    minfractions=minfractions_normal, testing=testing, restart=restart,
-                                    last_index=last_index, rank=rank, comm=comm)
+        if use_MPI:
+            temp_plan_grid = PlanetGridMPI(S, central_pressures, grid_size, str(type_eos), loc, layers_types=layers_normal,
+                                        minfractions=minfractions_normal, testing=testing, restart=restart,
+                                        last_index=last_index, rank=rank, comm=comm)
+        else:
+            temp_plan_grid = PlanetGrid(S, central_pressures, grid_size, str(type_eos), loc, layers_types=layers_normal,
+                                        minfractions=minfractions_normal, testing=testing, restart=restart,
+                                        last_index=last_index)
         # integrates grid
         temp_plan_grid.integrateGrid()
         # add grid to planetary_grids list
@@ -116,7 +124,10 @@ if __name__ == "__main__":  # only executes if running run.py versus calling a f
 
     #second step
     default_central_pressures = [11, 12]
-    default_grid_size = [3, 3]
+    if use_MPI:
+        default_grid_size = [size, size]
+    else:
+        default_grid_size = [3, 3]
     # entropy = sys.argv[1] #TO DO change back
     entropy = 1000
     entropy_range = [int(entropy)] # new in 2022
