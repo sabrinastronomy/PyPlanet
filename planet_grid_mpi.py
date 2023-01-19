@@ -121,18 +121,18 @@ class PlanetGridMPI:
         iterator_rows = [self.rank]
         iterator_cols = range(self.num_cols)
         # Scattering grid across nodes
-        self.comm_g.Scatter(self.radius_grid_G, self.radius_grid, root=0)
-        self.comm_g.Scatter(self.mass_grid_G, self.mass_grid, root=0)
-        self.comm_g.Scatter(self.press_grid_G, self.press_grid, root=0)
-        self.comm_g.Scatter(self.core_mass_grid_G, self.core_mass_grid, root=0)
-        self.comm_g.Scatter(self.core_rad_grid_G, self.core_rad_grid, root=0)
-        self.comm_g.Scatter(self.p_cmb_simulated_G, self.p_cmb_simulated, root=0)
-        self.comm_g.Scatter(self.p_cmb_grid_G, self.p_cmb_grid, root=0)
-        # Thermal evolution
-        self.comm_g.Scatter(self.u_grid_G, self.u_grid, root=0)
-        # This is getting the materials in the planet at each pressure
-        self.comm_g.Scatter(self.full_radius_grid_G, self.full_radius_grid, root=0)
-        self.comm_g.Scatter(self.press_mat_actual_G, self.press_mat_actual, root=0)
+        # self.comm_g.Scatter(self.radius_grid_G, self.radius_grid, root=0)
+        # self.comm_g.Scatter(self.mass_grid_G, self.mass_grid, root=0)
+        # self.comm_g.Scatter(self.press_grid_G, self.press_grid, root=0)
+        # self.comm_g.Scatter(self.core_mass_grid_G, self.core_mass_grid, root=0)
+        # self.comm_g.Scatter(self.core_rad_grid_G, self.core_rad_grid, root=0)
+        # self.comm_g.Scatter(self.p_cmb_simulated_G, self.p_cmb_simulated, root=0)
+        # self.comm_g.Scatter(self.p_cmb_grid_G, self.p_cmb_grid, root=0)
+        # # Thermal evolution
+        # self.comm_g.Scatter(self.u_grid_G, self.u_grid, root=0)
+        # # This is getting the materials in the planet at each pressure
+        # self.comm_g.Scatter(self.full_radius_grid_G, self.full_radius_grid, root=0)
+        # self.comm_g.Scatter(self.press_mat_actual_G, self.press_mat_actual, root=0)
         print(f"Integrating planets in row {self.rank} on node #{self.rank}.")
 
         # Aliases
