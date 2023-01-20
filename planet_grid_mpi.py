@@ -223,18 +223,18 @@ class PlanetGridMPI:
                   str((time.time() - initial_time) / 60) + " minutes" + ".")
 
         self.comm_g.Barrier()
-        self.comm_g.gather(self.radius_grid, self.radius_grid_G, root=0)
-        self.comm_g.gather(self.mass_grid, self.mass_grid_G, root=0)
-        self.comm_g.gather(self.press_grid, self.press_grid_G, root=0)
-        self.comm_g.gather(self.core_mass_grid, self.core_mass_grid_G, root=0)
-        self.comm_g.gather(self.core_rad_grid, self.core_rad_grid_G, root=0)
-        self.comm_g.gather(self.p_cmb_simulated, self.p_cmb_simulated_G, root=0)
-        self.comm_g.gather(self.p_cmb_grid, self.p_cmb_grid_G, root=0)
+        self.radius_grid_G = self.comm_g.gather(self.radius_grid, root=0)
+        self.mass_grid_G = self.comm_g.gather(self.mass_grid, root=0)
+        self.press_grid_G, = self.comm_g.gather(self.press_grid, root=0)
+        self.core_mass_grid_G = self.comm_g.gather(self.core_mass_grid, root=0)
+        self.core_rad_grid_G = self.comm_g.gather(self.core_rad_grid, root=0)
+        self.p_cmb_simulated_G = self.comm_g.gather(self.p_cmb_simulated, root=0)
+        self.p_cmb_grid_G = self.comm_g.gather(self.p_cmb_grid, root=0)
         # Thermal evolution
-        self.comm_g.gather(self.u_grid, self.u_grid_G, root=0)
+        self.u_grid_G = self.comm_g.gather(self.u_grid, root=0)
         # This is getting the materials in the planet at each pressure
-        self.comm_g.gather(self.full_radius_grid, self.full_radius_grid_G, root=0)
-        self.comm_g.gather(self.press_mat_actual, self.press_mat_actual_G, root=0)
+        self.full_radius_grid_G = self.comm_g.gather(self.full_radius_grid, root=0)
+        self.press_mat_actual_G = self.comm_g.gather(self.press_mat_actual, root=0)
 
         if self.rank == 0: # if not using MPI or rank is 0, this is entered
             # saves after each row that's integrated, this means that if your job runs out of time, your grid might be incomplete
