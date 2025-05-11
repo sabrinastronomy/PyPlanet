@@ -52,6 +52,3 @@ This interpolates to various core mass fractions that the user specifies from a 
 # Plotting
 ## T_equilibrium.py
 This generates an equilibrium temperature plot as a function of mass and radius.
-## plotting.py
-This provides code to plot a grid of planets. An example of what's plotted for a grid of 300K constant planets is shown below:
-(I can't figure out how to put an inline figure hold up ugh)
