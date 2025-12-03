@@ -1,6 +1,6 @@
 # About *PyPlanet* 
 
-*PyPlanet* is a rocky exoplanet modeling software with realistic temperature profiles and numerical thermal evolution. It was developed by me while I was an undergraduate at UC Berkeley and into her time as a graduate student at McGill University. This code was developed alongside my supervisor Professor Leslie Rogers. Jisheng Zhang and Ellen Price also contributed parts of this code. 
+*PyPlanet* is a rocky exoplanet modeling software with realistic temperature profiles and numerical thermal evolution. It was developed by me while I was an undergraduate at UC Berkeley and into my time as a graduate student at McGill University. This code was developed alongside my supervisor Professor Leslie Rogers. Jisheng Zhang and Ellen Price also contributed parts of this code. 
 
 # *PyPlanet* Science Goals
 
